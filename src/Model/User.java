@@ -48,6 +48,80 @@ public class User
     public int getClothIndex(){return this.clothIndex;} //new
     public int getIndex(){return this.index;}   //new
     
+    public boolean buyItem(String name)
+    {
+    	Shop item=new Shop();
+    	
+    	if(name==item.foodList[0].getName())
+    	{
+    		if(this.gold>=item.foodList[0].getPrice())
+    		{
+    			gold-=item.foodList[0].getPrice();
+    			return true;
+    		}
+    	}
+    	else if(name==item.foodList[1].getName())
+    	{
+    		if(this.gold>=item.foodList[1].getPrice())
+    		{
+    			gold-=item.foodList[1].getPrice();
+    			return true;
+    		}
+    	}
+    	else if(name==item.foodList[2].getName())
+    	{
+    		if(this.gold>=item.foodList[2].getPrice())
+    		{
+    			gold-=item.foodList[2].getPrice();
+    			return true;
+    		}
+    	}
+    	
+    	if(name==item.clothList[0].getName())
+    	{
+    		if(this.gold>=item.clothList[0].getPrice())
+    		{
+    			gold-=item.clothList[0].getPrice();
+    			return true;
+    		}
+    	}
+    	else if(name==item.clothList[1].getName())
+    	{
+    		if(this.gold>=item.clothList[1].getPrice())
+    		{
+    			gold-=item.clothList[1].getPrice();
+    			return true;
+    		}
+    	}
+    	else if(name==item.clothList[2].getName())
+    	{
+    		if(this.gold>=item.clothList[2].getPrice())
+    		{
+    			gold-=item.clothList[2].getPrice();
+    			return true;
+    		}
+    	}
+    	
+    	if(name==item.animalList[0].getName())
+    	{
+    		if(this.gold>=item.animalList[0].getPrice())
+    		{
+    			gold-=item.animalList[0].getPrice();
+    			return true;
+    		}
+    	}
+    	else if(name==item.animalList[1].getName())
+    	{
+    		if(this.gold>=item.animalList[1].getPrice())
+    		{
+    			gold-=item.animalList[1].getPrice();
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
+    
     public String[] getClothItemNameList()
     {
     	if(clothIndex!=-1)
