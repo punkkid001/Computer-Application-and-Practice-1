@@ -6,8 +6,6 @@ public class Main {
 		// TODO Auto-generated method stub
 		new Controller();
 		
-	 System.out.println("Hello");
-		
 	}
 
 }
