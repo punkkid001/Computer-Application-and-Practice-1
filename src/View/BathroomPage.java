@@ -4,9 +4,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Model.Waste;
+
 import javax.swing.JTextArea;
 
-public class BathroomPage extends JPanel
+public class BathroomPage extends Place
 {	
 	protected JButton btnGoShop;
 	protected JButton btnGoYard;
@@ -26,6 +29,9 @@ public class BathroomPage extends JPanel
 	 */
 	public BathroomPage()
 	{
+		waste=new Waste[5];
+        super.setPlaceName("Bathrood");
+        
 		setBounds(100, 100, 900, 540);
 		setLayout(null);
 		

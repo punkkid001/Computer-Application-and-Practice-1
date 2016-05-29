@@ -5,13 +5,14 @@ import java.awt.CardLayout;
 import javax.swing.JToolBar;
 
 import Model.Animal;
+import Model.Waste;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
 
-public class LivingroomPage extends JPanel {
+public class LivingroomPage extends Place {
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
@@ -28,6 +29,11 @@ public class LivingroomPage extends JPanel {
 	 * Create the panel.
 	 */
 	public LivingroomPage() {
+		waste=new Waste[5];
+        super.setPlaceName("Livingroom");
+		
+		
+		
 		petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;

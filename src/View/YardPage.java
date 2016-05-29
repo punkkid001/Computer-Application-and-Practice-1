@@ -4,7 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class YardPage extends JPanel
+import Model.Waste;
+
+public class YardPage extends Place
 {
 	protected JButton btnGoShop;	
 	protected JButton btnGoBathroom;
@@ -16,6 +18,9 @@ public class YardPage extends JPanel
 	 */
 	public YardPage()
 	{
+		waste=new Waste[5];
+        super.setPlaceName("Yard");
+        
 		setBounds(100, 100, 900, 540);
 		setLayout(null);
 		

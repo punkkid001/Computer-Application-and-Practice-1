@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Model.Place;
 
 public class test extends JFrame implements ActionListener {
 

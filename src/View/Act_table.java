@@ -1,7 +1,7 @@
 package View;
 
 import Model.Animal;
-import Model.Place;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Model.Place;
 
 public class Act_table extends JPanel implements ActionListener {
 	//private JPanel mainpanel;

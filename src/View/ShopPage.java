@@ -4,11 +4,22 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import Model.Cloth;
+import Model.Food;
+import Model.Pet;
+import Model.Waste;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ShopPage extends JPanel
+public class ShopPage extends Place
 {
+	public Food[] foodList;
+	public Cloth[] clothList;
+	public Pet[] animalList;
+	public Waste[] waste;
+	
 	protected JButton btnGoYard;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoLivingroom;
@@ -25,8 +36,31 @@ public class ShopPage extends JPanel
 	/**
 	 * Create the panel.
 	 */
+	
 	public ShopPage()
 	{
+		foodList = new Food[5];
+		clothList = new Cloth[5];
+		animalList = new Pet[2];
+		//~~
+		super.setPlaceName("Shop");
+        waste=new Waste[5];
+        
+        //foodList=new Food[3];
+        foodList[0]=new Food("Premium", 5, 5, 5, 50);
+        foodList[1]=new Food("Cake", 10, 5, 10, 200);
+        foodList[2]=new Food("Parfait", 10, 5, 0, 80);
+        
+        clothList[0]=new Cloth("Hat", 5, 10, 50, 100);
+        clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
+        clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
+
+        //animalList=new Pet[2];
+        animalList[0]=new Pet("Baby Cat", 1000);
+        animalList[1]=new Pet("Baby Monkey", 1000);
+        //~~
+        
+		
 		setBounds(100, 100, 900, 540);
 		setLayout(null);
 		

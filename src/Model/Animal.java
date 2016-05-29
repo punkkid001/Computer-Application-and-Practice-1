@@ -1,4 +1,11 @@
-package Model;/**
+package Model;
+
+import View.BathroomPage;
+import View.LivingroomPage;
+import View.Place;
+import View.ShopPage;
+
+/**
  * Created by Jiyoon on 2016. 5. 1..
  */
 public class Animal implements AnimalOperation_IF, Fight_IF {
@@ -39,7 +46,7 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
         this.exp=0;
         this.activeCount=0;
 
-        this.myLocation=new Livingroom();
+        this.myLocation=new LivingroomPage();
         this.locationName=myLocation.getName(); //new
         this.myCloth=null;
     }
@@ -249,10 +256,10 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
         this.m_y=y;
     }
 
-    public void goLivingroom(){this.myLocation=new Livingroom(); this.locationName=myLocation.getName();}
-    public void goBathroom(){this.myLocation=new Bathroom(); this.locationName=myLocation.getName();}
-    public void goYard(){this.myLocation=new Bathroom(); this.locationName=myLocation.getName();}
-    public void goShop(){this.myLocation=new Shop(); this.locationName=myLocation.getName();}
+    public void goLivingroom(){this.myLocation=new LivingroomPage(); this.locationName=myLocation.getName();}
+    public void goBathroom(){this.myLocation=new BathroomPage(); this.locationName=myLocation.getName();}
+    public void goYard(){this.myLocation=new BathroomPage(); this.locationName=myLocation.getName();}
+    public void goShop(){this.myLocation=new ShopPage(); this.locationName=myLocation.getName();}
     
     //new
     public String[] getPetStatList(int index)

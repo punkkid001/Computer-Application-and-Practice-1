@@ -1,13 +1,15 @@
-package Model;
+package View;
 
-/**
- * Created by Jiyoon on 2016. 5. 17..
- */
+import javax.swing.JPanel;
 
-public class Place
-{
-    String placeName;
+import Model.Animal;
+import Model.User;
+import Model.Waste;
 
+public class Place extends JPanel{
+	String placeName;
+	Waste[] waste;
+	
     public void showMenu() {}
 
     //change
@@ -26,4 +28,5 @@ public class Place
         System.out.println("User gold : "+user.getGold());
         System.out.println("User's pet : "+user.getUserPetSize());
     }
+
 }

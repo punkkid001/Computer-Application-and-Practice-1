@@ -1,5 +1,7 @@
 package Model;
 
+import View.ShopPage;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
@@ -50,7 +52,7 @@ public class User
     
     public boolean buyItem(String name)
     {
-    	Shop item=new Shop();
+    	ShopPage item=new ShopPage();
     	
     	if(name==item.foodList[0].getName())
     	{
