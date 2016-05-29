@@ -47,7 +47,7 @@ public class Controller {
 		presentUser=new User(userName, petNum, petName);
 		m.gotogameStartingPoint();
 		this.viewLivingroomStatus();
-		m.livingroomPage.createPetIcon(petName);
+		m.livingroomPage.createPetIcon(presentUser.getPet(0));
 	}
 	
 	public void viewLivingroomStatus()
