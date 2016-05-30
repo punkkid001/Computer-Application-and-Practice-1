@@ -7,12 +7,19 @@ import javax.swing.JToolBar;
 import Model.Animal;
 import Model.Waste;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JTextArea;
 
-public class LivingroomPage extends Place {
+public class LivingroomPage extends Place implements MouseListener {
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
@@ -123,14 +130,56 @@ public class LivingroomPage extends Place {
 		for (int i = 0; i < petIcon.length; i++) {
 			if (petIcon[i] == null) {
 				petIcon[i] = new PetLabel(pet, this);
+				petIcon[i].setText("hello~~");
+				try {
+					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\babycat.jpg"))));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				petIcon[i].setBounds(336, 342, 100, 100);
+				//petIcon[i].addMouseListener(this);
 				this.add(petIcon[i]);
-				this.setVisible(true);
+				petIcon[i].setVisible(true);
 				break;
 			}
 
 			if (i == petIcon.length - 1)
 				System.out.println("팻을 더 추가할 수 없습니다.");
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() == petIcon[0]) {
+			Act_table t = new Act_table(e.getX() + 30, e.getY() + 20);
+			add(t);
+			this.setVisible(true);
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

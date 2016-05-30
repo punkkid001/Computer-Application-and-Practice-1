@@ -2,13 +2,21 @@ package View;
 
 import Model.Animal;
 
-
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 
 public class Act_table extends JPanel implements ActionListener {
@@ -19,47 +27,35 @@ public class Act_table extends JPanel implements ActionListener {
 	private JButton button_livingroom;
 	private JButton button_yard;
 	
-	public Act_table() {
+	public Act_table(int x, int y) {
+		setBackground(Color.PINK);
+		this.setBorder(new LineBorder(new Color(0, 0, 0), 6));
 		/*
 		//test
 		setTitle("이동하기");
 		setSize(300,250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		*/
-		this.setBounds(0, 0, 200, 180);
-		//this.setBorder();
-		this.setLayout(null);
-		button_shop = new JButton("상점");
-		button_bathroom = new JButton("화장실");
-		button_livingroom = new JButton("거실");
+		this.setBounds(x, y, 85, 152);
 		button_yard = new JButton("마당");
-		button_shop.addActionListener(this);
-		button_bathroom.addActionListener(this);
-		button_livingroom.addActionListener(this);
+		button_yard.setBounds(38, 45, 73, 27);
 		button_yard.addActionListener(this);
-		
-		this.add(button_shop);
-		this.add(button_bathroom);
+		button_livingroom = new JButton("거실");
+		button_livingroom.setBounds(37, 12, 73, 27);
+		button_livingroom.setBackground(Color.WHITE);
+		button_livingroom.addActionListener(this);
+		setLayout(null);
 		this.add(button_livingroom);
 		this.add(button_yard);
+		button_bathroom = new JButton("\uC7A5\uC2E4");
+		button_bathroom.setBounds(37, 79, 73, 27);
+		button_bathroom.addActionListener(this);
+		this.add(button_bathroom);
+		button_shop = new JButton("상점");
+		button_shop.setBounds(37, 113, 73, 27);
+		button_shop.addActionListener(this);
 		
-		/*
-		mainpanel = new JPanel();
-		mainpanel.setBounds(50, 50, 50, 250);
-		mainpanel.add(button_bathroom);
-		mainpanel.add(button_livingroom);
-		mainpanel.add(button_shop);
-		mainpanel.add(button_yard);
-		add(mainpanel);
-		*/
-		
-		this.button_bathroom.setBounds(150, 150, 50, 50);
-		//add(panel1);
-		this.button_livingroom.setBounds(150, 200, 50, 50);
-		//add(panel2);
-		this.button_shop.setBounds(150, 250, 50, 50);
-		//add(panel3);
-		this.button_yard.setBounds(150, 300, 50, 50);
+		this.add(button_shop);
 		//add(panel4);
 		
 		//setVisible(true);

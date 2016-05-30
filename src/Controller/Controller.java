@@ -48,6 +48,7 @@ public class Controller {
 		m.gotogameStartingPoint();
 		this.viewLivingroomStatus();
 		m.livingroomPage.createPetIcon(presentUser.getPet(0));
+		m.setVisible(true);
 	}
 	
 	public void viewLivingroomStatus()
