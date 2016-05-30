@@ -3,7 +3,8 @@ import Model.Animal;
 import Model.User;
 import View.*;
 
-public class Controller {
+public class Controller
+{
 	public MainFrame m;
 	protected User presentUser;
 	
@@ -12,25 +13,28 @@ public class Controller {
 	private int petNum;
 	private String petName;
 	
-	public Controller() {
+	public Controller()
+	{
 		m = new MainFrame(this);
 		m.gotoStartPage();  //startPage 호출.
 	}
 	
 	//start page
-	public void goUserSetting() {
+	public void goUserSetting()
+	{
 		System.out.println("스타트 버튼이 눌렸는걸 컨트롤러에서 알았습니다.");
 		m.gotoUserSettingPage();
 	}
-	public void loadFile() {
-	}
-	public void gameExit() {
+	public void loadFile(){ }
+	public void gameExit()
+	{
 		System.out.println("컨트롤러에서 알아차림 : 게임 종료.");
 		System.exit(0);
 	}
 	
 	//userSettingPage
-	public void goPetSetting(String userName) {
+	public void goPetSetting(String userName)
+	{
 		System.out.println("유저 이름 : " + userName + "을 받았습니다.");
 		this.userName = userName;
 		m.gotoPetSettingPage();
@@ -54,7 +58,8 @@ public class Controller {
 	}
 	
 	//map change 0:거실, 1:화장실, 2마당
-	public void changeMap(Animal pet, int placeNum) {
+	public void changeMap(Animal pet, int placeNum)
+	{
 		pet.getMyLocation().delectIcon(pet);
 		if(placeNum == 0)
 			pet.setPlace(m.livingroomPage);

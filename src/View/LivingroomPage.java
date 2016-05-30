@@ -153,10 +153,14 @@ public class LivingroomPage extends Place implements MouseListener {
 				System.out.println("팻을 더 추가할 수 없습니다.");
 		}
 	}
-	public void delectIcon(Animal pet) {
-		for(int i = 0; i < petIcon.length; i++) {
+	
+	public void delectIcon(Animal pet)
+	{
+		for(int i = 0; i < petIcon.length; i++)
+		{
 			if(petIcon[i] != null) {
-				if(petIcon[i].pet == pet) {
+				if(petIcon[i].pet == pet)
+				{
 					System.out.println(i + "??");
 					petIcon[i].setVisible(false);
 					petIcon[i] = null;

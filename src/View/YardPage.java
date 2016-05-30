@@ -24,7 +24,8 @@ public class YardPage extends Place
 	/**
 	 * Create the panel.
 	 */
-	public YardPage(Controller c) {
+	public YardPage(Controller c)
+	{
 		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Yard");
@@ -67,17 +68,20 @@ public class YardPage extends Place
 	}
 	
 	
-	public void createPetIcon(Animal pet) {
-		for (int i = 0; i < petIcon.length; i++) {
-			if (petIcon[i] == null) {
+	public void createPetIcon(Animal pet)
+	{
+		for (int i = 0; i < petIcon.length; i++)
+		{
+			if (petIcon[i] == null)
+			{
 				petIcon[i] = new PetLabel(pet, this);
-				/*
+				
 				try {
 					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}*/
+				}
 				petIcon[i].setBounds(336, 342, 100, 100);
 				//petIcon[i].addMouseListener(this);
 				this.add(petIcon[i]);
@@ -93,10 +97,14 @@ public class YardPage extends Place
 
 
 	@Override
-	public void delectIcon(Animal pet) {
-		for(int i = 0; i < petIcon.length; i++) {
-			if(petIcon[i] != null) {
-				if(petIcon[i].pet == pet) {
+	public void delectIcon(Animal pet)
+	{
+		for(int i = 0; i < petIcon.length; i++)
+		{
+			if(petIcon[i] != null)
+			{
+				if(petIcon[i].pet == pet)
+				{
 					System.out.println(i + "??");
 					petIcon[i].setVisible(false);
 					petIcon[i] = null;
@@ -104,5 +112,4 @@ public class YardPage extends Place
 			}
 		}
 	}
-
 }
