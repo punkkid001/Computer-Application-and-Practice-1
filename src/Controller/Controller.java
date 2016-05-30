@@ -1,4 +1,5 @@
 package Controller;
+import Model.Animal;
 import Model.User;
 import View.*;
 
@@ -48,8 +49,23 @@ public class Controller {
 		m.gotogameStartingPoint();
 		this.viewLivingroomStatus();
 		m.livingroomPage.createPetIcon(presentUser.getPet(0));
+		presentUser.getPet(0).setPlace(m.livingroomPage);
 		m.setVisible(true);
 	}
+	
+	//map change 0:거실, 1:화장실, 2마당
+	public void changeMap(Animal pet, int placeNum) {
+		pet.getMyLocation().delectIcon(pet);
+		if(placeNum == 0)
+			pet.setPlace(m.livingroomPage);
+		else if(placeNum == 1)
+			pet.setPlace(m.bathroomPage);
+		else 
+			pet.setPlace(m.yardPage);
+		pet.getMyLocation().createPetIcon(pet);
+	}
+	
+	
 	
 	public void viewLivingroomStatus()
 	{

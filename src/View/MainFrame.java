@@ -16,13 +16,14 @@ import javax.swing.JButton;
 
 public class MainFrame extends JFrame
 {
-	private Controller controller;
+	private Controller c;
 	private JPanel presentPanel;
 	
 	//setting views
 	//private StartPage startPage;
 	//private UserSettingPage usersettingPage;
-	//private PetSettingPage petsettingPage;	
+	//private PetSettingPage petsettingPage;
+	public Place place;
 	public LivingroomPage livingroomPage;
 	public ShopPage shopPage;
 	public YardPage yardPage;
@@ -43,7 +44,7 @@ public class MainFrame extends JFrame
 	
 	public MainFrame(Controller c)
 	{
-		this.controller = c;
+		this.c = c;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 540);
 		
@@ -90,7 +91,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("Start 버튼이 눌렸습니다.");
-				controller.goUserSetting();
+				c.goUserSetting();
 			}
 		});
 		
@@ -99,7 +100,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("exit 버튼이 눌렸습니다.");
-				controller.gameExit();
+				c.gameExit();
 			}
 		});	
 		
@@ -126,7 +127,7 @@ public class MainFrame extends JFrame
 				}
 				
 				else
-					controller.goPetSetting(userName);
+					c.goPetSetting(userName);
 			}			
 		});
 		
@@ -160,7 +161,7 @@ public class MainFrame extends JFrame
 				else
 				{ 
 					petsettingPage.setPetName(petName);
-					controller.goStartingPoint(petsettingPage.getPetNum(), petsettingPage.getName());
+					c.goStartingPoint(petsettingPage.getPetNum(), petsettingPage.getName());
 					//calling game start method
 				}
 			}
@@ -172,8 +173,8 @@ public class MainFrame extends JFrame
 	
 	public void gotogameStartingPoint()
 	{
-		this.livingroomPage = new LivingroomPage();
-		
+
+		this.livingroomPage = new LivingroomPage(c);
 		this.livingroomPage.btnGoBathroom.addActionListener(new ActionListener()
 		{
 			@Override
@@ -209,7 +210,7 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				String[] list=controller.appendFoodItemList();
+				String[] list=c.appendFoodItemList();
 				if(list!=null)
 				{
 					for(int i=0;i<list.length;i++)
@@ -221,7 +222,7 @@ public class MainFrame extends JFrame
 			}
 		});
 		
-		this.bathroomPage = new BathroomPage();
+		this.bathroomPage = new BathroomPage(c);
 		this.bathroomPage.btnGoLivingroom.addActionListener(new ActionListener()
 		{
 			@Override
@@ -257,7 +258,12 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+<<<<<<< HEAD
 				if(bathroomClosetFlag==false)
+=======
+				String list[]=c.appendClosetItemList();
+				if(list!=null)
+>>>>>>> 7b8c42713dd6f0fa8db27d08b1d53179af2fd94b
 				{
 					bathroomClosetFlag=true;
 					String list[]=controller.appendClosetItemList();
@@ -326,7 +332,7 @@ public class MainFrame extends JFrame
 			}
 		});	
 		
-		this.yardPage = new YardPage();
+		this.yardPage = new YardPage(c);
 		this.yardPage.btnGoLivingroom.addActionListener(new ActionListener()
 		{
 			@Override
@@ -362,25 +368,25 @@ public class MainFrame extends JFrame
 	
 	public void gotoLivingroom()
 	{
-		controller.viewLivingroomStatus();
+		c.viewLivingroomStatus();
 		this.setContentPane(livingroomPage);
 		this.setVisible(true);
 	}
 	public void gotoBathroom()
 	{
-		controller.viewBathroomStatus();
+		c.viewBathroomStatus();
 		this.setContentPane(bathroomPage);
 		this.setVisible(true);
 	}
 	public void gotoYard()
 	{
-		controller.viewYardStatus();
+		c.viewYardStatus();
 		this.setContentPane(yardPage);
 		this.setVisible(true);
 	}
 	public void gotoShop()
 	{
-		controller.viewShopStatus();
+		c.viewShopStatus();
 		this.setContentPane(shopPage);
 		this.setVisible(true);
 	}

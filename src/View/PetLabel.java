@@ -12,7 +12,7 @@ import javax.swing.*;
 import Model.Animal;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener {
-	private Animal pet;
+	protected Animal pet;
 	private Place place;
 	private JPopupMenu menu;
 	private JPopupMenu placeMenu;
@@ -23,7 +23,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 	Thread t;
 	
 	public PetLabel() {
-		setText("hihih");
 	}
 	public PetLabel(Animal pet, Place place) {
 		this.pet = pet;
@@ -45,11 +44,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 				place.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						if(flag == 1) {
-							
-							o_x = e.getX();
-							o_y = e.getY();
-							moveFlag = 1;
-							makeThread();
+							moveThread(e.getX(), e.getY());
 							flag = 0;	
 							
 						}
@@ -73,9 +68,26 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		
 		menu.add(item3);
 		JMenuItem mapItem1 = new JMenuItem("Livingroom");
+		mapItem1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				place.c.changeMap(pet, 0);
+			}		
+		});
 		JMenuItem mapItem2 = new JMenuItem("Bathroom");
+		mapItem2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				place.c.changeMap(pet, 1);
+			}		
+		});
 		JMenuItem mapItem3 = new JMenuItem("Yard");
-		
+		mapItem3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				place.c.changeMap(pet, 0);
+			}		
+		});
 		menu.add(item4);
 		JMenuItem behaviorItem1 = new JMenuItem("잠자기");
 		JMenuItem behaviorItem2 = new JMenuItem("먹이주기");
@@ -116,7 +128,13 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		this.t = new Thread(this);
 		this.t.start();
 	}
-	
+	public void moveThread(int x, int y) {
+		this.t = new Thread(this);
+		moveFlag = 1;
+		this.o_x = x;
+		this.o_y = y;
+		this.t.start();
+	}
 	@Override
 	public void run() {
 		this.pet.setXY(this.getX(), this.getY());
@@ -173,6 +191,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 			this.setLocation((int)x_cal, (int)y_cal);
 			System.out.println(x_cal + "  " + y_cal);
 		}
+		this.pet.setXY((int)x_cal,(int)y_cal);
 	}
 
 	

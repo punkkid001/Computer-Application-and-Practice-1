@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import Model.Animal;
 import Model.Cloth;
 import Model.Food;
 import Model.Pet;
@@ -133,5 +134,15 @@ public class ShopPage extends Place
 		sellItemList = new JTextArea();
 		sellItemList.setBounds(12, 22, 222, 309);
 		sellPanel.add(sellItemList);
+	}
+	@Override
+	public void delectIcon(Animal pet) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void createPetIcon(Animal pet) {
+		// TODO Auto-generated method stub
+		
 	}
 }
