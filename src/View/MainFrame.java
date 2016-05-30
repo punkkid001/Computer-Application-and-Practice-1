@@ -30,6 +30,9 @@ public class MainFrame extends JFrame
 	public BattlePage battlePage;	
 	private String userName;
 	
+	private boolean bathroomClosetFlag=false;
+	private boolean bathroomStatFlag=false;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -254,17 +257,30 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				String list[]=controller.appendClosetItemList();
-				if(list!=null)
+				if(bathroomClosetFlag==false)
 				{
-					for(int i=0;i<list.length;i++)
-						bathroomPage.petItemList.append(list[i]+"\n");
+					bathroomClosetFlag=true;
+					String list[]=controller.appendClosetItemList();
+					if(list!=null)
+					{
+						for(int i=0;i<list.length;i++)
+						{
+							bathroomPage.cloth[i].setText(list[i]);
+							bathroomPage.cloth[i].setVisible(true);
+						}
+					}
+					else
+						bathroomPage.emptyLabel.setVisible(true);
+					
+					bathroomPage.UsersClothItem.setVisible(true);
+					bathroomPage.clothItemInfo.setVisible(true);
 				}
 				else
-					bathroomPage.petItemList.append("Cloth is empty");
-				
-				bathroomPage.UsersClothItem.setVisible(true);
-				bathroomPage.clothItemInfo.setVisible(true);
+				{
+					bathroomClosetFlag=false;
+					bathroomPage.UsersClothItem.setVisible(false);
+					bathroomPage.clothItemInfo.setVisible(false);
+				}
 			}
 		});
 		
