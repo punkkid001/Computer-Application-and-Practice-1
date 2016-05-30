@@ -11,7 +11,8 @@ import javax.swing.*;
 
 import Model.Animal;
 
-public class PetLabel extends JLabel implements Runnable, MouseListener {
+public class PetLabel extends JLabel implements Runnable, MouseListener
+{
 	protected Animal pet;
 	private Place place;
 	private JPopupMenu menu;
@@ -22,9 +23,10 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 	
 	Thread t;
 	
-	public PetLabel() {
-	}
-	public PetLabel(Animal pet, Place place) {
+	public PetLabel(){}
+	
+	public PetLabel(Animal pet, Place place)
+	{
 		this.pet = pet;
 		this.place = place;
 		this.menu = new JPopupMenu();
@@ -36,22 +38,27 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		
 		
 		JMenuItem item1 = new JMenuItem("move");
-		item1.addActionListener(new ActionListener() {
+		item1.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				flag = 1;
 				// TODO Auto-generated method stub
-				place.addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						if(flag == 1) {
+				place.addMouseListener(new MouseAdapter()
+				{
+					public void mouseClicked(MouseEvent e)
+					{
+						if(flag == 1)
+						{
 							moveThread(e.getX(), e.getY());
-							flag = 0;	
-							
+							flag = 0;		
 						}
 					}
 				});
 			}
 		});
+		
 		JMenu item2 = new JMenu("talk");
 		JMenu item3 = new JMenu("change map");
 		JMenu item4 = new JMenu("map behavior");
@@ -68,24 +75,30 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		
 		menu.add(item3);
 		JMenuItem mapItem1 = new JMenuItem("Livingroom");
-		mapItem1.addActionListener(new ActionListener() {
+		mapItem1.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				place.c.changeMap(pet, 0);	//0 : livingroom
 			}		
 		});
 		JMenuItem mapItem2 = new JMenuItem("Bathroom");
-		mapItem2.addActionListener(new ActionListener() {
+		mapItem2.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				place.c.changeMap(pet, 1);	//1 : bathroom
 			}		
 		});
 		JMenuItem mapItem3 = new JMenuItem("Yard");
-		mapItem3.addActionListener(new ActionListener() {
+		mapItem3.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				place.c.changeMap(pet, 2);	//0 : livingroom
+			public void actionPerformed(ActionEvent e)
+			{
+				place.c.changeMap(pet, 2);	//2 : yard - can't run..why?
 			}		
 		});
 		menu.add(item4);
@@ -98,45 +111,52 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		JMenuItem behaviorItem5 = new JMenuItem("¶ËÄ¡¿ì±â");
 		JMenuItem behaviorItem6 = new JMenuItem("¿Ê¹þ±â");
 		JMenuItem behaviorItem7 = new JMenuItem("½ºÅÈÈ®ÀÎ");
-		if(this.place instanceof LivingroomPage) {
+		
+		if(this.place instanceof LivingroomPage)
+		{
 			item3.add(mapItem2);
 			item3.add(mapItem3);
 			item4.add(behaviorItem1);
 			item4.add(behaviorItem2);
-		} else if(this.place instanceof BathroomPage) {
+		}
+		else if(this.place instanceof BathroomPage)
+		{
 			item3.add(mapItem1);
 			item3.add(mapItem3);
 			item4.add(behaviorItem5);
 			item4.add(behaviorItem6);
 			item4.add(behaviorItem7);
-		} else if(this.place instanceof YardPage) {
+		}
+		else if(this.place instanceof YardPage)
+		{
 			item3.add(mapItem1);
 			item3.add(mapItem2);
 			item4.add(behaviorItem3);
 			item4.add(behaviorItem4);
 		}
-			
 		
 		menu.add(item5);
-		
 		this.addMouseListener(this);
-		
 		this.setVisible(true);
-		
 	}
-	public void makeThread() {
+	
+	public void makeThread()
+	{
 		this.t = new Thread(this);
 		this.t.start();
 	}
-	public void moveThread(int x, int y) {
+	public void moveThread(int x, int y)
+	{
 		this.t = new Thread(this);
 		moveFlag = 1;
 		this.o_x = x;
 		this.o_y = y;
 		this.t.start();
 	}
+	
 	@Override
-	public void run() {
+	public void run()
+	{
 		this.pet.setXY(this.getX(), this.getY());
 		double x = (double)this.pet.getX();
 		double y = (double)this.pet.getY();
@@ -146,59 +166,77 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		double speed_y = Math.abs(o_y - y) / 30;
 		// TODO Auto-generated method stub
 		System.out.println("speed : x y" + speed_x + " " + speed_y);
-		while(this.moveFlag == 1) {
+		while(this.moveFlag == 1)
+		{
 			System.out.println(x + "   " + y);
-			if(x < this.o_x && y < this.o_y) {
+			if(x < this.o_x && y < this.o_y)
+			{
 				x_cal += speed_x;
 				y_cal += speed_y;
-				if(x_cal > this.o_x || y_cal > this.o_y) {
+				if(x_cal > this.o_x || y_cal > this.o_y)
+				{
 					x_cal = this.o_x;
 					y_cal = this.o_y;
 					moveFlag = 0;
 				}
-			} else if(x < this.o_x && y > this.o_y) {
+			}
+			else if(x < this.o_x && y > this.o_y)
+			{
 				x_cal += speed_x;
 				y_cal -= speed_y;
-				if(x_cal > this.o_x || y_cal < this.o_y) {
+				if(x_cal > this.o_x || y_cal < this.o_y)
+				{
 					x_cal = this.o_x;
 					y_cal = this.o_y;
 					moveFlag = 0;
 				}
-			} else if(x > this.o_x && y < this.o_y) {
+			}
+			else if(x > this.o_x && y < this.o_y)
+			{
 				x_cal -= speed_x;
 				y_cal += speed_y;
-				if(x_cal < this.o_x || y_cal > this.o_y) {
+				if(x_cal < this.o_x || y_cal > this.o_y)
+				{
 					x_cal = this.o_x;
 					y_cal = this.o_y;
 					moveFlag = 0;
 				}
-			} else if(x > this.o_x && y > this.o_y) {
+			}
+			else if(x > this.o_x && y > this.o_y)
+			{
 				x_cal -= speed_x;
 				y_cal -= speed_y;
-				if(x_cal < this.o_x || y_cal < this.o_y) {
+				if(x_cal < this.o_x || y_cal < this.o_y)
+				{
 					x_cal = this.o_x;
 					y_cal = this.o_y;
 					moveFlag = 0;
 				}
 			}			
 			
-			try {
+			try
+			{
 				Thread.sleep(70);
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e)
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			this.setLocation((int)x_cal, (int)y_cal);
 			System.out.println(x_cal + "  " + y_cal);
 		}
+		
 		this.pet.setXY((int)x_cal,(int)y_cal);
 	}
 
 	
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e)
+	{
 		// TODO Auto-generated method stub
-		if(e.getSource() == this) {
+		if(e.getSource() == this)
+		{
 			menu.show(this, this.getWidth(), 0);
 		}
 	}
@@ -228,5 +266,4 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 			menu.show(e.getComponent(), e.getX(), e.getY());
 		}*/
 	}
-	
 }
