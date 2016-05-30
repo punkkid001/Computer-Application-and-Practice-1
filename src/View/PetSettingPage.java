@@ -40,10 +40,10 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		
 		try
 		{
-			this.babyCat = ImageIO.read(new File("Img\\babycat.jpg"));
-			this.catSmile = ImageIO.read(new File("Img\\babycat_smile.jpg"));
-			this.babyMonkey = ImageIO.read(new File("Img\\babymonkey.jpg"));
-			this.penelImage = ImageIO.read(new File("Img\\setting.jpg"));
+			this.babyCat = ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"));
+			this.catSmile = ImageIO.read(new File("Img\\Baby_cat\\laugh.png"));
+			this.babyMonkey = ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"));
+			this.penelImage = ImageIO.read(new File("Img\\Baby_monkey\\laugh.png"));
 		}
 		catch (IOException e)
 		{

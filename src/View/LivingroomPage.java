@@ -132,7 +132,7 @@ public class LivingroomPage extends Place implements MouseListener {
 				petIcon[i] = new PetLabel(pet, this);
 				
 				try {
-					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\babycat.jpg"))));
+					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
