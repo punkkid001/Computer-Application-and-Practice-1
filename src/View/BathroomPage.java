@@ -29,13 +29,9 @@ public class BathroomPage extends Place
 	protected JLabel UsersClothItem;
 	protected JPanel clothItemInfo;
 	
-<<<<<<< HEAD
-=======
 	protected JTextArea petItemList;
 	protected JTextArea petStatList;
 	protected PetLabel petIcon[];
-	
->>>>>>> 7b8c42713dd6f0fa8db27d08b1d53179af2fd94b
 	public JLabel simpleUserInfo;
 	
 	protected JButton []cloth;
@@ -46,16 +42,13 @@ public class BathroomPage extends Place
 	public BathroomPage(Controller c) {
 		super(c);
 		waste=new Waste[5];
-<<<<<<< HEAD
         super.setPlaceName("Bathroom");
         
-=======
         super.setPlaceName("Bathrood");
         petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
 
->>>>>>> 7b8c42713dd6f0fa8db27d08b1d53179af2fd94b
 		setBounds(100, 100, 900, 540);
 		setLayout(null);
 		

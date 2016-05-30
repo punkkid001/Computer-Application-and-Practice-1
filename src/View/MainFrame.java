@@ -258,26 +258,27 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-<<<<<<< HEAD
+
 				if(bathroomClosetFlag==false)
-=======
-				String list[]=c.appendClosetItemList();
-				if(list!=null)
->>>>>>> 7b8c42713dd6f0fa8db27d08b1d53179af2fd94b
 				{
-					bathroomClosetFlag=true;
-					String list[]=controller.appendClosetItemList();
-					if(list!=null)
+					//String list[]=c.appendClosetItemList();
+				
+					if(bathroomClosetFlag==false)
 					{
-						for(int i=0;i<list.length;i++)
+						bathroomClosetFlag=true;
+						String list[]=c.appendClosetItemList();
+						if(list!=null)
 						{
-							bathroomPage.cloth[i].setText(list[i]);
-							bathroomPage.cloth[i].setVisible(true);
+							for(int i=0;i<list.length;i++)
+							{
+								bathroomPage.cloth[i].setText(list[i]);
+								bathroomPage.cloth[i].setVisible(true);
+							}
 						}
-					}
-					else
-						bathroomPage.emptyLabel.setVisible(true);
-					
+						else
+							bathroomPage.emptyLabel.setVisible(true);
+					}				
+						
 					bathroomPage.UsersClothItem.setVisible(true);
 					bathroomPage.clothItemInfo.setVisible(true);
 				}
