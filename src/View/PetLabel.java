@@ -16,15 +16,35 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 	private Place place;
 	private JPopupMenu menu;
 	private JPopupMenu placeMenu;
-	
+	private int flag;
 	public PetLabel() {
+		setText("hihih");
 	}
 	public PetLabel(Animal pet, Place place) {
 		this.pet = pet;
 		this.place = place;
 		this.menu = new JPopupMenu();
+		this.setText(pet.getName());
 		
+		this.flag = 0;
 		JMenuItem item1 = new JMenuItem("move");
+		item1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				flag = 1;
+				// TODO Auto-generated method stub
+				place.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						if(flag == 1) {
+							System.out.println(e.getX() + " " + e.getY());
+							flag = 0;
+						}
+					}
+				});
+			}
+			
+		});
 		JMenu item2 = new JMenu("talk");
 		JMenu item3 = new JMenu("change map");
 		JMenu item4 = new JMenu("map behavior");
@@ -40,7 +60,39 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		item2.add(talkItem3);
 		
 		menu.add(item3);
+		JMenuItem mapItem1 = new JMenuItem("Livingroom");
+		JMenuItem mapItem2 = new JMenuItem("Bathroom");
+		JMenuItem mapItem3 = new JMenuItem("Yard");
+		
 		menu.add(item4);
+		JMenuItem behaviorItem1 = new JMenuItem("¿·¿⁄±‚");
+		JMenuItem behaviorItem2 = new JMenuItem("∏‘¿Ã¡÷±‚");
+		
+		JMenuItem behaviorItem3 = new JMenuItem("≥Óæ∆¡÷±‚");
+		JMenuItem behaviorItem4 = new JMenuItem("¥Î¿¸«œ±‚");
+		
+		JMenuItem behaviorItem5 = new JMenuItem("∂Àƒ°øÏ±‚");
+		JMenuItem behaviorItem6 = new JMenuItem("ø π˛±‚");
+		JMenuItem behaviorItem7 = new JMenuItem("Ω∫≈»»Æ¿Œ");
+		if(this.place instanceof LivingroomPage) {
+			item3.add(mapItem2);
+			item3.add(mapItem3);
+			item4.add(behaviorItem1);
+			item4.add(behaviorItem2);
+		} else if(this.place instanceof BathroomPage) {
+			item3.add(mapItem1);
+			item3.add(mapItem3);
+			item4.add(behaviorItem5);
+			item4.add(behaviorItem6);
+			item4.add(behaviorItem7);
+		} else if(this.place instanceof YardPage) {
+			item3.add(mapItem1);
+			item3.add(mapItem2);
+			item4.add(behaviorItem3);
+			item4.add(behaviorItem4);
+		}
+			
+		
 		menu.add(item5);
 		
 		this.addMouseListener(this);
