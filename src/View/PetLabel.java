@@ -17,7 +17,10 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 	private JPopupMenu menu;
 	private JPopupMenu placeMenu;
 	private int flag;
+	private int moveFlag;
 	protected int o_x, o_y;
+	
+	Thread t;
 	
 	public PetLabel() {
 		setText("hihih");
@@ -27,11 +30,14 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		this.place = place;
 		this.menu = new JPopupMenu();
 		this.setText(pet.getName());
+		//System.out.println(this.getX() +" "+ this.getY());
 		
 		this.flag = 0;
+		this.moveFlag = 0;
+		
+		
 		JMenuItem item1 = new JMenuItem("move");
 		item1.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				flag = 1;
@@ -39,10 +45,13 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 				place.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						if(flag == 1) {
+							
 							o_x = e.getX();
 							o_y = e.getY();
+							moveFlag = 1;
+							makeThread();
+							flag = 0;	
 							
-							flag = 0;
 						}
 					}
 				});
@@ -103,15 +112,69 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		this.setVisible(true);
 		
 	}
-	@Override
-	
-	public void run() {
-		int x = 0;
-		int y = 0;
-		
-		// TODO Auto-generated method stub
-		this.setLocation(x, y);
+	public void makeThread() {
+		this.t = new Thread(this);
+		this.t.start();
 	}
+	
+	@Override
+	public void run() {
+		this.pet.setXY(this.getX(), this.getY());
+		double x = (double)this.pet.getX();
+		double y = (double)this.pet.getY();
+		double x_cal = x;
+		double y_cal = y;
+		double speed_x = Math.abs(o_x - x) / 30;
+		double speed_y = Math.abs(o_y - y) / 30;
+		// TODO Auto-generated method stub
+		System.out.println("speed : x y" + speed_x + " " + speed_y);
+		while(this.moveFlag == 1) {
+			System.out.println(x + "   " + y);
+			if(x < this.o_x && y < this.o_y) {
+				x_cal += speed_x;
+				y_cal += speed_y;
+				if(x_cal > this.o_x || y_cal > this.o_y) {
+					x_cal = this.o_x;
+					y_cal = this.o_y;
+					moveFlag = 0;
+				}
+			} else if(x < this.o_x && y > this.o_y) {
+				x_cal += speed_x;
+				y_cal -= speed_y;
+				if(x_cal > this.o_x || y_cal < this.o_y) {
+					x_cal = this.o_x;
+					y_cal = this.o_y;
+					moveFlag = 0;
+				}
+			} else if(x > this.o_x && y < this.o_y) {
+				x_cal -= speed_x;
+				y_cal += speed_y;
+				if(x_cal < this.o_x || y_cal > this.o_y) {
+					x_cal = this.o_x;
+					y_cal = this.o_y;
+					moveFlag = 0;
+				}
+			} else if(x > this.o_x && y > this.o_y) {
+				x_cal -= speed_x;
+				y_cal -= speed_y;
+				if(x_cal < this.o_x || y_cal < this.o_y) {
+					x_cal = this.o_x;
+					y_cal = this.o_y;
+					moveFlag = 0;
+				}
+			}			
+			
+			try {
+				Thread.sleep(70);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.setLocation((int)x_cal, (int)y_cal);
+			System.out.println(x_cal + "  " + y_cal);
+		}
+	}
+
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {

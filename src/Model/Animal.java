@@ -50,7 +50,14 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
         this.locationName=myLocation.getName(); //new
         this.myCloth=null;
     }
-
+    //set x,y
+    public void setXY(int x, int y) {
+    	this.m_x = x;
+    	this.m_y = y;
+    }
+    public int getX() { return this.m_x; }
+    public int getY() { return this.m_y; }
+    
     //get method
     public int getPower()
     {
