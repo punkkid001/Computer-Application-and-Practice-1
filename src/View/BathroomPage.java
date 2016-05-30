@@ -1,10 +1,17 @@
 package View;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.Controller;
+import Model.Animal;
 import Model.Waste;
 
 import javax.swing.JTextArea;
@@ -22,16 +29,20 @@ public class BathroomPage extends Place
 	
 	protected JTextArea petItemList;
 	protected JTextArea petStatList;
+	protected PetLabel petIcon[];
 	
 	public JLabel simpleUserInfo;
 	/**
 	 * Create the panel.
 	 */
-	public BathroomPage()
-	{
+	public BathroomPage(Controller c) {
+		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Bathrood");
-        
+        petIcon = new PetLabel[5];
+		for (int i = 0; i < petIcon.length; i++)
+			petIcon[i] = null;
+
 		setBounds(100, 100, 900, 540);
 		setLayout(null);
 		
@@ -119,4 +130,42 @@ public class BathroomPage extends Place
 		
 		petClick.setVisible(false);
 	}
+	
+	public void createPetIcon(Animal pet) {
+		for (int i = 0; i < petIcon.length; i++) {
+			if (petIcon[i] == null) {
+				petIcon[i] = new PetLabel(pet, this);
+				
+				try {
+					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				petIcon[i].setBounds(336, 342, 100, 100);
+				//petIcon[i].addMouseListener(this);
+				this.add(petIcon[i]);
+				petIcon[i].setVisible(true);
+				
+				break;
+			}
+
+			if (i == petIcon.length - 1)
+				System.out.println("팻을 더 추가할 수 없습니다.");
+		}
+	}
+
+	@Override
+	public void delectIcon(Animal pet) {
+		for(int i = 0; i < petIcon.length; i++) {
+			if(petIcon[i] != null) {
+				if(petIcon[i].pet == pet) {
+					System.out.println(i + "??");
+					petIcon[i].setVisible(false);
+					petIcon[i] = null;
+				}
+			}
+		}
+	}
+
 }

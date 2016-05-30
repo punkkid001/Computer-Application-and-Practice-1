@@ -45,9 +45,6 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
         this.level=1;
         this.exp=0;
         this.activeCount=0;
-
-        this.myLocation=new LivingroomPage();
-        this.locationName=myLocation.getName(); //new
         this.myCloth=null;
     }
     //set x,y
@@ -58,6 +55,10 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
     public int getX() { return this.m_x; }
     public int getY() { return this.m_y; }
     
+    //set place
+    public void setPlace(Place p) {
+    	this.myLocation = p;
+    }
     //get method
     public int getPower()
     {
@@ -262,12 +263,12 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
         this.m_x=x;
         this.m_y=y;
     }
-
+/*
     public void goLivingroom(){this.myLocation=new LivingroomPage(); this.locationName=myLocation.getName();}
     public void goBathroom(){this.myLocation=new BathroomPage(); this.locationName=myLocation.getName();}
     public void goYard(){this.myLocation=new BathroomPage(); this.locationName=myLocation.getName();}
     public void goShop(){this.myLocation=new ShopPage(); this.locationName=myLocation.getName();}
-    
+    */
     //new
     public String[] getPetStatList(int index)
     {

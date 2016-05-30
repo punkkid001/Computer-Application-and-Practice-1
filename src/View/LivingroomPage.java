@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.CardLayout;
 import javax.swing.JToolBar;
 
+import Controller.Controller;
 import Model.Animal;
 import Model.Waste;
 
@@ -35,7 +36,8 @@ public class LivingroomPage extends Place implements MouseListener {
 	/**
 	 * Create the panel.
 	 */
-	public LivingroomPage() {
+	public LivingroomPage(Controller c) {
+		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Livingroom");
 		
@@ -149,15 +151,21 @@ public class LivingroomPage extends Place implements MouseListener {
 				System.out.println("팻을 더 추가할 수 없습니다.");
 		}
 	}
-
+	public void delectIcon(Animal pet) {
+		for(int i = 0; i < petIcon.length; i++) {
+			if(petIcon[i] != null) {
+				if(petIcon[i].pet == pet) {
+					System.out.println(i + "??");
+					petIcon[i].setVisible(false);
+					petIcon[i] = null;
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == petIcon[0]) {
-			Act_table t = new Act_table(e.getX() + 30, e.getY() + 20);
-			add(t);
-			this.setVisible(true);
-		}
+		
 	}
 
 	@Override
