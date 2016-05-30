@@ -56,12 +56,14 @@ public class YardPage extends Place
 		add(playBtn);
 		
 		JButton fightBtn = new JButton("Fight");
-		fightBtn.setBounds(621, 417, 100, 100);
+		fightBtn.setBounds(632, 177, 100, 100);
 		add(fightBtn);
 		
+		/*
 		JButton petBtn = new JButton("Pet");
 		petBtn.setBounds(336, 342, 100, 100);
 		add(petBtn);
+		*/
 	}
 	
 	

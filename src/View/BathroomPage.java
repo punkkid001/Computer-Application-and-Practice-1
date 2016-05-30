@@ -44,7 +44,7 @@ public class BathroomPage extends Place
 		waste=new Waste[5];
         super.setPlaceName("Bathroom");
         
-        super.setPlaceName("Bathrood");
+        super.setPlaceName("Bathroom");
         petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
@@ -76,9 +76,11 @@ public class BathroomPage extends Place
 		toiletBtn.setBounds(347, 96, 100, 100);
 		add(toiletBtn);
 		
+		/*
 		JButton petBtn = new JButton("Pet");
 		petBtn.setBounds(347, 243, 100, 100);
 		add(petBtn);
+		*/
 
 		//연결
 		clothItemInfo = new JPanel();
@@ -132,6 +134,7 @@ public class BathroomPage extends Place
 		petStat.setBounds(61, 10, 134, 25);
 		petInfo.add(petStat);
 		
+		/*
 		//연결3
 		JPanel petClick = new JPanel();
 		petClick.setBounds(500, 243, 113, 119);
@@ -154,6 +157,7 @@ public class BathroomPage extends Place
 		petClick.add(checkPetStatBtn);
 		
 		petClick.setVisible(false);
+		*/
 	}
 	
 	public void createPetIcon(Animal pet) {

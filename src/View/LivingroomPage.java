@@ -97,7 +97,8 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodItemInfo.add(foodItemList);
 
 		foodItemInfo.setVisible(false);
-
+		
+		/*
 		// ¿¬°á3
 		JPanel petClick = new JPanel();
 		petClick.setBounds(479, 333, 153, 119);
@@ -126,6 +127,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		petClick.add(label_1);
 
 		petClick.setVisible(false);
+		*/
 	}
 
 	public void createPetIcon(Animal pet) {

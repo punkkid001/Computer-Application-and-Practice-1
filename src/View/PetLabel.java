@@ -85,7 +85,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		mapItem3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				place.c.changeMap(pet, 0);	//0 : livingroom
+				place.c.changeMap(pet, 2);	//0 : livingroom
 			}		
 		});
 		menu.add(item4);
