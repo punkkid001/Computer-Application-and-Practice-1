@@ -17,6 +17,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 	private JPopupMenu menu;
 	private JPopupMenu placeMenu;
 	private int flag;
+	protected int o_x, o_y;
+	
 	public PetLabel() {
 		setText("hihih");
 	}
@@ -37,13 +39,14 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 				place.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						if(flag == 1) {
-							System.out.println(e.getX() + " " + e.getY());
+							o_x = e.getX();
+							o_y = e.getY();
+							
 							flag = 0;
 						}
 					}
 				});
 			}
-			
 		});
 		JMenu item2 = new JMenu("talk");
 		JMenu item3 = new JMenu("change map");
@@ -101,19 +104,20 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 		
 	}
 	@Override
+	
 	public void run() {
 		int x = 0;
 		int y = 0;
 		
 		// TODO Auto-generated method stub
-		this.setBounds(250, 250, 100, 100);
+		this.setLocation(x, y);
 	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == this) {
 			menu.show(this, this.getWidth(), 0);
-			
 		}
 	}
 	@Override

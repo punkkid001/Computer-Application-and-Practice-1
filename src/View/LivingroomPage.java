@@ -141,6 +141,7 @@ public class LivingroomPage extends Place implements MouseListener {
 				//petIcon[i].addMouseListener(this);
 				this.add(petIcon[i]);
 				petIcon[i].setVisible(true);
+				
 				break;
 			}
 

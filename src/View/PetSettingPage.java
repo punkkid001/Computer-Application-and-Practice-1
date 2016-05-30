@@ -24,8 +24,9 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 	//setting image
 	private BufferedImage penelImage = null;
 	private BufferedImage babyCat = null;
-	private BufferedImage catSmile = null;
+	private BufferedImage babyCatSelect = null;
 	private BufferedImage babyMonkey = null;
+	private BufferedImage babyMonkeySelect = null;
 	
 	protected JButton cat = null;
 	private JButton monkey = null;
@@ -41,9 +42,15 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		try
 		{
 			this.babyCat = ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"));
+			this.babyCatSelect = ImageIO.read(new File("Img\\Baby_cat\\select.png"));
+			this.babyMonkey = ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"));
+			this.babyMonkeySelect = ImageIO.read(new File("Img\\Baby_Monkey\\select.png"));
+			this.penelImage = ImageIO.read(new File("Img\\Place\\select.png"));
+/*
 			this.catSmile = ImageIO.read(new File("Img\\Baby_cat\\laugh.png"));
 			this.babyMonkey = ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"));
 			this.penelImage = ImageIO.read(new File("Img\\Baby_monkey\\laugh.png"));
+*/
 		}
 		catch (IOException e)
 		{
@@ -55,13 +62,13 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		this.cat = new JButton(new ImageIcon(this.babyCat));
 		this.cat.setContentAreaFilled(false);
 		this.cat.setBorder(BorderFactory.createEmptyBorder());
-		this.cat.setBounds(300, 100, 89, 100);  //location, size
+		this.cat.setBounds(300, 100, 100, 100);  //location, size
 		this.cat.addMouseListener(this);
 		
 		this.monkey = new JButton(new ImageIcon(this.babyMonkey));
 		this.monkey.setContentAreaFilled(false);
 		this.monkey.setBorder(BorderFactory.createEmptyBorder());
-		this.monkey.setBounds(500, 100, 68, 104);
+		this.monkey.setBounds(500, 100, 97, 100);
 		this.monkey.addMouseListener(this);
 		
 		this.add(this.cat);
@@ -157,11 +164,11 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		// TODO Auto-generated method stub
 		if(e.getSource() == this.cat)
 		{	
-			Icon monkeyIcon = new ImageIcon("Img\\babymonkey.jpg");
+			Icon monkeyIcon = new ImageIcon(this.babyMonkey);
 			this.monkey.setIcon(monkeyIcon);
 			this.monkey.setBounds(500, 100, 68, 104);
 			
-			Icon catIcon = new ImageIcon("Img\\babycat_smile.jpg");
+			Icon catIcon = new ImageIcon(this.babyCatSelect);
 			this.cat.setIcon(catIcon);
 			
 			System.out.println("고양이가 눌렸습니다.");
@@ -171,11 +178,11 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		
 		if(e.getSource() == this.monkey)
 		{
-			Icon catIcon = new ImageIcon("Img\\babycat.jpg");
+			Icon catIcon = new ImageIcon(this.babyCat);
 			this.cat.setIcon(catIcon);
 			this.cat.setBounds(300, 100, 89, 100);
 			
-			Icon monkeyIcon = new ImageIcon("Img\\babymonkey_smile.jpg");
+			Icon monkeyIcon = new ImageIcon(this.babyMonkeySelect);
 			this.monkey.setIcon(monkeyIcon);
 			System.out.println("원숭이가 눌렸습니다.");
 			this.monkey.setBounds(500, 50, 104, 159);
@@ -183,11 +190,11 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		}
 		
 		if(e.getSource() == this) {
-			Icon monkeyIcon = new ImageIcon("Img\\babymonkey.jpg");
+			Icon monkeyIcon = new ImageIcon(this.babyMonkey);
 			this.monkey.setIcon(monkeyIcon);
 			this.monkey.setBounds(500, 100, 68, 104);
 			
-			Icon catIcon = new ImageIcon("Img\\babycat.jpg");
+			Icon catIcon = new ImageIcon(this.babyCat);
 			this.cat.setIcon(catIcon);
 			this.cat.setBounds(300, 100, 89, 100);
 			
