@@ -16,6 +16,9 @@ import Model.Waste;
 
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextPane;
 import java.awt.Color;
 
@@ -185,6 +188,16 @@ public class BathroomPage extends Place
 				//petIcon[i].addMouseListener(this);
 				this.add(petIcon[i]);
 				petIcon[i].setVisible(true);
+				
+				petIcon[i].behaviorItem7.addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						String []list=pet.getPetStatList();
+						c.m.showAnimalStat(list);
+					}
+				});
 				
 				break;
 			}

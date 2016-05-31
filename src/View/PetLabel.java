@@ -21,6 +21,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	private int moveFlag;
 	protected int o_x, o_y;
 	
+	public JMenuItem behaviorItem7;
+	
 	Thread t;
 	
 	public PetLabel(){}
@@ -173,7 +175,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			}
 		});
 		*/
-		JMenuItem behaviorItem7 = new JMenuItem("Ω∫≈»»Æ¿Œ");
+		behaviorItem7 = new JMenuItem("Ω∫≈»»Æ¿Œ");
+		/*
 		behaviorItem7.addActionListener(new ActionListener()
 		{
 			@Override
@@ -183,6 +186,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				
 			}
 		});
+		*/
 		
 		if(this.place instanceof LivingroomPage)
 		{
