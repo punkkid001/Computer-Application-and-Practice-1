@@ -2,8 +2,11 @@ package View;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Graphics;
+
 import javax.swing.JToolBar;
 
+import Controller.Controller;
 import Model.Animal;
 import Model.Waste;
 
@@ -14,17 +17,25 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JTextArea;
 
 public class LivingroomPage extends Place implements MouseListener {
+	
+	protected BufferedImage panelImg = null;
+	protected BufferedImage freezerImg = null;
+	protected BufferedImage bedImg = null;
+
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
 	protected PetLabel petIcon[];
 	protected JButton freezerBtn;
+	protected JButton bedBtn;
+	
 
 	protected JPanel foodItemInfo;
 	protected JLabel UsersFoodItem;
@@ -35,18 +46,28 @@ public class LivingroomPage extends Place implements MouseListener {
 	/**
 	 * Create the panel.
 	 */
-	public LivingroomPage() {
+	public LivingroomPage(Controller c) {
+		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Livingroom");
-		
-		
-		
 		petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
-
-		setBounds(100, 100, 900, 540);
+		
+        this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\livingroom.png"));
+			this.freezerImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
+			this.bedImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
+		
+		
 
 		btnGoShop = new JButton("Go Shop");
 		btnGoShop.setBounds(0, 0, 300, 50);
@@ -64,7 +85,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 
-		JButton bedBtn = new JButton("Bed");
+		bedBtn = new JButton(new ImageIcon(this.bedImg));
 		bedBtn.setBounds(193, 140, 100, 100);
 		add(bedBtn);
 
@@ -72,9 +93,11 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodBtn.setBounds(73, 290, 100, 100);
 		add(foodBtn);
 
-		freezerBtn = new JButton("Freezer");
+		freezerBtn = new JButton(new ImageIcon(this.freezerImg));
+		//freezerBtn = new JButton("Freezer");
 		freezerBtn.setBounds(500, 140, 100, 100);
 		add(freezerBtn);
+		
 		/*
 		 * JButton petIcon = new JButton("Pet"); petIcon.setBounds(336, 342, 100,
 		 * 100); add(petIcon);
@@ -95,7 +118,8 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodItemInfo.add(foodItemList);
 
 		foodItemInfo.setVisible(false);
-
+		
+		/*
 		// 연결3
 		JPanel petClick = new JPanel();
 		petClick.setBounds(479, 333, 153, 119);
@@ -124,6 +148,13 @@ public class LivingroomPage extends Place implements MouseListener {
 		petClick.add(label_1);
 
 		petClick.setVisible(false);
+		*/
+	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
 	}
 
 	public void createPetIcon(Animal pet) {
@@ -149,15 +180,25 @@ public class LivingroomPage extends Place implements MouseListener {
 				System.out.println("팻을 더 추가할 수 없습니다.");
 		}
 	}
-
+	
+	public void delectIcon(Animal pet)
+	{
+		for(int i = 0; i < petIcon.length; i++)
+		{
+			if(petIcon[i] != null) {
+				if(petIcon[i].pet == pet)
+				{
+					System.out.println(i + "??");
+					petIcon[i].setVisible(false);
+					petIcon[i] = null;
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == petIcon[0]) {
-			Act_table t = new Act_table(e.getX() + 30, e.getY() + 20);
-			add(t);
-			this.setVisible(true);
-		}
+		
 	}
 
 	@Override

@@ -1,39 +1,71 @@
 package View;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.Controller;
+import Model.Animal;
 import Model.Waste;
 
 import javax.swing.JTextArea;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JTextPane;
+import java.awt.Color;
 
 public class BathroomPage extends Place
 {	
+	protected BufferedImage panelImg = null;
+	protected BufferedImage closetImg = null;
+	protected BufferedImage toiletImg = null;
+	
 	protected JButton btnGoShop;
 	protected JButton btnGoYard;
 	protected JButton btnGoLivingroom;
 	protected JButton closetBtn;
 	protected JButton toiletBtn;
-	
 	protected JLabel UsersClothItem;
 	protected JPanel clothItemInfo;
 	
 	protected JTextArea petItemList;
 	protected JTextArea petStatList;
-	
+	protected PetLabel petIcon[];
 	public JLabel simpleUserInfo;
+	
+	protected JButton []cloth;
+	protected JLabel emptyLabel;
 	/**
 	 * Create the panel.
 	 */
-	public BathroomPage()
-	{
+	public BathroomPage(Controller c) {
+		super(c);
 		waste=new Waste[5];
-        super.setPlaceName("Bathrood");
-        
-		setBounds(100, 100, 900, 540);
+        super.setPlaceName("Bathroom");
+        petIcon = new PetLabel[5];
+		for (int i = 0; i < petIcon.length; i++)
+			petIcon[i] = null;
+		
+        this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\bathroom.png"));
+			this.closetImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
+			this.toiletImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		btnGoShop = new JButton("Go Shop");
 		btnGoShop.setBounds(0, 0, 300, 50);
@@ -51,37 +83,61 @@ public class BathroomPage extends Place
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 		
-		closetBtn = new JButton("Closet");
+		closetBtn = new JButton(new ImageIcon(this.closetImg));
 		closetBtn.setBounds(73, 96, 100, 100);
 		add(closetBtn);
 		
-		toiletBtn = new JButton("Toilet");
+		toiletBtn = new JButton(new ImageIcon(this.toiletImg));
 		toiletBtn.setBounds(347, 96, 100, 100);
 		add(toiletBtn);
 		
+		/*
 		JButton petBtn = new JButton("Pet");
 		petBtn.setBounds(347, 243, 100, 100);
 		add(petBtn);
+		*/
 
 		//¿¬°á
 		clothItemInfo = new JPanel();
-		clothItemInfo.setBounds(41, 216, 192, 265);
+		clothItemInfo.setBounds(41, 216, 192, 230);
 		add(clothItemInfo);
 		clothItemInfo.setLayout(null);
 		
 		//¿¬°á
-		UsersClothItem = new JLabel("user's cloth item");
-		UsersClothItem.setBounds(0, 0, 134, 15);
+		UsersClothItem = new JLabel("User's cloth item");
+		UsersClothItem.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		UsersClothItem.setBounds(12, 10, 192, 15);
 		clothItemInfo.add(UsersClothItem);
 		
-		petItemList = new JTextArea();
-		petItemList.setBounds(10, 25, 170, 230);
-		clothItemInfo.add(petItemList);
+		cloth=new JButton[3];
+		
+		cloth[0] = new JButton("0");
+		cloth[0].setBounds(48, 56, 97, 23);
+		cloth[0].setVisible(false);
+		clothItemInfo.add(cloth[0]);
+		
+		cloth[1] = new JButton("1");
+		cloth[1].setBounds(48, 115, 97, 23);
+		cloth[1].setVisible(false);
+		clothItemInfo.add(cloth[1]);
+		
+		cloth[2] = new JButton("2");
+		cloth[2].setBounds(48, 179, 97, 23);
+		cloth[2].setVisible(false);
+		clothItemInfo.add(cloth[2]);
+		
+		emptyLabel = new JLabel("Empty!");
+		emptyLabel.setForeground(Color.RED);
+		emptyLabel.setFont(new Font("±¼¸²", Font.BOLD, 29));
+		emptyLabel.setBounds(39, 71, 129, 53);
+		emptyLabel.setVisible(false);
+		clothItemInfo.add(emptyLabel);
+		
 		clothItemInfo.setVisible(false);
 		
 		//¿¬°á2
 		JPanel petInfo = new JPanel();
-		petInfo.setBounds(673, 216, 195, 265);
+		petInfo.setBounds(673, 216, 195, 230);
 		add(petInfo);
 		petInfo.setLayout(null);
 		
@@ -89,13 +145,11 @@ public class BathroomPage extends Place
 		
 		//¿¬°á2
 		JLabel petStat = new JLabel("Pet stat");
-		petStat.setBounds(0, 0, 134, 15);
+		petStat.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		petStat.setBounds(61, 10, 134, 25);
 		petInfo.add(petStat);
 		
-		petStatList = new JTextArea();
-		petStatList.setBounds(10, 27, 173, 228);
-		petInfo.add(petStatList);
-		
+		/*
 		//¿¬°á3
 		JPanel petClick = new JPanel();
 		petClick.setBounds(500, 243, 113, 119);
@@ -118,5 +172,50 @@ public class BathroomPage extends Place
 		petClick.add(checkPetStatBtn);
 		
 		petClick.setVisible(false);
+		*/
 	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
+	}
+	
+	public void createPetIcon(Animal pet) {
+		for (int i = 0; i < petIcon.length; i++) {
+			if (petIcon[i] == null) {
+				petIcon[i] = new PetLabel(pet, this);
+				
+				try {
+					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				petIcon[i].setBounds(336, 342, 100, 100);
+				//petIcon[i].addMouseListener(this);
+				this.add(petIcon[i]);
+				petIcon[i].setVisible(true);
+				
+				break;
+			}
+
+			if (i == petIcon.length - 1)
+				System.out.println("ÆÖÀ» ´õ Ãß°¡ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+		}
+	}
+
+	@Override
+	public void delectIcon(Animal pet) {
+		for(int i = 0; i < petIcon.length; i++) {
+			if(petIcon[i] != null) {
+				if(petIcon[i].pet == pet) {
+					System.out.println(i + "??");
+					petIcon[i].setVisible(false);
+					petIcon[i] = null;
+				}
+			}
+		}
+	}
+
 }
