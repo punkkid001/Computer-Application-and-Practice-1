@@ -188,7 +188,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			this.setLocation((int)x_cal, (int)y_cal);
+			this.setLocation((int)x_cal % 850, (int)y_cal %450);
 			System.out.println(x_cal + "  " + y_cal);
 		}
 		this.pet.setXY((int)x_cal,(int)y_cal);
