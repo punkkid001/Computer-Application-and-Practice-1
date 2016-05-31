@@ -204,7 +204,7 @@ public class MainFrame extends JFrame
 			}
 		});
 		
-		this.livingroomPage.freezerBtn.addActionListener(new ActionListener()
+		this.livingroomPage.fridgeBtn.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)

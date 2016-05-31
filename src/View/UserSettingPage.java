@@ -1,14 +1,20 @@
 package View;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
 public class UserSettingPage extends JPanel
 {
+	private BufferedImage panelImg = null;
 	protected JTextField textField;
 	private String userName;
 	protected JButton okBtn;
@@ -17,8 +23,16 @@ public class UserSettingPage extends JPanel
 	 */
 	public UserSettingPage()
 	{
-		setBounds(100, 100, 900, 540);
+		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\start.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		JLabel nameField = new JLabel("당신의 이름은 무엇입니까?");
 		nameField.setBounds(140, 200, 200, 80);
@@ -46,6 +60,12 @@ public class UserSettingPage extends JPanel
 		add(okBtn);
 		
 		setVisible(true);
+	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
 	}
 	
 	private String getUserName()

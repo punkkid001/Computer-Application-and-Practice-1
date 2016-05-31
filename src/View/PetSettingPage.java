@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 public class PetSettingPage extends JPanel implements MouseListener, MouseMotionListener
 {
 	//setting image
-	private BufferedImage penelImage = null;
+	private BufferedImage panelImg = null;
 	private BufferedImage babyCat = null;
 	private BufferedImage babyCatSelect = null;
 	private BufferedImage babyMonkey = null;
@@ -38,6 +38,7 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 	public PetSettingPage()
 	{
 		this.setBounds(100, 100, 980, 540);
+		setLayout(null);
 		
 		try
 		{
@@ -45,7 +46,7 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 			this.babyCatSelect = ImageIO.read(new File("Img\\Baby_cat\\select.png"));
 			this.babyMonkey = ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"));
 			this.babyMonkeySelect = ImageIO.read(new File("Img\\Baby_Monkey\\select.png"));
-			this.penelImage = ImageIO.read(new File("Img\\Place\\select.png"));
+			this.panelImg = ImageIO.read(new File("Img\\Place\\start.png"));
 /*
 			this.catSmile = ImageIO.read(new File("Img\\Baby_cat\\laugh.png"));
 			this.babyMonkey = ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"));
@@ -57,8 +58,6 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 			// TODO Auto-generated catch block
 		}
 		
-		setLayout(null);
-	
 		this.cat = new JButton(new ImageIcon(this.babyCat));
 		this.cat.setContentAreaFilled(false);
 		this.cat.setBorder(BorderFactory.createEmptyBorder());
@@ -141,7 +140,7 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.drawImage(penelImage, 0, 0, null);
+		g.drawImage(panelImg, 0, 0, null);
 	}
 
 	@Override

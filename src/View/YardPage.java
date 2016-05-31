@@ -47,8 +47,8 @@ public class YardPage extends Place
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\yard.png"));
-			this.playImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
-			this.fightImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+			this.playImg = ImageIO.read(new File("Img\\furniture\\play.png"));
+			this.fightImg = ImageIO.read(new File("Img\\furniture\\fight.png"));
 		}
 		catch (IOException e)
 		{
@@ -71,12 +71,20 @@ public class YardPage extends Place
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 		
-		JButton playBtn = new JButton(new ImageIcon(this.playImg));
-		playBtn.setBounds(131, 177, 100, 100);
+		playBtn = new JButton(new ImageIcon(this.playImg));
+		playBtn.setBounds(100, 350, 119, 120);
+		//버튼 투명화
+		playBtn.setContentAreaFilled(false);
+		playBtn.setBorderPainted(false);	
+		playBtn.setFocusPainted(false);
 		add(playBtn);
 		
-		JButton fightBtn = new JButton(new ImageIcon(this.fightImg));
-		fightBtn.setBounds(632, 177, 100, 100);
+		fightBtn = new JButton(new ImageIcon(this.fightImg));
+		fightBtn.setBounds(632, 250, 197, 200);
+		//버튼 투명화
+		fightBtn.setContentAreaFilled(false);
+		fightBtn.setBorderPainted(false);
+		fightBtn.setFocusPainted(false);
 		add(fightBtn);
 		
 		/*

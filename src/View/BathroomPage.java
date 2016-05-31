@@ -64,8 +64,8 @@ public class BathroomPage extends Place
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\bathroom.png"));
-			this.closetImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
-			this.toiletImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+			this.closetImg = ImageIO.read(new File("Img\\furniture\\closet.png"));
+			this.toiletImg = ImageIO.read(new File("Img\\furniture\\toilet.png"));
 		}
 		catch (IOException e)
 		{
@@ -89,11 +89,19 @@ public class BathroomPage extends Place
 		add(simpleUserInfo);
 		
 		closetBtn = new JButton(new ImageIcon(this.closetImg));
-		closetBtn.setBounds(73, 96, 100, 100);
+		closetBtn.setBounds(73, 350, 118, 124);
+		//버튼 투명화
+		closetBtn.setContentAreaFilled(false);
+		closetBtn.setBorderPainted(false);
+		closetBtn.setFocusPainted(false);
 		add(closetBtn);
 		
 		toiletBtn = new JButton(new ImageIcon(this.toiletImg));
-		toiletBtn.setBounds(347, 96, 100, 100);
+		toiletBtn.setBounds(700, 350, 111, 120);
+		//버튼 투명화
+		toiletBtn.setContentAreaFilled(false);
+		toiletBtn.setBorderPainted(false);
+		toiletBtn.setFocusPainted(false);
 		add(toiletBtn);
 		
 		/*
@@ -104,7 +112,7 @@ public class BathroomPage extends Place
 
 		//연결
 		clothItemInfo = new JPanel();
-		clothItemInfo.setBounds(41, 216, 192, 230);
+		clothItemInfo.setBounds(41, 100, 192, 230);
 		add(clothItemInfo);
 		clothItemInfo.setLayout(null);
 		

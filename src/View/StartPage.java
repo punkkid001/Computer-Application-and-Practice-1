@@ -18,19 +18,27 @@ import java.awt.event.ActionEvent;
 public class StartPage extends JPanel implements ActionListener
 {
 	UserSettingPage usersettingPage;
+	
+	private BufferedImage panelImg = null;
 	public JButton startBtn;
 	public JButton loadBtn;
 	public JButton exitBtn;
-	
-	private BufferedImage panelImage=null;
 	
 	/**
 	 * Create the panel.
 	 */
 	public StartPage()
 	{
-		setBounds(100, 100, 900, 540);
+		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\start.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		startBtn = new JButton("Start");
 		//startBtn.addActionListener(this);
@@ -62,7 +70,7 @@ public class StartPage extends JPanel implements ActionListener
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.drawImage(panelImage,0,0,null);
+		g.drawImage(panelImg,0,0,null);
 	}
 	
 	@Override

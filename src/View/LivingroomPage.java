@@ -25,14 +25,14 @@ import javax.swing.JTextArea;
 public class LivingroomPage extends Place implements MouseListener {
 	
 	protected BufferedImage panelImg = null;
-	protected BufferedImage freezerImg = null;
+	protected BufferedImage fridgeImg = null;
 	protected BufferedImage bedImg = null;
 
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
 	protected PetLabel petIcon[];
-	protected JButton freezerBtn;
+	protected JButton fridgeBtn;
 	protected JButton bedBtn;
 
 	protected JPanel foodItemInfo;
@@ -58,8 +58,8 @@ public class LivingroomPage extends Place implements MouseListener {
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\livingroom.png"));
-			this.freezerImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
-			this.bedImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+			this.fridgeImg = ImageIO.read(new File("Img\\furniture\\fridge.png"));
+			this.bedImg = ImageIO.read(new File("Img\\furniture\\bed.png"));
 		}
 		catch (IOException e)
 		{
@@ -83,16 +83,24 @@ public class LivingroomPage extends Place implements MouseListener {
 		add(simpleUserInfo);
 
 		bedBtn = new JButton(new ImageIcon(this.bedImg));
-		bedBtn.setBounds(193, 140, 100, 100);
+		bedBtn.setBounds(100, 400, 150, 56);
+		//버튼 투명화
+		bedBtn.setContentAreaFilled(false);
+		bedBtn.setBorderPainted(false);
+		bedBtn.setFocusPainted(false);
 		add(bedBtn);
 
 		JLabel foodBtn = new JLabel("Food");
 		foodBtn.setBounds(73, 290, 100, 100);
 		add(foodBtn);
 
-		freezerBtn = new JButton(new ImageIcon(this.freezerImg));
-		freezerBtn.setBounds(500, 140, 100, 100);
-		add(freezerBtn);
+		fridgeBtn = new JButton(new ImageIcon(this.fridgeImg));
+		fridgeBtn.setBounds(620, 300, 88, 150);
+		//버튼 투명화
+		fridgeBtn.setContentAreaFilled(false);
+		fridgeBtn.setBorderPainted(false);
+		fridgeBtn.setFocusPainted(false);
+		add(fridgeBtn);
 		/*
 		 * JButton petIcon = new JButton("Pet"); petIcon.setBounds(336, 342, 100,
 		 * 100); add(petIcon);
