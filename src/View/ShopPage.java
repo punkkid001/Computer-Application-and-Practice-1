@@ -1,5 +1,6 @@
 package View;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,6 +13,10 @@ import Model.Pet;
 import Model.Waste;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
 public class ShopPage extends Place
@@ -20,6 +25,8 @@ public class ShopPage extends Place
 	public Cloth[] clothList;
 	public Pet[] animalList;
 	public Waste[] waste;
+	
+	protected BufferedImage panelImg = null;
 	
 	protected JButton btnGoYard;
 	protected JButton btnGoBathroom;
@@ -61,9 +68,16 @@ public class ShopPage extends Place
         animalList[1]=new Pet("Baby Monkey", 1000);
         //~~
         
-		
-		setBounds(100, 100, 900, 540);
+        this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\shop.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		btnGoYard = new JButton("Go Yard");
 		btnGoYard.setBounds(0, 0, 300, 50);
@@ -135,6 +149,13 @@ public class ShopPage extends Place
 		sellItemList.setBounds(12, 22, 222, 309);
 		sellPanel.add(sellItemList);
 	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
+	}
+	
 	@Override
 	public void delectIcon(Animal pet) {
 		// TODO Auto-generated method stub

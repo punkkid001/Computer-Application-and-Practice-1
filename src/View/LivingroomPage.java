@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Graphics;
 import javax.swing.JToolBar;
 
 import Controller.Controller;
@@ -15,17 +16,24 @@ import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JTextArea;
 
 public class LivingroomPage extends Place implements MouseListener {
+	
+	protected BufferedImage panelImg = null;
+	protected BufferedImage freezerImg = null;
+	protected BufferedImage bedImg = null;
+
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
 	protected PetLabel petIcon[];
 	protected JButton freezerBtn;
+	protected JButton bedBtn;
 
 	protected JPanel foodItemInfo;
 	protected JLabel UsersFoodItem;
@@ -41,14 +49,22 @@ public class LivingroomPage extends Place implements MouseListener {
 		waste=new Waste[5];
         super.setPlaceName("Livingroom");
 		
-		
-		
 		petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
 
-		setBounds(100, 100, 900, 540);
+		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\livingroom.png"));
+			this.freezerImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
+			this.bedImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 
 		btnGoShop = new JButton("Go Shop");
 		btnGoShop.setBounds(0, 0, 300, 50);
@@ -66,7 +82,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 
-		JButton bedBtn = new JButton("Bed");
+		bedBtn = new JButton(new ImageIcon(this.bedImg));
 		bedBtn.setBounds(193, 140, 100, 100);
 		add(bedBtn);
 
@@ -74,7 +90,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodBtn.setBounds(73, 290, 100, 100);
 		add(foodBtn);
 
-		freezerBtn = new JButton("Freezer");
+		freezerBtn = new JButton(new ImageIcon(this.freezerImg));
 		freezerBtn.setBounds(500, 140, 100, 100);
 		add(freezerBtn);
 		/*
@@ -128,6 +144,12 @@ public class LivingroomPage extends Place implements MouseListener {
 
 		petClick.setVisible(false);
 		*/
+	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
 	}
 
 	public void createPetIcon(Animal pet) {

@@ -18,12 +18,17 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import javax.swing.JTextPane;
 import java.awt.Color;
 
 public class BathroomPage extends Place
 {	
+	protected BufferedImage panelImg = null;
+	protected BufferedImage closetImg = null;
+	protected BufferedImage toiletImg = null;
+	
 	protected JButton btnGoShop;
 	protected JButton btnGoYard;
 	protected JButton btnGoLivingroom;
@@ -50,13 +55,22 @@ public class BathroomPage extends Place
 		waste=new Waste[5];
         super.setPlaceName("Bathroom");
         
-        super.setPlaceName("Bathroom");
         petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
 
-		setBounds(100, 100, 900, 540);
+		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\bathroom.png"));
+			this.closetImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
+			this.toiletImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		btnGoShop = new JButton("Go Shop");
 		btnGoShop.setBounds(0, 0, 300, 50);
@@ -74,11 +88,11 @@ public class BathroomPage extends Place
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 		
-		closetBtn = new JButton("Closet");
+		closetBtn = new JButton(new ImageIcon(this.closetImg));
 		closetBtn.setBounds(73, 96, 100, 100);
 		add(closetBtn);
 		
-		toiletBtn = new JButton("Toilet");
+		toiletBtn = new JButton(new ImageIcon(this.toiletImg));
 		toiletBtn.setBounds(347, 96, 100, 100);
 		add(toiletBtn);
 		
@@ -171,6 +185,12 @@ public class BathroomPage extends Place
 		
 		petClick.setVisible(false);
 		*/
+	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
 	}
 	
 	public void createPetIcon(Animal pet) {

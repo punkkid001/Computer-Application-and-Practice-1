@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,9 +17,15 @@ import Model.Waste;
 
 public class YardPage extends Place
 {
+	protected BufferedImage panelImg = null;
+	protected BufferedImage playImg = null;
+	protected BufferedImage fightImg = null;
+	
 	protected JButton btnGoShop;	
 	protected JButton btnGoBathroom;
 	protected JButton btnGoLivingroom;
+	protected JButton playBtn;
+	protected JButton fightBtn; 
 	protected PetLabel petIcon[];
 	
 	public JLabel simpleUserInfo;
@@ -29,12 +37,23 @@ public class YardPage extends Place
 		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Yard");
+        
         petIcon = new PetLabel[5];
 		for (int i = 0; i < petIcon.length; i++)
 			petIcon[i] = null;
 
-		setBounds(100, 100, 900, 540);
+		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
+		
+		try{
+			this.panelImg = ImageIO.read(new File("Img\\place\\yard.png"));
+			this.playImg = ImageIO.read(new File("Img\\trash\\trash1.png"));
+			this.fightImg = ImageIO.read(new File("Img\\trash\\trash2.png"));
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
 		btnGoShop = new JButton("Go Shop");
 		btnGoShop.setBounds(0, 0, 300, 50);
@@ -52,11 +71,11 @@ public class YardPage extends Place
 		simpleUserInfo.setBounds(621, 60, 247, 43);
 		add(simpleUserInfo);
 		
-		JButton playBtn = new JButton("Toy");
+		JButton playBtn = new JButton(new ImageIcon(this.playImg));
 		playBtn.setBounds(131, 177, 100, 100);
 		add(playBtn);
 		
-		JButton fightBtn = new JButton("Fight");
+		JButton fightBtn = new JButton(new ImageIcon(this.fightImg));
 		fightBtn.setBounds(632, 177, 100, 100);
 		add(fightBtn);
 		
@@ -67,6 +86,11 @@ public class YardPage extends Place
 		*/
 	}
 	
+	protected void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.drawImage(panelImg, 0, 0, null);
+	}
 	
 	public void createPetIcon(Animal pet)
 	{
