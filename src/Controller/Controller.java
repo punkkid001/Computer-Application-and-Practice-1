@@ -70,8 +70,6 @@ public class Controller
 		pet.getMyLocation().createPetIcon(pet);
 	}
 	
-	
-	
 	public void viewLivingroomStatus()
 	{
 		m.livingroomPage.simpleUserInfo.setText("Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());	

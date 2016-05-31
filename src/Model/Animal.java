@@ -8,8 +8,8 @@ import View.ShopPage;
 /**
  * Created by Jiyoon on 2016. 5. 1..
  */
-public class Animal implements AnimalOperation_IF, Fight_IF {
-
+public class Animal implements AnimalOperation_IF, Fight_IF
+{
     private Place myLocation;
     private String locationName;
     private Cloth myCloth;
@@ -269,8 +269,9 @@ public class Animal implements AnimalOperation_IF, Fight_IF {
     public void goYard(){this.myLocation=new BathroomPage(); this.locationName=myLocation.getName();}
     public void goShop(){this.myLocation=new ShopPage(); this.locationName=myLocation.getName();}
     */
+    
     //new
-    public String[] getPetStatList(int index)
+    public String[] getPetStatList()	//delete 'int index' parameter
     {
     	String[] list=new String[8];
     	list[0]=Integer.toString(this.happiness);

@@ -28,11 +28,14 @@ public class BathroomPage extends Place
 	protected JButton toiletBtn;
 	protected JLabel UsersClothItem;
 	protected JPanel clothItemInfo;
+	protected JPanel petInfo;
 	
 	protected JTextArea petItemList;
-	protected JTextArea petStatList;
+	protected JTextArea statArea;
+	
 	protected PetLabel petIcon[];
 	public JLabel simpleUserInfo;
+	protected JLabel petStat;
 	
 	protected JButton []cloth;
 	protected JLabel emptyLabel;
@@ -121,7 +124,7 @@ public class BathroomPage extends Place
 		clothItemInfo.setVisible(false);
 		
 		//연결2
-		JPanel petInfo = new JPanel();
+		petInfo = new JPanel();
 		petInfo.setBounds(673, 216, 195, 230);
 		add(petInfo);
 		petInfo.setLayout(null);
@@ -129,10 +132,17 @@ public class BathroomPage extends Place
 		petInfo.setVisible(false);
 		
 		//연결2
-		JLabel petStat = new JLabel("Pet stat");
+		petStat = new JLabel("Pet stat");
 		petStat.setFont(new Font("굴림", Font.BOLD, 20));
 		petStat.setBounds(61, 10, 134, 25);
+		petStat.setVisible(false);
 		petInfo.add(petStat);
+		
+		statArea = new JTextArea();
+		statArea.setBounds(12, 37, 171, 183);
+		statArea.setEditable(false);
+		statArea.setVisible(false);
+		petInfo.add(statArea);
 		
 		/*
 		//연결3
@@ -196,5 +206,4 @@ public class BathroomPage extends Place
 			}
 		}
 	}
-
 }

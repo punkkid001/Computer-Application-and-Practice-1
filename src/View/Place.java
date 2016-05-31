@@ -7,14 +7,14 @@ import Model.Animal;
 import Model.User;
 import Model.Waste;
 
-public abstract class Place extends JPanel{
+public abstract class Place extends JPanel
+{
 	String placeName;
 	Waste[] waste;
 	protected Controller c;
-	public Place() {
-		
-	}
-	public Place(Controller c) {
+	public Place() {}
+	public Place(Controller c)
+	{
 		this.c =c;
 	}
     public void showMenu() {}
@@ -28,8 +28,6 @@ public abstract class Place extends JPanel{
     public void setPlaceName(String name){this.placeName=name;}
     public String getName(){return this.placeName;}
 
-    
-    
     public void showUserInfo(User user)
     {
         System.out.println("----User info----");

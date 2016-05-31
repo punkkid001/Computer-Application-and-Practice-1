@@ -69,6 +69,18 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		JMenuItem talkItem1 = new JMenuItem("인사하기");
 		JMenuItem talkItem2 = new JMenuItem("다정하게 말하기");
 		JMenuItem talkItem3 = new JMenuItem("설교하기");
+		
+		/* undeveloped
+		talkItem1.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				pet.talk();
+			}
+		});
+		*/
+		
 		item2.add(talkItem1);
 		item2.add(talkItem2);
 		item2.add(talkItem3);
@@ -103,14 +115,74 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		});
 		menu.add(item4);
 		JMenuItem behaviorItem1 = new JMenuItem("잠자기");
+		behaviorItem1.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				pet.sleep();
+			}
+		});
 		JMenuItem behaviorItem2 = new JMenuItem("먹이주기");
-		
+		behaviorItem2.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				pet.feed();
+			}
+		});		
 		JMenuItem behaviorItem3 = new JMenuItem("놀아주기");
+		behaviorItem3.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				pet.play();
+			}
+		});
 		JMenuItem behaviorItem4 = new JMenuItem("대전하기");
+		/* undeveloped
+		behaviorItem4.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+					
+			}
+		});
+		*/
 		
 		JMenuItem behaviorItem5 = new JMenuItem("똥치우기");
+		behaviorItem5.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				pet.ridDrappings();
+			}
+		});
 		JMenuItem behaviorItem6 = new JMenuItem("옷벗기");
+		/* undeveloped
+		behaviorItem6.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+					
+			}
+		});
+		*/
 		JMenuItem behaviorItem7 = new JMenuItem("스탯확인");
+		behaviorItem7.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				String []list=pet.getPetStatList();
+				
+			}
+		});
 		
 		if(this.place instanceof LivingroomPage)
 		{

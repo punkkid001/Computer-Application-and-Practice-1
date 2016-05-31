@@ -33,7 +33,6 @@ public class MainFrame extends JFrame
 	
 	private boolean bathroomClosetFlag=false;
 	private boolean bathroomStatFlag=false;
-	
 	/**
 	 * Create the frame.
 	 */
@@ -258,11 +257,8 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-
 				if(bathroomClosetFlag==false)
 				{
-					//String list[]=c.appendClosetItemList();
-				
 					if(bathroomClosetFlag==false)
 					{
 						bathroomClosetFlag=true;
@@ -290,17 +286,6 @@ public class MainFrame extends JFrame
 				}
 			}
 		});
-		
-		/*
-		this.bathroomPage.toiletBtn.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				//ridDrapping
-			}
-		});
-		*/
 		
 		this.shopPage = new ShopPage();
 		this.shopPage.btnGoLivingroom.addActionListener(new ActionListener()
@@ -391,6 +376,29 @@ public class MainFrame extends JFrame
 		this.setContentPane(shopPage);
 		this.setVisible(true);
 	}
+	
+	public void showAnimalStat(String []list)
+	{
+		if(bathroomStatFlag==false)
+		{
+			bathroomStatFlag=true;
+			
+			for(int i=0;i<list.length;i++)
+				bathroomPage.statArea.append(list[i]+"\n");
+			
+			bathroomPage.statArea.setVisible(true);
+			bathroomPage.petStat.setVisible(true);
+			bathroomPage.petInfo.setVisible(true);
+		}
+		else
+		{
+			bathroomStatFlag=false;
+			bathroomPage.statArea.setVisible(false);
+			bathroomPage.petStat.setVisible(false);
+			bathroomPage.petInfo.setVisible(false);
+		}
+	}
+	
 	/*
 	@Override
 	public void actionPerformed(ActionEvent e)
