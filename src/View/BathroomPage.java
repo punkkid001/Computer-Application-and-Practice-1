@@ -150,7 +150,7 @@ public class BathroomPage extends Place
 		
 		//¿¬°á2
 		petInfo = new JPanel();
-		petInfo.setBounds(673, 216, 195, 230);
+		petInfo.setBounds(673, 100, 195, 230);
 		add(petInfo);
 		petInfo.setLayout(null);
 		
@@ -236,7 +236,7 @@ public class BathroomPage extends Place
 	}
 
 	@Override
-	public void delectIcon(Animal pet) {
+	public void deleteIcon(Animal pet) {
 		for(int i = 0; i < petIcon.length; i++) {
 			if(petIcon[i] != null) {
 				if(petIcon[i].pet == pet) {

@@ -129,7 +129,7 @@ public class YardPage extends Place
 
 
 	@Override
-	public void delectIcon(Animal pet)
+	public void deleteIcon(Animal pet)
 	{
 		for(int i = 0; i < petIcon.length; i++)
 		{
