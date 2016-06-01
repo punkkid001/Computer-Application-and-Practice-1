@@ -36,5 +36,5 @@ public abstract class Place extends JPanel
         System.out.println("User's pet : "+user.getUserPetSize());
     }
     public abstract void createPetIcon(Animal pet);
-    public abstract void delectIcon(Animal pet);
+    public abstract void deleteIcon(Animal pet);
 }

@@ -236,7 +236,7 @@ public class BathroomPage extends Place
 	}
 
 	@Override
-	public void delectIcon(Animal pet) {
+	public void deleteIcon(Animal pet) {
 		for(int i = 0; i < petIcon.length; i++) {
 			if(petIcon[i] != null) {
 				if(petIcon[i].pet == pet) {

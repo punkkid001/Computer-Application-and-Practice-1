@@ -157,7 +157,7 @@ public class ShopPage extends Place
 	}
 	
 	@Override
-	public void delectIcon(Animal pet) {
+	public void deleteIcon(Animal pet) {
 		// TODO Auto-generated method stub
 		
 	}
