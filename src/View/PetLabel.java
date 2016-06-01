@@ -9,11 +9,14 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 
+import Model.AdultCat;
 import Model.Animal;
+import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener
 {
 	protected Animal pet;
+	private User myUser;
 	private Place place;
 	private JPopupMenu menu;
 	private JPopupMenu placeMenu;
@@ -27,10 +30,11 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	
 	public PetLabel(){}
 	
-	public PetLabel(Animal pet, Place place)
-	{
+	public PetLabel(Animal pet, Place place, User myUser)
+	{	
 		this.pet = pet;
 		this.place = place;
+		this.myUser = myUser;
 		this.menu = new JPopupMenu();
 		this.setText(pet.getName());
 		//System.out.println(this.getX() +" "+ this.getY());
@@ -141,7 +145,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			public void actionPerformed(ActionEvent e)
 			{
 				pet.play();
-				pet.
 			}
 		});
 		JMenuItem behaviorItem4 = new JMenuItem("대전하기");
@@ -163,6 +166,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			public void actionPerformed(ActionEvent e)
 			{
 				pet.ridDrappings();
+				grow();
 			}
 		});
 		JMenuItem behaviorItem6 = new JMenuItem("옷벗기");
@@ -215,6 +219,22 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		menu.add(item5);
 		this.addMouseListener(this);
 		this.setVisible(true);
+	}
+	//진화 소스
+	public void grow() {
+		pet.getMyLocation().deleteIcon(pet);
+		
+		pet.grow(myUser, pet.getIndex());
+		System.out.println(pet.getIndex() + "나의 원래 인덱스");
+		
+		System.out.println(myUser.getPet(pet.getIndex()));
+		pet = myUser.getPet(pet.getIndex());
+		System.out.println(pet + "진화해라");
+		pet.getMyLocation().createPetIcon(pet);
+		
+	}
+	public void setPet(Animal p) {
+		this.pet = p;
 	}
 	
 	public void makeThread()

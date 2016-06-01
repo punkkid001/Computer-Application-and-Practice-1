@@ -14,9 +14,10 @@ public class BabyMonkey extends Animal
     public BabyMonkey(){
     	
     }
-    public BabyMonkey(String name)
+    public BabyMonkey(String name, int index)
     {
         super.setName(name);
+        
         System.out.println("기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"))));

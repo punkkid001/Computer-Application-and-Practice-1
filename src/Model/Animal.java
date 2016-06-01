@@ -10,7 +10,7 @@ import View.ShopPage;
 /**
  * Created by Jiyoon on 2016. 5. 1..
  */
-public class Animal implements AnimalOperation_IF, Fight_IF
+public abstract class Animal implements AnimalOperation_IF, Fight_IF
 {
 	private String name;
     private Place myLocation;
@@ -35,6 +35,9 @@ public class Animal implements AnimalOperation_IF, Fight_IF
     private int m_y=250;
     private String[] speechList;
     private ImageIcon myImage;
+    
+    private User myUser;
+    private int index;
 
     public Animal()
     {
@@ -54,6 +57,11 @@ public class Animal implements AnimalOperation_IF, Fight_IF
         this.exp=0;
         this.activeCount=0;
         this.myCloth=null;
+    }
+    public Animal(User myUser, int index) {
+    	this();
+    	this.myUser = myUser;
+    	this.index = index;
     }
     
     public Animal(Animal p)
@@ -111,6 +119,12 @@ public class Animal implements AnimalOperation_IF, Fight_IF
 	}
 	public ImageIcon getMyImageIcon() {
 		return this.myImage;
+	}
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	public int getIndex() {
+		return this.index;
 	}
 	//set x,y
     public void setXY(int x, int y) {
@@ -350,4 +364,6 @@ public class Animal implements AnimalOperation_IF, Fight_IF
     	
     	return list;
     }
+    
+    public abstract void grow(User presentUser, int index);
 }

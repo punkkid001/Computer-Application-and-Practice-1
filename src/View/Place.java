@@ -50,7 +50,7 @@ public abstract class Place extends JPanel
     public void createPetIcon(Animal pet) {
 		for (int i = 0; i < petIcon.length; i++) {
 			if (petIcon[i] == null) {
-				petIcon[i] = new PetLabel(pet, this);
+				petIcon[i] = new PetLabel(pet, this, c.getPresentUser());
 				
 				petIcon[i].setIcon(pet.getMyImageIcon());
 				petIcon[i].setBounds(336, 342, 100, 100);

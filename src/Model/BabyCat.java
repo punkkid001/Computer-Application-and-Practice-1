@@ -25,9 +25,10 @@ public class BabyCat extends Animal
 			e.printStackTrace();
 		}
     }
-    public BabyCat(String name)
+    public BabyCat(String name, int index)
     {
         super.setName(name);
+        super.setIndex(index);
         System.out.println("기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
@@ -58,7 +59,7 @@ public class BabyCat extends Animal
 
     public void grow(User presentUser, int index)
     {
-        presentUser.setAnimal(index, new AdultCat((Animal)this));
+        presentUser.setAnimal(index, new AdultCat(this));
         
         
     }

@@ -13,5 +13,10 @@ public class Dragon extends Animal implements DragonAct_IF
     public void shout(){System.out.println("Dragon shout!!");}
 
     public String getName(){return actName;}
+	@Override
+	public void grow(User presentUser, int index) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

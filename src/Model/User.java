@@ -16,7 +16,7 @@ public class User
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
     
-    public User(String userName, int petChoice, String petName)   //蹂��솕
+    public User(String userName, int petChoice, String petName)   
     {
         this.myPetList=new Animal[5];
         this.myFoodList=new Food[8];
@@ -26,13 +26,17 @@ public class User
         this.name=userName;
 
         if(petChoice == 1)
-            myPetList[index]=new BabyCat(petName);
+            myPetList[0]=new BabyCat(petName, 0);
         else if(petChoice == 2)
-            myPetList[index]=new BabyMonkey(petName);
+            myPetList[0]=new BabyMonkey(petName, 0);
     }
 
-    public void setAnimal(Animal p){this.myPetList[++this.index]=p;}    //change
-    public void setAnimal(int index, Animal p){this.myPetList[index]=p;this.index++;}    //new
+    public void setAnimal(Animal p){
+    	this.myPetList[++this.index]=p;
+    	}    //change
+    public void setAnimal(int index, Animal p){
+    	this.myPetList[index]=p;
+    }    //new
     public void setGold(int gold){this.gold=gold;}
     public void setFoodList(int listNum, Food food){this.myFoodList[listNum]=food; this.foodIndex++;}
     public void setClothList(int listNum, Cloth cloth){this.myClothList[listNum]=cloth; this.clothIndex++;}
