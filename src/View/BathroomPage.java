@@ -150,7 +150,7 @@ public class BathroomPage extends Place
 		
 		//¿¬°á2
 		petInfo = new JPanel();
-		petInfo.setBounds(673, 216, 195, 230);
+		petInfo.setBounds(673, 100, 195, 230);
 		add(petInfo);
 		petInfo.setLayout(null);
 		

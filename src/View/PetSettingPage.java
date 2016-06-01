@@ -165,13 +165,13 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		{	
 			Icon monkeyIcon = new ImageIcon(this.babyMonkey);
 			this.monkey.setIcon(monkeyIcon);
-			this.monkey.setBounds(500, 100, 68, 104);
+			this.monkey.setBounds(500, 100, 97, 100);
 			
 			Icon catIcon = new ImageIcon(this.babyCatSelect);
 			this.cat.setIcon(catIcon);
 			
 			System.out.println("고양이가 눌렸습니다.");
-			this.cat.setBounds(300, 50, 139, 150);
+			this.cat.setBounds(300, 50, 150, 150);
 			this.setPetNum(1);  //1 : cat
 		}
 		
@@ -179,23 +179,23 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		{
 			Icon catIcon = new ImageIcon(this.babyCat);
 			this.cat.setIcon(catIcon);
-			this.cat.setBounds(300, 100, 89, 100);
+			this.cat.setBounds(300, 100, 100, 100);
 			
 			Icon monkeyIcon = new ImageIcon(this.babyMonkeySelect);
 			this.monkey.setIcon(monkeyIcon);
 			System.out.println("원숭이가 눌렸습니다.");
-			this.monkey.setBounds(500, 50, 104, 159);
+			this.monkey.setBounds(500, 50, 145, 150);
 			this.setPetNum(2);	//2 : monkey
 		}
 		
 		if(e.getSource() == this) {
 			Icon monkeyIcon = new ImageIcon(this.babyMonkey);
 			this.monkey.setIcon(monkeyIcon);
-			this.monkey.setBounds(500, 100, 68, 104);
+			this.monkey.setBounds(500, 100, 97, 100);
 			
 			Icon catIcon = new ImageIcon(this.babyCat);
 			this.cat.setIcon(catIcon);
-			this.cat.setBounds(300, 100, 89, 100);
+			this.cat.setBounds(300, 100, 100, 100);
 			
 			System.out.println("패널이 눌렸습니다.");
 			this.setPetNum(0);
