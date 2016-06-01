@@ -33,7 +33,7 @@ public class StartPage extends JPanel implements ActionListener
 		setLayout(null);
 		
 		try{
-			this.panelImg = ImageIO.read(new File("Img\\place\\start.png"));
+			this.panelImg = ImageIO.read(new File("Img\\place\\gamestart.png"));
 		}
 		catch (IOException e)
 		{
