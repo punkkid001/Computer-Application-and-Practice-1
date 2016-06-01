@@ -6,8 +6,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 import Model.AdultCat;
 import Model.Animal;
@@ -73,8 +78,29 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		menu.add(item1);
 		menu.add(item2);
 		JMenuItem talkItem1 = new JMenuItem("인사하기");
+		talkItem1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				makeMessageBox(8);
+			}
+			
+		});
 		JMenuItem talkItem2 = new JMenuItem("다정하게 말하기");
+		talkItem2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				makeMessageBox(10);
+			}
+			
+		});
 		JMenuItem talkItem3 = new JMenuItem("설교하기");
+		talkItem3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				makeMessageBox(13);
+			}
+			
+		});
 		
 		/* undeveloped
 		talkItem1.addActionListener(new ActionListener()
@@ -219,6 +245,44 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		menu.add(item5);
 		this.addMouseListener(this);
 		this.setVisible(true);
+	}
+	//메시지 박스
+	public void makeMessageBox(int num) {
+		JLabel myMessageLabel = new JLabel(pet.getMessage(num));
+		this.pet.getMyLocation().add(myMessageLabel);
+		myMessageLabel.setBounds(this.getX(), this.getY() - 40, 100, 50);
+		myMessageLabel.setVisible(true);
+		
+		
+		Thread th = new Thread(new Runnable() {
+		
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				TimerTask task = new TimerTask() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						//removeDialog(myMessageLabel);
+						myMessageLabel.setVisible(false);
+					}
+				};
+				Timer timer = new Timer();
+				timer.schedule(task, 3000);
+				//task.run();
+				System.out.println("작업");
+			}
+			
+		});
+		th.start();
+	}
+	private void removeDialog(JLabel ob) {
+		// TODO Auto-generated method stub
+		ob.setVisible(false);
+		
+		
+		
 	}
 	//진화 소스
 	public void grow() {

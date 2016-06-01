@@ -5,5 +5,7 @@ package Model;
  */
 public class Tiger extends AdultCat
 {
-
+	public Tiger() {
+		
+	}
 }

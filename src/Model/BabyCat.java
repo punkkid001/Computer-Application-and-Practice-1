@@ -36,15 +36,15 @@ public class BabyCat extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList(" ", 8);
-        setSpeechList(" ", 9);
-        setSpeechList(" ", 10);
-        setSpeechList(" ", 11);
-        setSpeechList(" ", 12);
-        setSpeechList(" ", 13);
-        setSpeechList(" ", 14);
+        setSpeechList("1 ", 8);
+        setSpeechList("2 ", 9);
+        setSpeechList("3 ", 10);
+        setSpeechList("4 ", 11);
+        setSpeechList("5 ", 12);
+        setSpeechList("6 ", 13);
+        setSpeechList("7 ", 14);
     }
-
+    
     //change
     public void levelUp(User presentUser, int index)
     {

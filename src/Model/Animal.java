@@ -147,6 +147,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     {
         return this.stemina;
     }
+    public String getMessage(int index) {
+    	return this.speechList[index];
+    }
     public int getDefense() {return this.defense;}
     public int getExp(){return this.exp;}
     public int getLevel(){return this.level;}

@@ -5,5 +5,7 @@ package Model;
  */
 public class Gorilla extends AdultMonkey
 {
-
+	public Gorilla(){
+	
+	}
 }
