@@ -141,6 +141,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			public void actionPerformed(ActionEvent e)
 			{
 				pet.play();
+				pet.
 			}
 		});
 		JMenuItem behaviorItem4 = new JMenuItem("대전하기");
@@ -299,7 +300,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			this.setLocation((int)x_cal, (int)y_cal);
+			this.setLocation((int)x_cal % 780, (int)y_cal % 490);
 			System.out.println(x_cal + "  " + y_cal);
 		}
 		

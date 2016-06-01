@@ -1,5 +1,7 @@
 package Model;
 
+import javax.swing.ImageIcon;
+
 import View.BathroomPage;
 import View.LivingroomPage;
 import View.Place;
@@ -10,23 +12,29 @@ import View.ShopPage;
  */
 public class Animal implements AnimalOperation_IF, Fight_IF
 {
+	private String name;
     private Place myLocation;
-    private String locationName;
+    //private String locationName;
     private Cloth myCloth;
-    private int stemina;    //0~1000 for battle
+    
+    private int happiness;  //0~100
     private int fatigability;   //0~100 (1 activity(except for rid drappings) -> +10 / sleep -> -40)
     private int satiety;    //0~100 (feed -> +30 / play(-20), talk(-5), sleep(-10))
     private int drappings; //0~4 (activeCount=10 -> +1)
-    private int power;  //0~300
+    
     private int exp;    //0~100 (1 activity -> +5)
     private int level;  //1~5
-    private int happiness;  //0~100
+    
+    
+    private int power;  //0~300
+    private int stemina;    //0~1000 for battle
     private int defense;    //0~300
-    private String name;
+    
     private int activeCount;
     private int m_x=250;
     private int m_y=250;
     private String[] speechList;
+    private ImageIcon myImage;
 
     public Animal()
     {
@@ -47,7 +55,64 @@ public class Animal implements AnimalOperation_IF, Fight_IF
         this.activeCount=0;
         this.myCloth=null;
     }
-    //set x,y
+    
+    public Animal(Animal p)
+    {	
+    	this();
+    	this.setName(p.getName());
+    	this.setPlace(p.getMyLocation());
+    	this.setMyCloth(p.getMyCloth());
+        this.setLevel(p.getLevel());
+
+        this.setHappiness(p.getHappiness());
+        this.setFatigability(p.getFatigability());
+        this.setSatiety(p.getSatiety());
+        this.setDrappings(p.getDrappings());
+        
+        this.exp = 0;
+        this.setLevel(p.getLevel());
+        
+    	this.setStemina(p.getStemina());
+        this.setPower(p.getPower());
+    	this.setDefense(p.getDefense());
+
+    	this.setActiveCount(p.getActiveCount());
+    	this.setXY(p.getX(), p.getY());
+    }
+    
+    public void setActiveCount(int activeCount) {
+		this.activeCount = activeCount;
+	}
+    public void setHappiness(int happiness) {
+		this.happiness = happiness;
+	}
+    public void setMyCloth(Cloth myCloth) {
+		this.myCloth = myCloth;
+	}
+    public void setDrappings(int drappings) {
+		this.drappings = drappings;
+	}
+    public void setSatiety(int satiety) {
+		this.satiety = satiety;
+	}
+	public void setFatigability(int fatigability) {
+		this.fatigability = fatigability;
+	}
+	public int getHappiness() {
+		// TODO Auto-generated method stub
+		return this.happiness;
+	}
+	public Cloth getMyCloth() {
+		// TODO Auto-generated method stub
+		return this.myCloth;
+	}
+	public void setMyImageIcon(ImageIcon p) {
+		this.myImage = p;
+	}
+	public ImageIcon getMyImageIcon() {
+		return this.myImage;
+	}
+	//set x,y
     public void setXY(int x, int y) {
     	this.m_x = x;
     	this.m_y = y;
@@ -79,7 +144,7 @@ public class Animal implements AnimalOperation_IF, Fight_IF
     public int getActiveCount(){return this.activeCount;}
     public String[] getSpeechList(){return this.speechList;}
     public Place getMyLocation(){return this.myLocation;}
-    public String getLocationName(){return this.locationName;}
+    //public String getLocationName(){return this.locationName;}
 
     //set method
     public void setName(String name){this.name=name;}

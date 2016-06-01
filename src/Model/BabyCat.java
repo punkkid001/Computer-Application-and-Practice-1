@@ -1,14 +1,40 @@
-package Model;/**
+package Model;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+/**
  * Created by Jiyoon on 2016. 5. 17..
  */
 public class BabyCat extends Animal
 {
-    public BabyCat(){}
-
+    
+	public BabyCat(){
+		
+    }
+    public BabyCat(Animal p) {
+    	super(p);
+    	System.out.println("기본 생성자 호출");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     public BabyCat(String name)
     {
         super.setName(name);
-
+        System.out.println("기본 생성자 호출");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         setSpeechList(" ", 8);
         setSpeechList(" ", 9);
         setSpeechList(" ", 10);
@@ -32,6 +58,8 @@ public class BabyCat extends Animal
 
     public void grow(User presentUser, int index)
     {
-        presentUser.setAnimal(index, new AdultCat(this));
+        presentUser.setAnimal(index, new AdultCat((Animal)this));
+        
+        
     }
 }

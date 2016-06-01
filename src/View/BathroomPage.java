@@ -41,7 +41,7 @@ public class BathroomPage extends Place
 	protected JTextArea petItemList;
 	protected JTextArea statArea;
 	
-	protected PetLabel petIcon[];
+
 	public JLabel simpleUserInfo;
 	protected JLabel petStat;
 	
@@ -55,9 +55,7 @@ public class BathroomPage extends Place
 		waste=new Waste[5];
         super.setPlaceName("Bathroom");
         
-        petIcon = new PetLabel[5];
-		for (int i = 0; i < petIcon.length; i++)
-			petIcon[i] = null;
+      
 
 		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
@@ -201,50 +199,5 @@ public class BathroomPage extends Place
 		g.drawImage(panelImg, 0, 0, null);
 	}
 	
-	public void createPetIcon(Animal pet) {
-		for (int i = 0; i < petIcon.length; i++) {
-			if (petIcon[i] == null) {
-				petIcon[i] = new PetLabel(pet, this);
-				
-				try {
-					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				petIcon[i].setBounds(336, 342, 100, 100);
-				//petIcon[i].addMouseListener(this);
-				this.add(petIcon[i]);
-				petIcon[i].setVisible(true);
-				
-				petIcon[i].behaviorItem7.addActionListener(new ActionListener()
-				{
-					@Override
-					public void actionPerformed(ActionEvent e)
-					{
-						String []list=pet.getPetStatList();
-						c.m.showAnimalStat(list);
-					}
-				});
-				
-				break;
-			}
-
-			if (i == petIcon.length - 1)
-				System.out.println("팻을 더 추가할 수 없습니다.");
-		}
-	}
-
-	@Override
-	public void deleteIcon(Animal pet) {
-		for(int i = 0; i < petIcon.length; i++) {
-			if(petIcon[i] != null) {
-				if(petIcon[i].pet == pet) {
-					System.out.println(i + "??");
-					petIcon[i].setVisible(false);
-					petIcon[i] = null;
-				}
-			}
-		}
-	}
+	
 }

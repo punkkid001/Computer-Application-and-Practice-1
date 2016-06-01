@@ -5,7 +5,7 @@ package Model;
  */
 public class Dragon extends Animal implements DragonAct_IF
 {
-
+	
     public void sit(){System.out.println("Dragon sit");}
     public void hide(){System.out.println("Dragon hide");}
     public void dance(){System.out.println("Dragon dance");}

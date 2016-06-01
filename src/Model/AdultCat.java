@@ -1,18 +1,28 @@
 package Model;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
 public class AdultCat extends BabyCat implements Dance_IF
 {
-    public AdultCat(){}
-    public AdultCat(Animal p)
-    {
-        this.setName(p.getName());
-        this.setStemina(p.getStemina());
-        this.setDefense(p.getDefense());
-        this.setPower(p.getPower());
-        this.setLevel(p.getLevel());
+    public AdultCat(){
+    	System.out.println("기본 생성자 호출");
+    	
+    }
+    public AdultCat(Animal p) {
+    	super(p);
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     //change

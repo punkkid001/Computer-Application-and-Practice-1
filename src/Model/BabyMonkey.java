@@ -1,14 +1,29 @@
-package Model;/**
+package Model;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+/**
  * Created by Jiyoon on 2016. 5. 17..
  */
 public class BabyMonkey extends Animal
 {
-    public BabyMonkey(){}
-
+    public BabyMonkey(){
+    	
+    }
     public BabyMonkey(String name)
     {
         super.setName(name);
-
+        System.out.println("기본 생성자 호출");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         setSpeechList(" ", 8);
         setSpeechList(" ", 9);
         setSpeechList(" ", 10);

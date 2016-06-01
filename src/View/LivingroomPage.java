@@ -31,7 +31,6 @@ public class LivingroomPage extends Place implements MouseListener {
 	protected JButton btnGoShop;
 	protected JButton btnGoBathroom;
 	protected JButton btnGoYard;
-	protected PetLabel petIcon[];
 	protected JButton fridgeBtn;
 	protected JButton bedBtn;
 
@@ -49,9 +48,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		waste=new Waste[5];
         super.setPlaceName("Livingroom");
 		
-		petIcon = new PetLabel[5];
-		for (int i = 0; i < petIcon.length; i++)
-			petIcon[i] = null;
+		
 
 		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
@@ -160,44 +157,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		g.drawImage(panelImg, 0, 0, null);
 	}
 
-	public void createPetIcon(Animal pet) {
-		for (int i = 0; i < petIcon.length; i++) {
-			if (petIcon[i] == null) {
-				petIcon[i] = new PetLabel(pet, this);
-				
-				try {
-					petIcon[i].setIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				petIcon[i].setBounds(336, 342, 100, 100);
-				//petIcon[i].addMouseListener(this);
-				this.add(petIcon[i]);
-				petIcon[i].setVisible(true);
-				
-				break;
-			}
-
-			if (i == petIcon.length - 1)
-				System.out.println("팻을 더 추가할 수 없습니다.");
-		}
-	}
 	
-	public void deleteIcon(Animal pet)
-	{
-		for(int i = 0; i < petIcon.length; i++)
-		{
-			if(petIcon[i] != null) {
-				if(petIcon[i].pet == pet)
-				{
-					System.out.println(i + "??");
-					petIcon[i].setVisible(false);
-					petIcon[i] = null;
-				}
-			}
-		}
-	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
