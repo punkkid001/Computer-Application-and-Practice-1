@@ -321,6 +321,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.pet.setXY(this.getX(), this.getY());
 		double x = (double)this.pet.getX();
 		double y = (double)this.pet.getY();
+		System.out.println(x + "  " + y);
 		double x_cal = x;
 		double y_cal = y;
 		double speed_x = Math.abs(o_x - x) / 30;
@@ -329,7 +330,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		System.out.println("speed : x y" + speed_x + " " + speed_y);
 		while(this.moveFlag == 1)
 		{
-			System.out.println(x + "   " + y);
+			//System.out.println(x + "   " + y);
 			if(x < this.o_x && y < this.o_y)
 			{
 				x_cal += speed_x;
@@ -385,7 +386,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				e.printStackTrace();
 			}
 			this.setLocation((int)x_cal % 780, (int)y_cal % 490);
-			System.out.println(x_cal + "  " + y_cal);
+			//System.out.println(x_cal + "  " + y_cal);
 		}
 		
 		this.pet.setXY((int)x_cal,(int)y_cal);

@@ -33,7 +33,7 @@ public class StartPage extends JPanel implements ActionListener
 		setLayout(null);
 		
 		try{
-			this.panelImg = ImageIO.read(new File("Img\\place\\gamestart.png"));
+			this.panelImg = ImageIO.read(new File("Img\\place\\start.png"));
 		}
 		catch (IOException e)
 		{
@@ -42,15 +42,27 @@ public class StartPage extends JPanel implements ActionListener
 		
 		startBtn = new JButton("Start");
 		//startBtn.addActionListener(this);
-		startBtn.setBounds(373, 276, 97, 23);
+		startBtn.setBounds(700, 155, 100, 60);
+		//버튼 투명화
+		//startBtn.setContentAreaFilled(false);
+		//startBtn.setBorderPainted(false);
+		//startBtn.setFocusPainted(false);
 		add(startBtn);
 		
 		loadBtn = new JButton("Load");
-		loadBtn.setBounds(373, 319, 97, 23);
+		loadBtn.setBounds(700, 260, 100, 40);
+		//버튼 투명화
+		loadBtn.setContentAreaFilled(false);
+		loadBtn.setBorderPainted(false);
+		loadBtn.setFocusPainted(false);
 		add(loadBtn);
 		
 		exitBtn = new JButton("Exit");
-		exitBtn.setBounds(373, 368, 97, 23);
+		exitBtn.setBounds(700, 340, 100, 40);
+		//버튼 투명화
+		exitBtn.setContentAreaFilled(false);
+		exitBtn.setBorderPainted(false);
+		exitBtn.setFocusPainted(false);
 		add(exitBtn);
 		
 		//setLayout(new GridLayout(1, 0, 0, 0));

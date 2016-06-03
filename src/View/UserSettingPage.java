@@ -27,7 +27,7 @@ public class UserSettingPage extends JPanel
 		setLayout(null);
 		
 		try{
-			this.panelImg = ImageIO.read(new File("Img\\place\\start.png"));
+			this.panelImg = ImageIO.read(new File("Img\\place\\select.png"));
 		}
 		catch (IOException e)
 		{

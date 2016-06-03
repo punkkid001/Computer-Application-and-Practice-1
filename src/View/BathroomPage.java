@@ -26,6 +26,9 @@ import java.awt.Color;
 public class BathroomPage extends Place
 {	
 	protected BufferedImage panelImg = null;
+	protected BufferedImage arrowToYardImg = null;
+	protected BufferedImage arrowToLivingroomImg = null;
+	protected BufferedImage arrowToShopImg = null;
 	protected BufferedImage closetImg = null;
 	protected BufferedImage toiletImg = null;
 	
@@ -62,6 +65,9 @@ public class BathroomPage extends Place
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\bathroom.png"));
+			this.arrowToYardImg = ImageIO.read(new File("Img\\arrow\\arrow1.png"));
+			this.arrowToLivingroomImg = ImageIO.read(new File("Img\\arrow\\arrow2.png"));
+			this.arrowToShopImg = ImageIO.read(new File("Img\\arrow\\shop.png"));
 			this.closetImg = ImageIO.read(new File("Img\\furniture\\closet.png"));
 			this.toiletImg = ImageIO.read(new File("Img\\furniture\\toilet.png"));
 		}
@@ -70,16 +76,28 @@ public class BathroomPage extends Place
 			// TODO Auto-generated catch block
 		}
 		
-		btnGoShop = new JButton("Go Shop");
-		btnGoShop.setBounds(0, 0, 300, 50);
+		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
+		btnGoShop.setBounds(810, 5, 70, 65);
+		//버튼 투명화
+		btnGoShop.setContentAreaFilled(false);
+		btnGoShop.setBorderPainted(false);
+		btnGoShop.setFocusPainted(false);
 		add(btnGoShop);
 		
-		btnGoYard = new JButton("Go Yard");
-		btnGoYard.setBounds(300, 0, 300, 50);
+		btnGoYard = new JButton(new ImageIcon(this.arrowToYardImg));
+		btnGoYard.setBounds(5, 430, 70, 71);
+		//버튼 투명화
+		btnGoYard.setContentAreaFilled(false);
+		btnGoYard.setBorderPainted(false);
+		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
 		
-		btnGoLivingroom = new JButton("Go Livingroom");
-		btnGoLivingroom.setBounds(600, 0, 300, 50);
+		btnGoLivingroom = new JButton(new ImageIcon(this.arrowToLivingroomImg));
+		btnGoLivingroom.setBounds(810, 430, 70, 71);
+		//버튼 투명화
+		btnGoLivingroom.setContentAreaFilled(false);
+		btnGoLivingroom.setBorderPainted(false);
+		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
 		
 		simpleUserInfo = new JLabel();

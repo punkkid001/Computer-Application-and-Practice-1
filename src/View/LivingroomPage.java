@@ -25,6 +25,9 @@ import javax.swing.JTextArea;
 public class LivingroomPage extends Place implements MouseListener {
 	
 	protected BufferedImage panelImg = null;
+	protected BufferedImage arrowToBathroomImg = null;
+	protected BufferedImage arrowToYardImg = null;
+	protected BufferedImage arrowToShopImg = null;
 	protected BufferedImage fridgeImg = null;
 	protected BufferedImage bedImg = null;
 
@@ -55,6 +58,9 @@ public class LivingroomPage extends Place implements MouseListener {
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\livingroom.png"));
+			this.arrowToBathroomImg = ImageIO.read(new File("Img\\arrow\\arrow1.png"));
+			this.arrowToYardImg = ImageIO.read(new File("Img\\arrow\\arrow2.png"));
+			this.arrowToShopImg = ImageIO.read(new File("Img\\arrow\\shop.png"));
 			this.fridgeImg = ImageIO.read(new File("Img\\furniture\\fridge.png"));
 			this.bedImg = ImageIO.read(new File("Img\\furniture\\bed.png"));
 		}
@@ -63,20 +69,35 @@ public class LivingroomPage extends Place implements MouseListener {
 			// TODO Auto-generated catch block
 		}
 
-		btnGoShop = new JButton("Go Shop");
-		btnGoShop.setBounds(0, 0, 300, 50);
+		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
+		btnGoShop.setBounds(810, 5, 70, 65);
+		//버튼 투명화
+		btnGoShop.setContentAreaFilled(false);
+		btnGoShop.setBorderPainted(false);
+		btnGoShop.setFocusPainted(false);
 		add(btnGoShop);
 
-		btnGoBathroom = new JButton("Go Bathroom");
-		btnGoBathroom.setBounds(300, 0, 300, 50);
+		btnGoBathroom = new JButton(new ImageIcon(this.arrowToBathroomImg));
+		btnGoBathroom.setBounds(5, 430, 70, 71);
+		//버튼 투명화
+		btnGoBathroom.setContentAreaFilled(false);
+		btnGoBathroom.setBorderPainted(false);
+		btnGoBathroom.setFocusPainted(false);
 		add(btnGoBathroom);
+		JLabel labelGoBathroom = new JLabel("Bathroom");
+		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-60, 100, 100);
+		add(labelGoBathroom);
 
-		btnGoYard = new JButton("Go Yard");
-		btnGoYard.setBounds(600, 0, 300, 50);
+		btnGoYard = new JButton(new ImageIcon(this.arrowToYardImg));
+		btnGoYard.setBounds(810, 430, 70, 71);
+		//버튼 투명화
+		btnGoYard.setContentAreaFilled(false);
+		btnGoYard.setBorderPainted(false);
+		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
 
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(621, 60, 247, 43);
+		simpleUserInfo.setBounds(580, 15, 247, 43);
 		add(simpleUserInfo);
 
 		bedBtn = new JButton(new ImageIcon(this.bedImg));
@@ -87,9 +108,9 @@ public class LivingroomPage extends Place implements MouseListener {
 		bedBtn.setFocusPainted(false);
 		add(bedBtn);
 
-		JLabel foodBtn = new JLabel("Food");
-		foodBtn.setBounds(73, 290, 100, 100);
-		add(foodBtn);
+		//JLabel foodBtn = new JLabel("Food");
+		//foodBtn.setBounds(73, 290, 100, 100);
+		//add(foodBtn);
 
 		fridgeBtn = new JButton(new ImageIcon(this.fridgeImg));
 		fridgeBtn.setBounds(620, 300, 88, 150);

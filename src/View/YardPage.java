@@ -19,6 +19,9 @@ import Model.Waste;
 public class YardPage extends Place
 {
 	protected BufferedImage panelImg = null;
+	protected BufferedImage arrowToLivingroomImg = null;
+	protected BufferedImage arrowToBathroomImg = null;
+	protected BufferedImage arrowToShopImg = null;
 	protected BufferedImage playImg = null;
 	protected BufferedImage fightImg = null;
 	
@@ -48,6 +51,9 @@ public class YardPage extends Place
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\yard.png"));
+			this.arrowToLivingroomImg = ImageIO.read(new File("Img\\arrow\\arrow1.png"));
+			this.arrowToBathroomImg = ImageIO.read(new File("Img\\arrow\\arrow2.png"));
+			this.arrowToShopImg = ImageIO.read(new File("Img\\arrow\\shop.png"));
 			this.playImg = ImageIO.read(new File("Img\\furniture\\play.png"));
 			this.fightImg = ImageIO.read(new File("Img\\furniture\\fight.png"));
 		}
@@ -56,17 +62,29 @@ public class YardPage extends Place
 			// TODO Auto-generated catch block
 		}
 		
-		btnGoShop = new JButton("Go Shop");
-		btnGoShop.setBounds(0, 0, 300, 50);
+		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
+		btnGoShop.setBounds(810, 5, 70, 65);
+		//버튼 투명화
+		btnGoShop.setContentAreaFilled(false);
+		btnGoShop.setBorderPainted(false);
+		btnGoShop.setFocusPainted(false);
 		add(btnGoShop);
 		
-		btnGoBathroom = new JButton("Go Bathroom");
-		btnGoBathroom.setBounds(300, 0, 300, 50);
-		add(btnGoBathroom);
-		
-		btnGoLivingroom = new JButton("Go Livingroom");
-		btnGoLivingroom.setBounds(600, 0, 300, 50);
+		btnGoLivingroom = new JButton(new ImageIcon(this.arrowToLivingroomImg));
+		btnGoLivingroom.setBounds(5, 430, 70, 71);
+		//버튼 투명화
+		btnGoLivingroom.setContentAreaFilled(false);
+		btnGoLivingroom.setBorderPainted(false);
+		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
+	
+		btnGoBathroom = new JButton(new ImageIcon(this.arrowToBathroomImg));
+		btnGoBathroom.setBounds(810, 430, 70, 71);
+		//버튼 투명화
+		btnGoBathroom.setContentAreaFilled(false);
+		btnGoBathroom.setBorderPainted(false);
+		btnGoBathroom.setFocusPainted(false);
+		add(btnGoBathroom);
 		
 		simpleUserInfo = new JLabel();
 		simpleUserInfo.setBounds(621, 60, 247, 43);
