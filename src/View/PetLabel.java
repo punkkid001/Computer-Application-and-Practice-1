@@ -81,7 +81,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		talkItem1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				makeMessageBox(8);
+				makeMessageBox(pet.talk(1));
 			}
 			
 		});
@@ -89,7 +89,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		talkItem2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				makeMessageBox(10);
+				makeMessageBox(pet.talk(2));
 			}
 			
 		});
@@ -97,7 +97,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		talkItem3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				makeMessageBox(13);
+				makeMessageBox(pet.talk(3));
 			}
 			
 		});
@@ -152,7 +152,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				pet.sleep();
+				makeMessageBox(pet.sleep());
 			}
 		});
 		JMenuItem behaviorItem2 = new JMenuItem("먹이주기");
@@ -161,7 +161,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				pet.feed();
+				makeMessageBox(pet.feed());
 			}
 		});		
 		JMenuItem behaviorItem3 = new JMenuItem("놀아주기");
@@ -170,7 +170,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				pet.play();
+				makeMessageBox(pet.play());
 			}
 		});
 		JMenuItem behaviorItem4 = new JMenuItem("대전하기");
@@ -277,13 +277,37 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		});
 		th.start();
 	}
-	private void removeDialog(JLabel ob) {
-		// TODO Auto-generated method stub
-		ob.setVisible(false);
+	public void makeMessageBox(String msg) {
+		JLabel myMessageLabel = new JLabel(msg);
+		this.pet.getMyLocation().add(myMessageLabel);
+		myMessageLabel.setBounds(this.getX(), this.getY() - 90, 2000, 100);
+		myMessageLabel.setVisible(true);
 		
 		
+		Thread th = new Thread(new Runnable() {
 		
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				TimerTask task = new TimerTask() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						//removeDialog(myMessageLabel);
+						myMessageLabel.setVisible(false);
+					}
+				};
+				Timer timer = new Timer();
+				timer.schedule(task, 2500);
+				//task.run();
+				System.out.println("작업");
+			}
+			
+		});
+		th.start();
 	}
+	
 	//진화 소스
 	public void grow() {
 		pet.getMyLocation().deleteIcon(pet);

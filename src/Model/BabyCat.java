@@ -36,13 +36,13 @@ public class BabyCat extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("1 ", 8);
-        setSpeechList("2 ", 9);
-        setSpeechList("3 ", 10);
-        setSpeechList("4 ", 11);
-        setSpeechList("5 ", 12);
-        setSpeechList("6 ", 13);
-        setSpeechList("7 ", 14);
+        setSpeechList("나 그냥 잘래! 흥", 8);
+        setSpeechList("하잇~!", 9);
+        setSpeechList("냥냥", 10);
+        setSpeechList("생선이나 줘~", 11);
+        setSpeechList("나랑 놀아줄거야?", 12);
+        setSpeechList("내가 뭘 잘못했다고...", 13);
+        setSpeechList("히야옹ㅠ", 14);
     }
     
     //change

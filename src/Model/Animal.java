@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 
 import View.BathroomPage;
@@ -41,7 +43,10 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 
     public Animal()
     {
-        this.speechList= new String[]{"Level up!", "I don't have drappings.", "Thank you! Now, I'm so clean", "Please rid my drappings!!!!", "Yeah~ so funny time!", "It's delicious.", "Sleep...", "I'm so sleeping!!!!!!", "null", "null", "null", "null", "null", "null", "HAPPY", "HUNGRY", "SLEEPING"};
+        this.speechList= new String[]{
+        		"Level up!", "I don't have drappings.", "Thank you! Now, I'm so clean", 
+        		"Please rid my drappings!!!!", "Yeah~ so funny time!", "It's delicious.", 
+        		"Sleep...", "I'm so sleeping!!!!!!", "null", "null", "null", "null", "null", "null", "HAPPY", "HUNGRY", "SLEEPING"};
 
         //setting start stat
         this.fatigability=50;
@@ -174,38 +179,46 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 
 
     @Override
-    public void ridDrappings()
+    public String ridDrappings()
     {
         if(this.drappings!=0)
         {
             this.drappings = 0;
             System.out.println("Message : "+speechList[2]);
+            return speechList[2];
         }
-        else
+        else {
             System.out.println("Message : "+speechList[1]);
+            return speechList[1];
+        }
     }
 
     @Override
-    public void feed()
+    public String feed()
     {
-        if(letProtest())
+        if(letProtest()) {
             System.out.println("Can't play with pet. Check your message.");
-        else
+            return "먹지 않아 저항중";
+        } else
         {
-            this.fatigability+=1;
+            this.fatigability+=10;
             this.satiety+=30;
             this.exp+=5;
             this.happiness+=10;
             System.out.println(this.name+" Message : "+speechList[5]);
             this.checkEvent();
+            return speechList[5] + "피로 10, 만족30, 행복10, 경험5가 올랐다.";
         }
+		
     }
 
     @Override
-    public void play()
+    public String play()
     {
-        if(letProtest())
-            System.out.println("Can't play with pet. Check your message.");
+        if(letProtest()) {
+            System.out.println("너랑 놀지 않을거야. 저항중이야.");
+            return "너랑 놀지 않을거야. 저항중이야.";
+    	}
         else
         {
             this.fatigability+=10;
@@ -214,19 +227,53 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.happiness+=10;
             System.out.println(this.name+" Message : "+speechList[4]);
             this.checkEvent();
+            return speechList[4];
         }
     }
 
-    public void talk(){};   //紐낆꽭�� �떎瑜닿쾶 援�
+    public String talk(int num){ //1인사하기, 2다정하게, 3훈계하기
+    	Random random = new Random();
+    	int p = random.nextInt(10) % 2;
+    	int indexNum = 0;
+    	if(num == 1) {
+    		switch(p) {
+    		case 0:
+    			indexNum = 9;
+    			break;
+    		case 1:
+    			indexNum = 10;
+    			break;
+    		}
+    	} else if(num == 2) {
+    		switch(p) {
+    		case 0:
+    			indexNum = 11;
+    			break;
+    		case 1:
+    			indexNum = 12;
+    			break;
+    		}
+    	} else if(num == 3) {
+    		switch(p) {
+    		case 0:
+    			indexNum = 13;
+    			break;
+    		case 1:
+    			indexNum = 14;
+    			break;
+    		}
+    	}
+    	return this.speechList[indexNum];
+    }
 
-    public void sleep()
+    public String sleep()
     {
         this.fatigability-=40;
         this.satiety-=10;
         this.exp+=5;
         this.checkEvent();
-
-        System.out.println("Message : "+speechList[6]);
+        
+        return speechList[6];
     }
 
     public void sleep(boolean isTired)

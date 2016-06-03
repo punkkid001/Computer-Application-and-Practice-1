@@ -3,8 +3,8 @@ package Model;/**
  */
 public interface AnimalOperation_IF
 {
-    public void ridDrappings();
-    public void play();
-    public void feed();
-    public void sleep();
+    public String ridDrappings();
+    public String play();
+    public String feed();
+    public String sleep();
 }
