@@ -91,6 +91,10 @@ public class BathroomPage extends Place
 		btnGoYard.setBorderPainted(false);
 		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
+		JLabel labelGoYard = new JLabel("¸¶´ç");
+		labelGoYard.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 100, 30);
+		add(labelGoYard);
 		
 		btnGoLivingroom = new JButton(new ImageIcon(this.arrowToLivingroomImg));
 		btnGoLivingroom.setBounds(810, 430, 70, 71);
@@ -99,6 +103,10 @@ public class BathroomPage extends Place
 		btnGoLivingroom.setBorderPainted(false);
 		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
+		JLabel labelGoLivingroom = new JLabel("°Å½Ç");
+		labelGoLivingroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 100, 30);
+		add(labelGoLivingroom);
 		
 		simpleUserInfo = new JLabel();
 		simpleUserInfo.setBounds(621, 60, 247, 43);

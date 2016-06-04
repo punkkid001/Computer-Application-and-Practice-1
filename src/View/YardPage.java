@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -77,6 +78,10 @@ public class YardPage extends Place
 		btnGoLivingroom.setBorderPainted(false);
 		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
+		JLabel labelGoLivingroom = new JLabel("°Å½Ç");
+		labelGoLivingroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 100, 30);
+		add(labelGoLivingroom);
 	
 		btnGoBathroom = new JButton(new ImageIcon(this.arrowToBathroomImg));
 		btnGoBathroom.setBounds(810, 430, 70, 71);
@@ -85,6 +90,10 @@ public class YardPage extends Place
 		btnGoBathroom.setBorderPainted(false);
 		btnGoBathroom.setFocusPainted(false);
 		add(btnGoBathroom);
+		JLabel labelGoBathroom = new JLabel("È­Àå½Ç");
+		labelGoBathroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 100, 30);
+		add(labelGoBathroom);
 		
 		simpleUserInfo = new JLabel();
 		simpleUserInfo.setBounds(621, 60, 247, 43);

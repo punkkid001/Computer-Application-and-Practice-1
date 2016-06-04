@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JToolBar;
 
@@ -84,8 +85,9 @@ public class LivingroomPage extends Place implements MouseListener {
 		btnGoBathroom.setBorderPainted(false);
 		btnGoBathroom.setFocusPainted(false);
 		add(btnGoBathroom);
-		JLabel labelGoBathroom = new JLabel("Bathroom");
-		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-60, 100, 100);
+		JLabel labelGoBathroom = new JLabel("È­Àå½Ç");
+		labelGoBathroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 100, 30);
 		add(labelGoBathroom);
 
 		btnGoYard = new JButton(new ImageIcon(this.arrowToYardImg));
@@ -95,6 +97,10 @@ public class LivingroomPage extends Place implements MouseListener {
 		btnGoYard.setBorderPainted(false);
 		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
+		JLabel labelGoYard = new JLabel("¸¶´ç");
+		labelGoYard.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
+		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 100, 30);
+		add(labelGoYard);
 
 		simpleUserInfo = new JLabel();
 		simpleUserInfo.setBounds(580, 15, 247, 43);
