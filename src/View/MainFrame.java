@@ -33,6 +33,7 @@ public class MainFrame extends JFrame
 	
 	private boolean bathroomClosetFlag=false;
 	private boolean bathroomStatFlag=false;
+	private boolean livingroomFridgeFlag=false;
 	/**
 	 * Create the frame.
 	 */
@@ -210,14 +211,24 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				String[] list=c.appendFoodItemList();
-				if(list!=null)
+				if(livingroomFridgeFlag==false)
 				{
-					for(int i=0;i<list.length;i++)
-						livingroomPage.foodItemList.append(list[i]+"\n");
+					livingroomFridgeFlag=true;
+					if(list!=null)
+					{
+						for(int i=0;i<list.length;i++)
+							livingroomPage.foodItemList.append(list[i]+"\n");
+					}
+					else
+						livingroomPage.foodItemList.append("Freezer is empty");
+					livingroomPage.foodItemInfo.setVisible(true);
 				}
 				else
-					livingroomPage.foodItemList.append("Freezer is empty");
-				livingroomPage.foodItemInfo.setVisible(true);
+				{
+					livingroomFridgeFlag=false;
+					livingroomPage.foodItemList.setText("");
+					livingroomPage.foodItemInfo.setVisible(false);
+				}
 			}
 		});
 		
@@ -316,7 +327,7 @@ public class MainFrame extends JFrame
 				// TODO Auto-generated method stub
 				gotoYard();
 			}
-		});	
+		});
 		
 		this.yardPage = new YardPage(c);
 		this.yardPage.btnGoLivingroom.addActionListener(new ActionListener()
