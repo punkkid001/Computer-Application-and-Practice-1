@@ -20,7 +20,7 @@ import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener
 {
-	protected Animal pet;
+	protected static Animal pet;
 	private User myUser;
 	private Place place;
 	private JPopupMenu menu;
