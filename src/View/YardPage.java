@@ -116,7 +116,7 @@ public class YardPage extends Place implements ActionListener
 		playBtn.setContentAreaFilled(false);
 		playBtn.setBorderPainted(false);	
 		playBtn.setFocusPainted(false);
-		playBtn.addActionListener(null);
+		playBtn.addActionListener(this);
 		add(playBtn);
 		
 		fightBtn = new JButton(new ImageIcon(this.fightImg));
