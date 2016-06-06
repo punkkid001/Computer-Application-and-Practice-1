@@ -40,25 +40,25 @@ public class StartPage extends JPanel implements ActionListener
 			// TODO Auto-generated catch block
 		}
 		
-		startBtn = new JButton("Start");
+		startBtn = new JButton();
 		//startBtn.addActionListener(this);
-		startBtn.setBounds(700, 155, 100, 60);
+		startBtn.setBounds(690, 155, 150, 70);
 		//버튼 투명화
-		//startBtn.setContentAreaFilled(false);
-		//startBtn.setBorderPainted(false);
-		//startBtn.setFocusPainted(false);
+		startBtn.setContentAreaFilled(false);
+		startBtn.setBorderPainted(false);
+		startBtn.setFocusPainted(false);
 		add(startBtn);
 		
-		loadBtn = new JButton("Load");
-		loadBtn.setBounds(700, 260, 100, 40);
+		loadBtn = new JButton();
+		loadBtn.setBounds(690, 250, 130, 50);
 		//버튼 투명화
 		loadBtn.setContentAreaFilled(false);
 		loadBtn.setBorderPainted(false);
 		loadBtn.setFocusPainted(false);
 		add(loadBtn);
 		
-		exitBtn = new JButton("Exit");
-		exitBtn.setBounds(700, 340, 100, 40);
+		exitBtn = new JButton();
+		exitBtn.setBounds(690, 330, 110, 60);
 		//버튼 투명화
 		exitBtn.setContentAreaFilled(false);
 		exitBtn.setBorderPainted(false);

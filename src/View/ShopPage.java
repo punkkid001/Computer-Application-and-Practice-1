@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
@@ -104,7 +105,9 @@ public class ShopPage extends Place
 		add(btnGoLivingroom);
 		
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(621, 60, 247, 43);
+		simpleUserInfo.setBounds(600, 50, 300, 30);
+		simpleUserInfo.setBackground(Color.lightGray);
+		simpleUserInfo.setOpaque(true);
 		add(simpleUserInfo);
 		
 		JPanel buyPanel = new JPanel();

@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,51 +75,49 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		this.add(this.monkey);
 		
 		JLabel catLabel = new JLabel("Baby Cat");
-		catLabel.setBounds(259, 263, 100, 18);
+		catLabel.setBounds(300, 240, 100, 18);
 		add(catLabel);		
 		
 		JLabel catSteminaLabel = new JLabel("Stemina : ¡Ú¡Ú¡Ú");
-		catSteminaLabel.setBounds(259, 293, 100, 18);
+		catSteminaLabel.setBounds(300, 290, 100, 18);
 		add(catSteminaLabel);
 		
 		JLabel catPowerLabel = new JLabel("Power : ¡Ú¡Ù¡Ù");
-		catPowerLabel.setBounds(259, 323, 100, 18);
+		catPowerLabel.setBounds(300, 320, 100, 18);
 		add(catPowerLabel);
 		
 		JLabel catDefenseLabel = new JLabel("Defense : ¡Ú¡Ú¡Ù");
-		catDefenseLabel.setBounds(259, 362, 100, 18);
+		catDefenseLabel.setBounds(300, 350, 100, 18);
 		add(catDefenseLabel);
 		
 		JLabel monkeyLabel = new JLabel("Baby Monkey");
-		monkeyLabel.setBounds(489, 263, 100, 18);
+		monkeyLabel.setBounds(500, 240, 100, 18);
 		add(monkeyLabel);
 		
 		JLabel monkeySteminaLabel = new JLabel("Stemina : ¡Ú¡Ú¡Ú");
-		monkeySteminaLabel.setBounds(489, 293, 100, 18);
+		monkeySteminaLabel.setBounds(500, 290, 100, 18);
 		add(monkeySteminaLabel);
 		
 		JLabel monkeyPowerLabel = new JLabel("Power : ¡Ú¡Ù¡Ù");
-		monkeyPowerLabel.setBounds(489, 323, 100, 18);
+		monkeyPowerLabel.setBounds(500, 320, 100, 18);
 		add(monkeyPowerLabel);
 		
 		JLabel monkeyDefenseLabel = new JLabel("Defense : ¡Ú¡Ú¡Ù");
-		monkeyDefenseLabel.setBounds(489, 362, 100, 18);
+		monkeyDefenseLabel.setBounds(500, 350, 100, 18);
 		add(monkeyDefenseLabel);
 		
 		JLabel petNameLabel = new JLabel("Pet Name");
-		petNameLabel.setBounds(340, 414, 75, 26);
+		petNameLabel.setBounds(320, 410, 75, 25);
 		add(petNameLabel);
 		
 		petNameField = new JTextField();
-		petNameField.setBounds(416, 415, 116, 24);
+		petNameField.setBounds(390, 410, 115, 25);
 		petNameField.setColumns(10);
 		
 		add(petNameField);
 				
 		okBtn = new JButton("OK");
-		okBtn.setBounds(546, 414, 61, 27);
-		
-		
+		okBtn.setBounds(515, 410, 60, 25);
 		add(okBtn);
 		
 		this.addMouseListener(this);

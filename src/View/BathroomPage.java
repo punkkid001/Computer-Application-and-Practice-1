@@ -77,7 +77,7 @@ public class BathroomPage extends Place
 		}
 		
 		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
-		btnGoShop.setBounds(810, 5, 70, 65);
+		btnGoShop.setBounds(815, 5, 70, 65);
 		//¹öÆ° Åõ¸íÈ­
 		btnGoShop.setContentAreaFilled(false);
 		btnGoShop.setBorderPainted(false);
@@ -92,8 +92,8 @@ public class BathroomPage extends Place
 		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
 		JLabel labelGoYard = new JLabel("¸¶´ç");
-		labelGoYard.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 100, 30);
+		labelGoYard.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 80, 30);
 		add(labelGoYard);
 		
 		btnGoLivingroom = new JButton(new ImageIcon(this.arrowToLivingroomImg));
@@ -104,12 +104,14 @@ public class BathroomPage extends Place
 		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
 		JLabel labelGoLivingroom = new JLabel("°Å½Ç");
-		labelGoLivingroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 100, 30);
+		labelGoLivingroom.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 80, 30);
 		add(labelGoLivingroom);
 		
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(621, 60, 247, 43);
+		simpleUserInfo.setBounds(550, 15, 300, 30);
+		simpleUserInfo.setBackground(Color.lightGray);
+		simpleUserInfo.setOpaque(true);
 		add(simpleUserInfo);
 		
 		closetBtn = new JButton(new ImageIcon(this.closetImg));

@@ -72,19 +72,19 @@ public class Controller
 	
 	public void viewLivingroomStatus()
 	{
-		m.livingroomPage.simpleUserInfo.setText("Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());	
+		m.livingroomPage.simpleUserInfo.setText("   Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());	
 	}
 	public void viewBathroomStatus()
 	{
-		m.bathroomPage.simpleUserInfo.setText("Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
+		m.bathroomPage.simpleUserInfo.setText("   Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
 	}
 	public void viewShopStatus()
 	{
-		m.shopPage.simpleUserInfo.setText("Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
+		m.shopPage.simpleUserInfo.setText("   Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
 	}
 	public void viewYardStatus()
 	{
-		m.yardPage.simpleUserInfo.setText("Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
+		m.yardPage.simpleUserInfo.setText("   Username : "+presentUser.getUsername()+" Gold : "+presentUser.getGold()+" Pet count : "+presentUser.getUserPetSize());
 	}
 	
 	public String[] appendClosetItemList()
