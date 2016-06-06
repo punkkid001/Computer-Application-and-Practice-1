@@ -14,6 +14,16 @@ public class BabyMonkey extends Animal
     public BabyMonkey(){
     	
     }
+    public BabyMonkey(Animal p) {
+    	super(p);
+    	System.out.println("기본 생성자 호출");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     public BabyMonkey(String name, int index)
     {
         super.setName(name);
@@ -45,7 +55,19 @@ public class BabyMonkey extends Animal
         if(super.getLevel()==2)
             this.grow(presentUser, index);
     }
-
+    public void checkExp()
+    {
+    	if(this.getExp()>=20&&this.getLevel()<5) {
+    		this.levelUp();
+            
+    		if(super.getLevel() == 2) {
+    			super.getLabel().grow();
+    		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
+    		//super.getLabel().setVisible(true);
+    		}
+    	}
+    }
+    
     public void grow(User presentUser, int index)
     {
         presentUser.setAnimal(index, new AdultMonkey(this));

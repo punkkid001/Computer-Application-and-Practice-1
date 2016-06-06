@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Controller;
 import View.ShopPage;
 
 /**
@@ -16,9 +17,11 @@ public class User
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
     private int petIndex=-1;	//new
+    private Controller c;
     
-    public User(String userName, int petChoice, String petName)   
+    public User(String userName, int petChoice, String petName, Controller c)   
     {
+    	this.c = c;
         this.myPetList=new Animal[5];
         this.myFoodList=new Food[8];
         this.myClothList=new Cloth[8];
@@ -32,7 +35,11 @@ public class User
             myPetList[0]=new BabyMonkey(petName, 0);
     }
 
-    public void setAnimal(Animal p){
+    
+    public Controller getController() {
+    	return c;
+    }
+	public void setAnimal(Animal p){
     	this.myPetList[++this.index]=p;
     	}    //change
     public void setAnimal(int index, Animal p){

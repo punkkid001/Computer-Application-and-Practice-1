@@ -393,7 +393,7 @@ public class MainFrame extends JFrame
 		if(bathroomStatFlag==false)
 		{
 			bathroomStatFlag=true;
-			
+			bathroomPage.statArea.setText("");
 			for(int i=0;i<list.length;i++)
 				bathroomPage.statArea.append(list[i]+"\n");
 			

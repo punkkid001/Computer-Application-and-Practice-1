@@ -49,7 +49,7 @@ public class Controller
 		 * 
 		 * 
 		 */
-		presentUser=new User(userName, petNum, petName);
+		presentUser=new User(userName, petNum, petName, this);
 		m.gotogameStartingPoint();
 		this.viewLivingroomStatus();
 		m.livingroomPage.createPetIcon(presentUser.getPet(0));

@@ -55,7 +55,7 @@ public abstract class Place extends JPanel
 				petIcon[i] = new PetLabel(pet, this, c.getPresentUser());
 				
 				petIcon[i].setIcon(pet.getMyImageIcon());
-				petIcon[i].setBounds(336, 342, 100, 100);
+				petIcon[i].setBounds(pet.getX(), pet.getY(), 150, 150);
 				//petIcon[i].addMouseListener(this);
 				
 				petIcon[i].behaviorItem7.addActionListener(new ActionListener()

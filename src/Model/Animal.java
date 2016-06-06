@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import View.BathroomPage;
 import View.LivingroomPage;
+import View.PetLabel;
 import View.Place;
 import View.ShopPage;
 
@@ -37,6 +38,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     private int m_y=250;
     private String[] speechList;
     private ImageIcon myImage;
+    private PetLabel myView;
     
     private User myUser;
     private int index;
@@ -92,7 +94,15 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	this.setActiveCount(p.getActiveCount());
     	this.setXY(p.getX(), p.getY());
     }
-    
+    public User getMyUser() {
+    	return this.myUser;
+    }
+    public void setLabel(PetLabel p) {
+    	this.myView = p;
+    }
+    public PetLabel getLabel() {
+    	return this.myView;
+    }
     public void setActiveCount(int activeCount) {
 		this.activeCount = activeCount;
 	}
@@ -205,13 +215,31 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.satiety+=30;
             this.exp+=5;
             this.happiness+=10;
+            this.statCheck();
             System.out.println(this.name+" Message : "+speechList[5]);
             this.checkEvent();
             return speechList[5] + "피로 10, 만족30, 행복10, 경험5가 올랐다.";
         }
 		
     }
-
+    public void statCheck() {
+    	if(this.fatigability < 0)
+    		this.fatigability = 0;
+    	else if(this.fatigability > 100)
+    		this.fatigability = 0;
+    	
+    	if(this.satiety < 0)
+    		this.satiety = 0;
+    	else if(this.satiety > 100)
+    		this.satiety = 100;
+    	
+    	if(this.happiness < 0)
+    		this.happiness = 0;
+    	else if(this.happiness > 100)
+    		this.happiness = 100;
+    	
+    }
+    
     @Override
     public String play()
     {
@@ -225,6 +253,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.satiety-=30;
             this.exp+=5;
             this.happiness+=10;
+            this.statCheck();
             System.out.println(this.name+" Message : "+speechList[4]);
             this.checkEvent();
             return speechList[4];
@@ -271,6 +300,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.fatigability-=40;
         this.satiety-=10;
         this.exp+=5;
+        this.statCheck();
         this.checkEvent();
         
         return speechList[6];
@@ -283,6 +313,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.fatigability-=40;
         this.satiety-=10;
         this.exp+=5;
+        this.statCheck();
         this.checkEvent();
 
         System.out.println("Message : "+speechList[7]);
@@ -327,8 +358,11 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 
     public void checkExp()
     {
-        if(this.exp>=100&&this.level<5)
+        if(this.exp>=20&&this.level<5) {
             this.levelUp();
+           
+        }
+        
     }
 
     public boolean letProtest()

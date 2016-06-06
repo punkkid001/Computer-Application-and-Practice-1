@@ -38,6 +38,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	public PetLabel(Animal pet, Place place, User myUser)
 	{	
 		this.pet = pet;
+		this.pet.setLabel(this);
 		this.place = place;
 		this.myUser = myUser;
 		this.menu = new JPopupMenu();

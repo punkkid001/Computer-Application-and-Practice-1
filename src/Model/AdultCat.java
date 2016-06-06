@@ -28,7 +28,7 @@ public class AdultCat extends BabyCat implements Dance_IF
     //change
     public void levelUp()
     {
-        if(this.getExp()>=100)
+        if(this.getExp()>=30)
         {
             this.setLevel(this.getLevel()+1);
             this.setExp(0);
@@ -49,5 +49,24 @@ public class AdultCat extends BabyCat implements Dance_IF
     public void transform()
     {
         Tiger tiger=new Tiger();
+        
+    }
+    public void checkExp()
+    {
+    	if(this.getExp()>=20&&this.getLevel()<5) {
+    		this.levelUp();
+            
+    		if(super.getLevel() == 3) {
+    			super.getLabel().grow();
+    		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
+    		//super.getLabel().setVisible(true);
+    		}
+    	}
+    
+    }
+        
+    public void grow(User presentUser, int index)
+    {
+        presentUser.setAnimal(index, new Tiger(this));       
     }
 }
