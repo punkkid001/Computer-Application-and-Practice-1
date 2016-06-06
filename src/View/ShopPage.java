@@ -10,6 +10,7 @@ import Model.Animal;
 import Model.Cloth;
 import Model.Food;
 import Model.Pet;
+import Model.Potion;
 import Model.Waste;
 
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import java.awt.event.ActionEvent;
 public class ShopPage extends Place
 {
 	public Food[] foodList;
+	public Potion potion;
 	public Cloth[] clothList;
 	public Pet[] animalList;
 	public Waste[] waste;
@@ -32,12 +34,21 @@ public class ShopPage extends Place
 	protected JButton btnGoBathroom;
 	protected JButton btnGoLivingroom;
 	
+	protected JButton btnFood[]=new JButton[3];
+	/*
 	protected JButton btnPreminumFood;
 	protected JButton btnCake;
 	protected JButton btnParpait;
+	*/
+	protected JButton btnCloth[]=new JButton[3];
+	protected JButton btnPet[]=new JButton[2];
+	protected JButton btnPotion;
+	
+	/*
 	protected JButton btnHat;
 	protected JButton btnShoes;
 	protected JButton btnRibbon;
+	*/
 	
 	public JLabel simpleUserInfo;
 	private JTextArea sellItemList;
@@ -47,23 +58,24 @@ public class ShopPage extends Place
 	
 	public ShopPage()
 	{
-		foodList = new Food[5];
-		clothList = new Cloth[5];
+		foodList = new Food[3];
+		clothList = new Cloth[3];
 		animalList = new Pet[2];
 		//~~
 		super.setPlaceName("Shop");
         waste=new Waste[5];
         
-        //foodList=new Food[3];
         foodList[0]=new Food("Premium", 5, 5, 5, 50);
         foodList[1]=new Food("Cake", 10, 5, 10, 200);
         foodList[2]=new Food("Parfait", 10, 5, 0, 80);
+        
+        potion=new Potion("???", 10, 5, 0, 1000);
         
         clothList[0]=new Cloth("Hat", 5, 10, 50, 100);
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        //animalList=new Pet[2];
+        animalList=new Pet[2];
         animalList[0]=new Pet("Baby Cat", 1000);
         animalList[1]=new Pet("Baby Monkey", 1000);
         //~~
@@ -96,7 +108,7 @@ public class ShopPage extends Place
 		add(simpleUserInfo);
 		
 		JPanel buyPanel = new JPanel();
-		buyPanel.setBounds(54, 177, 246, 341);
+		buyPanel.setBounds(54, 130, 246, 341);
 		buyPanel.setLayout(null);
 		add(buyPanel);
 		
@@ -104,40 +116,49 @@ public class ShopPage extends Place
 		buyLabel.setBounds(110, 0, 57, 15);
 		buyPanel.add(buyLabel);
 		
-		btnPreminumFood = new JButton("Preminum Food");
-		btnPreminumFood.setBounds(63, 36, 123, 23);
-		buyPanel.add(btnPreminumFood);
+		//btnFood=new JButton[3];
+		btnFood[0] = new JButton("Preminum");
+		btnFood[0].setBounds(74, 25, 97, 23);
+		buyPanel.add(btnFood[0]);
 		
-		btnCake = new JButton("Cake");
-		btnCake.setBounds(63, 69, 123, 23);
-		buyPanel.add(btnCake);
+		btnFood[1]= new JButton("Cake");
+		btnFood[1].setBounds(74, 58, 97, 23);
+		buyPanel.add(btnFood[1]);
 		
-		btnParpait = new JButton("Parpait");
-		btnParpait.setBounds(63, 102, 123, 23);
-		buyPanel.add(btnParpait);
+		btnFood[2] = new JButton("Parfait");
+		btnFood[2].setBounds(74, 91, 97, 23);
+		buyPanel.add(btnFood[2]);
 		
-		btnHat = new JButton("Hat");
-		btnHat.setBounds(63, 147, 123, 23);
-		buyPanel.add(btnHat);
+		//btnCloth=new JButton[3];
+		btnCloth[0] = new JButton("Hat");
+		btnCloth[0].setBounds(74, 130, 97, 23);
+		buyPanel.add(btnCloth[0]);
 		
-		btnShoes = new JButton("Shoes");
-		btnShoes.setBounds(63, 180, 123, 23);
-		buyPanel.add(btnShoes);
+		btnCloth[1] = new JButton("Shoes");
+		btnCloth[1].setBounds(74, 163, 97, 23);
+		buyPanel.add(btnCloth[1]);
 		
-		btnRibbon = new JButton("Ribbon");
-		btnRibbon.setBounds(63, 213, 123, 23);
-		buyPanel.add(btnRibbon);
+		btnCloth[2] = new JButton("Ribbon");
+		btnCloth[2].setBounds(74, 196, 97, 23);
+		buyPanel.add(btnCloth[2]);
 		
-		JButton btnBabyCat = new JButton("Baby Cat");
-		btnBabyCat.setBounds(63, 263, 123, 23);
-		buyPanel.add(btnBabyCat);
+		//btnPet=new JButton[2];
+		btnPet[0] = new JButton("Baby Cat");
+		btnPet[0].setBounds(74, 233, 97, 23);
+		buyPanel.add(btnPet[0]);
 		
-		JButton btnBabyMonkey = new JButton("Baby Monkey");
-		btnBabyMonkey.setBounds(63, 296, 123, 23);
-		buyPanel.add(btnBabyMonkey);
+		btnPet[1] = new JButton("Baby Monkey");
+		btnPet[1].setBounds(67, 266, 111, 23);
+		buyPanel.add(btnPet[1]);
+		
+		btnPotion = new JButton("???");
+		btnPotion.setBounds(74, 308, 97, 23);
+		buyPanel.add(btnPotion);
+		
+		buyPanel.setVisible(true);
 		
 		JPanel sellPanel = new JPanel();
-		sellPanel.setBounds(600, 177, 246, 341);
+		sellPanel.setBounds(600, 130, 246, 341);
 		sellPanel.setLayout(null);
 		add(sellPanel);
 		

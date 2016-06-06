@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -55,6 +57,17 @@ public abstract class Place extends JPanel
 				petIcon[i].setIcon(pet.getMyImageIcon());
 				petIcon[i].setBounds(336, 342, 100, 100);
 				//petIcon[i].addMouseListener(this);
+				
+				petIcon[i].behaviorItem7.addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						String[] list=pet.getPetStatList();
+						c.m.showAnimalStat(list);
+					}
+				});
+				
 				this.add(petIcon[i]);
 				petIcon[i].setVisible(true);
 				

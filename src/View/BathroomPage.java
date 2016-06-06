@@ -53,17 +53,17 @@ public class BathroomPage extends Place
 	/**
 	 * Create the panel.
 	 */
-	public BathroomPage(Controller c) {
+	public BathroomPage(Controller c)
+	{
 		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Bathroom");
-        
-      
 
 		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
 		
-		try{
+		try
+		{
 			this.panelImg = ImageIO.read(new File("Img\\place\\bathroom.png"));
 			this.arrowToYardImg = ImageIO.read(new File("Img\\arrow\\arrow1.png"));
 			this.arrowToLivingroomImg = ImageIO.read(new File("Img\\arrow\\arrow2.png"));
@@ -127,12 +127,6 @@ public class BathroomPage extends Place
 		toiletBtn.setBorderPainted(false);
 		toiletBtn.setFocusPainted(false);
 		add(toiletBtn);
-		
-		/*
-		JButton petBtn = new JButton("Pet");
-		petBtn.setBounds(347, 243, 100, 100);
-		add(petBtn);
-		*/
 
 		//¿¬°á
 		clothItemInfo = new JPanel();

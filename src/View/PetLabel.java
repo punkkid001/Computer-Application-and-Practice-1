@@ -20,7 +20,7 @@ import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener
 {
-	protected Animal pet;
+	protected static Animal pet;
 	private User myUser;
 	private Place place;
 	private JPopupMenu menu;
@@ -70,10 +70,10 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			}
 		});
 		
-		JMenu item2 = new JMenu("talk");
-		JMenu item3 = new JMenu("change map");
-		JMenu item4 = new JMenu("map behavior");
-		JMenu item5 = new JMenu("pet behavior");
+		JMenu item2 = new JMenu("Talk");
+		JMenu item3 = new JMenu("Change map");
+		JMenu item4 = new JMenu("Map behavior");
+		JMenu item5 = new JMenu("Pet behavior");
 		
 		menu.add(item1);
 		menu.add(item2);
@@ -192,7 +192,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			public void actionPerformed(ActionEvent e)
 			{
 				pet.ridDrappings();
-				grow();
+				//grow();
 			}
 		});
 		JMenuItem behaviorItem6 = new JMenuItem("¿Ê¹þ±â");

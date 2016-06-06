@@ -17,7 +17,17 @@ import Model.Animal;
 import Model.BabyCat;
 import Model.Waste;
 
-public class YardPage extends Place
+//play and fight 구현부분 by태준
+import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+import Model.Pet;
+
+public class YardPage extends Place implements ActionListener
 {
 	protected BufferedImage panelImg = null;
 	protected BufferedImage arrowToLivingroomImg = null;
@@ -32,6 +42,7 @@ public class YardPage extends Place
 	protected JButton playBtn;
 	protected JButton fightBtn; 
 	protected PetLabel petIcon[];
+	protected JPanel playPanel;
 	
 	public JLabel simpleUserInfo;
 	/**
@@ -105,6 +116,7 @@ public class YardPage extends Place
 		playBtn.setContentAreaFilled(false);
 		playBtn.setBorderPainted(false);	
 		playBtn.setFocusPainted(false);
+		playBtn.addActionListener(this);
 		add(playBtn);
 		
 		fightBtn = new JButton(new ImageIcon(this.fightImg));
@@ -113,6 +125,7 @@ public class YardPage extends Place
 		fightBtn.setContentAreaFilled(false);
 		fightBtn.setBorderPainted(false);
 		fightBtn.setFocusPainted(false);
+		fightBtn.addActionListener(null);
 		add(fightBtn);
 		
 		/*
@@ -127,5 +140,41 @@ public class YardPage extends Place
 		super.paintComponent(g);
 		g.drawImage(panelImg, 0, 0, null);
 	}
-	
-}
+
+	public void actionPerformed(ActionEvent e)
+	{
+		// TODO Auto-generated method stub
+		if(e.getSource()==playBtn)  // 플레이 눌리면
+			{
+			System.out.println("플레이 눌림");
+			PetLabel.pet.play();
+			JLabel playmsg = new JLabel(PetLabel.pet.getMessage(4));
+			PetLabel.pet.getMyLocation().add(playmsg);
+			playmsg.setBounds(PetLabel.pet.getX()+97, PetLabel.pet.getY()+65, 100, 50);
+			playmsg.setVisible(true);
+			Thread th = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					TimerTask task = new TimerTask() {
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							//removeDialog(myMessageLabel);
+							playmsg.setVisible(false);
+						}
+					};
+						Timer timer = new Timer();
+						timer.schedule(task, 3000);
+						//task.run();
+						System.out.println("작업");
+						}
+				});
+			th.start();
+			}
+		if(e.getSource()==fightBtn)
+		{
+			System.out.println("대전 눌림");
+			}
+		}
+	}

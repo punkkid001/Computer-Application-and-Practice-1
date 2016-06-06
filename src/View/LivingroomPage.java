@@ -23,7 +23,8 @@ import java.io.IOException;
 
 import javax.swing.JTextArea;
 
-public class LivingroomPage extends Place implements MouseListener {
+public class LivingroomPage extends Place implements MouseListener
+{
 	
 	protected BufferedImage panelImg = null;
 	protected BufferedImage arrowToBathroomImg = null;
@@ -47,17 +48,17 @@ public class LivingroomPage extends Place implements MouseListener {
 	/**
 	 * Create the panel.
 	 */
-	public LivingroomPage(Controller c) {
+	public LivingroomPage(Controller c)
+	{
 		super(c);
 		waste=new Waste[5];
         super.setPlaceName("Livingroom");
-		
-		
 
 		this.setBounds(100, 100, 900, 540);
 		setLayout(null);
 		
-		try{
+		try
+		{
 			this.panelImg = ImageIO.read(new File("Img\\place\\livingroom.png"));
 			this.arrowToBathroomImg = ImageIO.read(new File("Img\\arrow\\arrow1.png"));
 			this.arrowToYardImg = ImageIO.read(new File("Img\\arrow\\arrow2.png"));
@@ -136,7 +137,7 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodItemInfo.setLayout(null);
 
 		// 연결
-		UsersFoodItem = new JLabel("user's food item");
+		UsersFoodItem = new JLabel("User's food item");
 		UsersFoodItem.setBounds(0, 0, 92, 15);
 		foodItemInfo.add(UsersFoodItem);
 
@@ -145,37 +146,6 @@ public class LivingroomPage extends Place implements MouseListener {
 		foodItemInfo.add(foodItemList);
 
 		foodItemInfo.setVisible(false);
-		
-		/*
-		// 연결3
-		JPanel petClick = new JPanel();
-		petClick.setBounds(479, 333, 153, 119);
-		add(petClick);
-
-		// 연결3
-		JButton changePetPlaceBtn = new JButton("Change pet place");
-		petClick.add(changePetPlaceBtn);
-
-		JLabel label = new JLabel("");
-		petClick.add(label);
-
-		// 연결3
-		JButton talkBtn = new JButton("Talk");
-		petClick.add(talkBtn);
-
-		// 연결3
-		JButton sleepBtn = new JButton("Sleep");
-		petClick.add(sleepBtn);
-
-		// 연결3
-		JButton feedBtn = new JButton("Feed");
-		petClick.add(feedBtn);
-
-		JLabel label_1 = new JLabel("");
-		petClick.add(label_1);
-
-		petClick.setVisible(false);
-		*/
 	}
 	
 	protected void paintComponent(Graphics g)
@@ -183,8 +153,6 @@ public class LivingroomPage extends Place implements MouseListener {
 		super.paintComponent(g);
 		g.drawImage(panelImg, 0, 0, null);
 	}
-
-	
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {

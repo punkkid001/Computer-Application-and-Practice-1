@@ -403,14 +403,14 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public String[] getPetStatList()	//delete 'int index' parameter
     {
     	String[] list=new String[8];
-    	list[0]=Integer.toString(this.happiness);
-    	list[1]=Integer.toString(this.fatigability);
-    	list[2]=Integer.toString(this.satiety);
-    	list[3]=Integer.toString(this.level);
-    	list[4]=Integer.toString(this.exp);
-    	list[5]=Integer.toString(this.stemina);
-    	list[6]=Integer.toString(this.power);
-    	list[7]=Integer.toString(this.defense);
+    	list[0]="Happiness : "+Integer.toString(this.happiness);
+    	list[1]="Fatigability : "+Integer.toString(this.fatigability);
+    	list[2]="Stiety : "+Integer.toString(this.satiety);
+    	list[3]="Level : "+Integer.toString(this.level);
+    	list[4]="Exp : "+Integer.toString(this.exp);
+    	list[5]="Stemina : "+Integer.toString(this.stemina);
+    	list[6]="Power : "+Integer.toString(this.power);
+    	list[7]="Defense : "+Integer.toString(this.defense);
     	
     	return list;
     }
