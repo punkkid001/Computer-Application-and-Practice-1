@@ -34,6 +34,8 @@ public class MainFrame extends JFrame
 	private boolean bathroomClosetFlag=false;
 	private boolean bathroomStatFlag=false;
 	private boolean livingroomFridgeFlag=false;
+	
+	private int i=0;
 	/**
 	 * Create the frame.
 	 */
@@ -173,7 +175,6 @@ public class MainFrame extends JFrame
 	
 	public void gotogameStartingPoint()
 	{
-
 		this.livingroomPage = new LivingroomPage(c);
 		this.livingroomPage.btnGoBathroom.addActionListener(new ActionListener()
 		{
@@ -217,16 +218,19 @@ public class MainFrame extends JFrame
 					if(list!=null)
 					{
 						for(int i=0;i<list.length;i++)
-							livingroomPage.foodItemList.append(list[i]+"\n");
+						{
+							livingroomPage.food[i].setText(list[i]);
+							livingroomPage.food[i].setVisible(true);
+						}
+						livingroomPage.labelEmpty.setVisible(false);
 					}
 					else
-						livingroomPage.foodItemList.append("Freezer is empty");
+						livingroomPage.labelEmpty.setVisible(true);
 					livingroomPage.foodItemInfo.setVisible(true);
 				}
 				else
 				{
 					livingroomFridgeFlag=false;
-					livingroomPage.foodItemList.setText("");
 					livingroomPage.foodItemInfo.setVisible(false);
 				}
 			}
@@ -328,6 +332,131 @@ public class MainFrame extends JFrame
 				gotoYard();
 			}
 		});
+		
+		shopPage.btnCloth[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[0]);
+			}
+		});
+		
+		shopPage.btnCloth[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[1]);
+			}
+		});
+		
+		shopPage.btnCloth[2].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[2]);
+			}
+		});
+		
+		shopPage.btnFood[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[0]);
+			}
+		});
+		
+		shopPage.btnFood[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[1]);
+			}
+		});
+		
+		shopPage.btnFood[2].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[2]);
+			}
+		});
+		
+		shopPage.btnPet[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.animalList[0]);
+			}
+		});
+		
+		shopPage.btnPet[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.animalList[1]);
+			}
+		});
+		
+		shopPage.btnPotion.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.potion);
+			}
+		});
+		
+		/*
+		for(i=0;i<shopPage.btnCloth.length;i++)
+		{
+			shopPage.btnCloth[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					c.getPresentUser().buyItem(shopPage.clothList[i]);
+				}
+			});
+			
+			shopPage.btnFood[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					c.getPresentUser().buyItem(shopPage.foodList[i]);
+				}
+			});
+		}
+		
+		for(i=0;i<shopPage.btnPet.length;i++)
+		{
+			shopPage.btnPet[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					c.getPresentUser().buyItem(shopPage.animalList[i]);
+				}
+			});
+		}
+		
+		this.shopPage.btnPotion.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.potion);
+			}
+		});
+		*/
 		
 		this.yardPage = new YardPage(c);
 		this.yardPage.btnGoLivingroom.addActionListener(new ActionListener()

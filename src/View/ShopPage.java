@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Model.Animal;
+import Model.BabyCat;
+import Model.BabyMonkey;
 import Model.Cloth;
 import Model.Food;
 import Model.Pet;
@@ -25,7 +27,7 @@ public class ShopPage extends Place
 	public Food[] foodList;
 	public Potion potion;
 	public Cloth[] clothList;
-	public Pet[] animalList;
+	public Animal[] animalList;
 	public Waste[] waste;
 	
 	protected BufferedImage panelImg = null;
@@ -51,7 +53,11 @@ public class ShopPage extends Place
 	*/
 	
 	public JLabel simpleUserInfo;
-	private JTextArea sellItemList;
+	
+	private JButton[] btnUserFood=new JButton[3];
+	private JButton[] btnUserCloth=new JButton[3];
+	private JButton[] btnUserPet=new JButton[2];
+	private JButton btnUserPotion;
 	/**
 	 * Create the panel.
 	 */
@@ -60,7 +66,7 @@ public class ShopPage extends Place
 	{
 		foodList = new Food[3];
 		clothList = new Cloth[3];
-		animalList = new Pet[2];
+		animalList = new Animal[2];
 		//~~
 		super.setPlaceName("Shop");
         waste=new Waste[5];
@@ -75,9 +81,9 @@ public class ShopPage extends Place
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        animalList=new Pet[2];
-        animalList[0]=new Pet("Baby Cat", 1000);
-        animalList[1]=new Pet("Baby Monkey", 1000);
+        //animalList=new Pet[2];
+        animalList[0]=new BabyCat("Baby Cat", 1000);
+        animalList[1]=new BabyMonkey("Baby Monkey", 1000);
         //~~
         
         this.setBounds(100, 100, 900, 540);
@@ -166,9 +172,50 @@ public class ShopPage extends Place
 		sellLabel.setBounds(111, 0, 57, 15);
 		sellPanel.add(sellLabel);
 		
-		sellItemList = new JTextArea();
-		sellItemList.setBounds(12, 22, 222, 309);
-		sellPanel.add(sellItemList);
+		btnUserFood[0] = new JButton("food1");
+		btnUserFood[0].setBounds(82, 37, 97, 23);
+		sellPanel.add(btnUserFood[0]);
+		btnUserFood[0].setVisible(false);
+		
+		btnUserFood[1] = new JButton("food2");
+		btnUserFood[1].setBounds(82, 70, 97, 23);
+		sellPanel.add(btnUserFood[1]);
+		btnUserFood[1].setVisible(false);
+		
+		btnUserFood[2] = new JButton("food3");
+		btnUserFood[2].setBounds(82, 103, 97, 23);
+		sellPanel.add(btnUserFood[2]);
+		btnUserFood[2].setVisible(false);
+		
+		btnUserCloth[0] = new JButton("cloth1");
+		btnUserCloth[0].setBounds(82, 136, 97, 23);
+		sellPanel.add(btnUserCloth[0]);
+		btnUserCloth[0].setVisible(false);
+		
+		btnUserCloth[1] = new JButton("cloth2");
+		btnUserCloth[1].setBounds(82, 169, 97, 23);
+		sellPanel.add(btnUserCloth[1]);
+		btnUserCloth[1].setVisible(false);
+		
+		btnUserCloth[2] = new JButton("cloth3");
+		btnUserCloth[2].setBounds(82, 202, 97, 23);
+		sellPanel.add(btnUserCloth[2]);
+		btnUserCloth[2].setVisible(false);
+		
+		btnUserPet[0] = new JButton("pet1");
+		btnUserPet[0].setBounds(82, 235, 97, 23);
+		sellPanel.add(btnUserPet[0]);
+		btnUserPet[0].setVisible(false);
+		
+		btnUserPet[1] = new JButton("pet2");
+		btnUserPet[1].setBounds(82, 268, 97, 23);
+		sellPanel.add(btnUserPet[1]);
+		btnUserPet[1].setVisible(false);
+		
+		btnUserPotion = new JButton("potion");
+		btnUserPotion.setBounds(82, 301, 97, 23);
+		sellPanel.add(btnUserPotion);
+		btnUserPotion.setVisible(false);
 	}
 	
 	protected void paintComponent(Graphics g)

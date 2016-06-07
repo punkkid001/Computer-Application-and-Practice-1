@@ -13,10 +13,11 @@ public class User
     private Animal[] myPetList;
     private Cloth[] myClothList;
     private Food[] myFoodList;
+    private Potion myPotion;
     private int index=0;    //new
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
-    private int petIndex=-1;	//new
+    private int petIndex=-1;	//new\
     private Controller c;
     
     public User(String userName, int petChoice, String petName, Controller c)   
@@ -33,6 +34,7 @@ public class User
             myPetList[0]=new BabyCat(petName, 0);
         else if(petChoice == 2)
             myPetList[0]=new BabyMonkey(petName, 0);
+        ++petIndex;
     }
 
     
@@ -66,7 +68,8 @@ public class User
     {
     	if(this.gold>=i.getPrice())
     	{
-    		myFoodList[foodIndex++]=i;
+    		myFoodList[++foodIndex]=i;
+    		System.out.println(i.getName()+" buy...");
     		this.gold-=i.getPrice();
     		return true;
     	}
@@ -76,25 +79,42 @@ public class User
     {
     	if(this.gold>=i.getPrice())
     	{
-    		myClothList[clothIndex++]=i;
+    		myClothList[++clothIndex]=i;
+    		System.out.println(i.getName()+" buy...");
     		this.gold-=i.getPrice();
     		return true;
     	}
 		return false;
     }
-    public boolean buyItem(Pet i)	//Need TO CHANGE
+    public boolean buyItem(Animal i)	//Need TO CHANGE
     {
     	if(this.gold>=i.getPrice())
     	{
+    		/*
     		if(i.getName()=="BabyCat")
-    			myPetList[petIndex++]=new BabyCat();
+    			myPetList[++petIndex]=new BabyCat();
     		else
-    			myPetList[petIndex++]=new BabyMonkey();
+    			myPetList[++petIndex]=new BabyMonkey();
+    			*/
+    		myPetList[++petIndex]=i;
+    		System.out.println(i.getName()+" buy...");
     		this.gold-=i.getPrice();
     		System.out.println("구매 완료");
     		return true;
     	}
 		return false;
+    }
+    
+    public boolean buyItem(Potion i)
+    {
+    	if(this.gold>=i.getPrice())
+    	{
+    		myPotion=i;
+    		System.out.println(i.getName()+" buy...");
+    		this.gold-=i.getPrice();
+    		return true;
+    	}
+    	return false;
     }
     
     public String[] getClothItemNameList()
