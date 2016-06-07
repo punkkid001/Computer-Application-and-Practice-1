@@ -48,7 +48,7 @@ public class MainFrame extends JFrame
 	{
 		this.c = c;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 540);
+		setBounds(100, 100, 918, 587);
 		
 		/*
 		contentPane = new JPanel();

@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JToolBar;
@@ -75,7 +76,7 @@ public class LivingroomPage extends Place implements MouseListener
 		}
 
 		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
-		btnGoShop.setBounds(810, 5, 70, 65);
+		btnGoShop.setBounds(815, 5, 70, 65);
 		//¹öÆ° Åõ¸íÈ­
 		btnGoShop.setContentAreaFilled(false);
 		btnGoShop.setBorderPainted(false);
@@ -90,8 +91,9 @@ public class LivingroomPage extends Place implements MouseListener
 		btnGoBathroom.setFocusPainted(false);
 		add(btnGoBathroom);
 		JLabel labelGoBathroom = new JLabel("È­Àå½Ç");
-		labelGoBathroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 100, 30);
+		labelGoBathroom.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoBathroom.setForeground(Color.white);
+		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 80, 30);
 		add(labelGoBathroom);
 
 		btnGoYard = new JButton(new ImageIcon(this.arrowToYardImg));
@@ -102,12 +104,15 @@ public class LivingroomPage extends Place implements MouseListener
 		btnGoYard.setFocusPainted(false);
 		add(btnGoYard);
 		JLabel labelGoYard = new JLabel("¸¶´ç");
-		labelGoYard.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 100, 30);
+		labelGoYard.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoYard.setForeground(Color.white);
+		labelGoYard.setBounds(btnGoYard.getX(), btnGoYard.getY()-30, 80, 30);
 		add(labelGoYard);
 
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(580, 15, 247, 43);
+		simpleUserInfo.setBounds(550, 15, 300, 30);
+		simpleUserInfo.setBackground(Color.lightGray);
+		simpleUserInfo.setOpaque(true);
 		add(simpleUserInfo);
 
 		bedBtn = new JButton(new ImageIcon(this.bedImg));

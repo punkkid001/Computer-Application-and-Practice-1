@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -75,7 +76,7 @@ public class YardPage extends Place implements ActionListener
 		}
 		
 		btnGoShop = new JButton(new ImageIcon(this.arrowToShopImg));
-		btnGoShop.setBounds(810, 5, 70, 65);
+		btnGoShop.setBounds(815, 5, 70, 65);
 		//¹öÆ° Åõ¸íÈ­
 		btnGoShop.setContentAreaFilled(false);
 		btnGoShop.setBorderPainted(false);
@@ -90,8 +91,9 @@ public class YardPage extends Place implements ActionListener
 		btnGoLivingroom.setFocusPainted(false);
 		add(btnGoLivingroom);
 		JLabel labelGoLivingroom = new JLabel("°Å½Ç");
-		labelGoLivingroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 100, 30);
+		labelGoLivingroom.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoLivingroom.setForeground(Color.white);
+		labelGoLivingroom.setBounds(btnGoLivingroom.getX(), btnGoLivingroom.getY()-30, 80, 30);
 		add(labelGoLivingroom);
 	
 		btnGoBathroom = new JButton(new ImageIcon(this.arrowToBathroomImg));
@@ -102,12 +104,15 @@ public class YardPage extends Place implements ActionListener
 		btnGoBathroom.setFocusPainted(false);
 		add(btnGoBathroom);
 		JLabel labelGoBathroom = new JLabel("È­Àå½Ç");
-		labelGoBathroom.setFont(new Font("µ¸¿ò", Font.BOLD, 25));
-		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 100, 30);
+		labelGoBathroom.setFont(new Font("°íµñ", Font.BOLD, 25));
+		labelGoBathroom.setForeground(Color.white);
+		labelGoBathroom.setBounds(btnGoBathroom.getX(), btnGoBathroom.getY()-30, 80, 30);
 		add(labelGoBathroom);
 		
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(621, 60, 247, 43);
+		simpleUserInfo.setBounds(550, 15, 300, 30);
+		simpleUserInfo.setBackground(Color.lightGray);
+		simpleUserInfo.setOpaque(true);
 		add(simpleUserInfo);
 		
 		playBtn = new JButton(new ImageIcon(this.playImg));
