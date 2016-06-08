@@ -99,12 +99,6 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	this.setXY(p.getX(), p.getY());
     }
     
-    public Animal(String name, int price)
-    {
-    	this();
-    	this.name=name;
-    	this.price=price;
-    }
     public void setMyUser(User p) {
     	this.myUser = p;
     }
@@ -202,6 +196,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public void setDefense(int defense){this.defense=defense;}
     public void setStemina(int stemina) {this.stemina=stemina;}
     public void setSpeechList(String speech, int index){this.speechList[index]=speech;}
+    public void setPrice(int price){this.price=price;}
 
 
     @Override

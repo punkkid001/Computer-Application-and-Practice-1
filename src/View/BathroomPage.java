@@ -7,7 +7,9 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
 import Controller.Controller;
@@ -49,6 +51,9 @@ public class BathroomPage extends Place
 	
 	protected JButton []cloth;
 	protected JLabel emptyLabel;
+	
+	protected JPopupMenu menu;
+	protected JMenuItem []items;
 	/**
 	 * Create the panel.
 	 */
@@ -164,6 +169,8 @@ public class BathroomPage extends Place
 		emptyLabel.setBounds(39, 71, 129, 53);
 		emptyLabel.setVisible(false);
 		clothItemInfo.add(emptyLabel);
+		
+		menu=new JPopupMenu();
 		
 		clothItemInfo.setVisible(false);
 		

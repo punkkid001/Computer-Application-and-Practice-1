@@ -459,7 +459,7 @@ public class MainFrame extends JFrame
 				*/
 					c.getPresentUser().buyItem(shopPage.potion);
 				c.getPresentUser().buyItem(shopPage.potion);
-				c.viewShopStatus();
+				//c.viewShopStatus();
 			}
 		});
 		
@@ -470,13 +470,13 @@ public class MainFrame extends JFrame
 			{
 				if(shopPetFlag==1)
 				{
-					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 1000);
+					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 500, false);
 					c.getPresentUser().buyItem(shopPage.animalList[0]);
 					shopPage.textField.setText("");
 				}
 				else if(shopPetFlag==2)
 				{
-					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 1000);
+					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 500, false);
 					c.getPresentUser().buyItem(shopPage.animalList[1]);
 					shopPage.textField.setText("");
 				}
@@ -484,6 +484,7 @@ public class MainFrame extends JFrame
 				shopPage.btnOk.setVisible(false);
 				shopPage.labelInputPetName.setVisible(false);
 				shopPage.textField.setVisible(false);
+				c.viewShopStatus();
 			}
 		});
 		

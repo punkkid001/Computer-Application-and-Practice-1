@@ -86,8 +86,8 @@ public class ShopPage extends Place
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        animalList[0]=new BabyCat("Baby Cat", 1000);
-        animalList[1]=new BabyMonkey("Baby Monkey", 1000);
+        animalList[0]=new BabyCat("Baby Cat", 500);
+        animalList[1]=new BabyMonkey("Baby Monkey", 500);
                 
         this.setBounds(100, 100, 900, 540);
 		setLayout(null);

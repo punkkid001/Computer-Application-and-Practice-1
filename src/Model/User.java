@@ -87,6 +87,7 @@ public class User
     }
     public boolean buyItem(Animal i)	//Need TO CHANGE
     {
+    	System.out.println(i.getPrice()+"원 입니다.");
     	if(this.gold>=i.getPrice())
     	{
     		petIndex++;

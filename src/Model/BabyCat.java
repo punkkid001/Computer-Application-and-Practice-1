@@ -12,10 +12,10 @@ import javax.swing.ImageIcon;
 public class BabyCat extends Animal
 {
     
-	public BabyCat(){
-		
-    }
-    public BabyCat(Animal p) {
+	public BabyCat(){}
+	
+    public BabyCat(Animal p)
+    {
     	super(p);
     	System.out.println("기본 생성자 호출");
     	try {
@@ -43,6 +43,13 @@ public class BabyCat extends Animal
         setSpeechList("나랑 놀아줄거야?", 12);
         setSpeechList("내가 뭘 잘못했다고...", 13);
         setSpeechList("히야옹ㅠ", 14);
+    }
+    
+    public BabyCat(String name, int price, boolean flag)
+    {
+    	this();
+    	super.setName(name);
+    	super.setPrice(price);
     }
     
     //change

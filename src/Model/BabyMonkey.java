@@ -11,10 +11,9 @@ import javax.swing.ImageIcon;
  */
 public class BabyMonkey extends Animal
 {
-    public BabyMonkey(){
-    	
-    }
-    public BabyMonkey(Animal p) {
+    public BabyMonkey(){}
+    public BabyMonkey(Animal p)
+    {
     	super(p);
     	System.out.println("±âº» »ý¼ºÀÚ È£Ãâ");
     	try {
@@ -35,13 +34,20 @@ public class BabyMonkey extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList(" ", 8);
-        setSpeechList(" ", 9);
-        setSpeechList(" ", 10);
-        setSpeechList(" ", 11);
-        setSpeechList(" ", 12);
-        setSpeechList(" ", 13);
-        setSpeechList(" ", 14);
+        setSpeechList("³ª ±×³É Àß·¡ ¿ì³¢³¢!!!", 8);
+        setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 9);
+        setSpeechList("¿ìƒ­ ¾È³ç~", 10);
+        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 11);
+        setSpeechList("¿ì²¥²¦ ±×·¡~~", 12);
+        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 13);
+        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 14);
+    }
+    
+    public BabyMonkey(String name, int price, boolean flag)
+    {
+    	this();
+    	super.setName(name);
+    	super.setPrice(price);
     }
 
     //change
