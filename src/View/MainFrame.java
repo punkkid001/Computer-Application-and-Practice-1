@@ -217,16 +217,19 @@ public class MainFrame extends JFrame
 					if(list!=null)
 					{
 						for(int i=0;i<list.length;i++)
-							livingroomPage.foodItemList.append(list[i]+"\n");
+						{
+							livingroomPage.food[i].setText(list[i]);
+							livingroomPage.food[i].setVisible(true);
+						}
+						livingroomPage.labelEmpty.setVisible(false);
 					}
 					else
-						livingroomPage.foodItemList.append("Freezer is empty");
+						livingroomPage.labelEmpty.setVisible(true);
 					livingroomPage.foodItemInfo.setVisible(true);
 				}
 				else
 				{
 					livingroomFridgeFlag=false;
-					livingroomPage.foodItemList.setText("");
 					livingroomPage.foodItemInfo.setVisible(false);
 				}
 			}
@@ -326,6 +329,87 @@ public class MainFrame extends JFrame
 			{
 				// TODO Auto-generated method stub
 				gotoYard();
+			}
+		});
+		
+		shopPage.btnCloth[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[0]);
+			}
+		});
+		
+		shopPage.btnCloth[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[1]);
+			}
+		});
+		
+		shopPage.btnCloth[2].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.clothList[2]);
+			}
+		});
+		
+		shopPage.btnFood[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[0]);
+			}
+		});
+		
+		shopPage.btnFood[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[1]);
+			}
+		});
+		
+		shopPage.btnFood[2].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.foodList[2]);
+			}
+		});
+		
+		shopPage.btnPet[0].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.animalList[0]);
+			}
+		});
+		
+		shopPage.btnPet[1].addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.animalList[1]);
+			}
+		});
+		
+		shopPage.btnPotion.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				c.getPresentUser().buyItem(shopPage.potion);
 			}
 		});
 		

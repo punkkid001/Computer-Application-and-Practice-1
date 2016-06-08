@@ -63,6 +63,12 @@ public abstract class Place extends JPanel
 			if (petIcon[i] == null) {
 				petIcon[i] = new PetLabel(pet, this, c.getPresentUser());
 				System.out.println(pet.getClass());
+				//¶ËºÎºÐ
+				int drapNum = petIcon[i].pet.getDrappings();
+				for(int j = 0; j < drapNum ; j++) {
+					petIcon[i].makeDrapping();
+				}
+				//¶ËºÎºÐ ³¡
 				pet.setLabel(petIcon[i]);
 				petIcon[i].setIcon(pet.getMyImageIcon());
 				petIcon[i].setBounds(pet.getX(), pet.getY(), 150, 150);
@@ -97,6 +103,7 @@ public abstract class Place extends JPanel
 				if(petIcon[i].pet == pet)
 				{
 					System.out.println(i + "??");
+					petIcon[i].removeDrappingFromMap();
 					petIcon[i].setVisible(false);
 					petIcon[i] = null;
 				}

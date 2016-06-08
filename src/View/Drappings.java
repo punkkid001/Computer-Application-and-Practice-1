@@ -13,6 +13,9 @@ public class Drappings extends JLabel implements Runnable{
 	private Animal pet;
 	private ImageIcon drappingImage;
 	private int m_x, m_y;
+	private int o_x, o_y; // move object
+	private double speed_x, speed_y;
+	private int myNum;
 	
 	public Drappings(){
 		try {
@@ -26,15 +29,40 @@ public class Drappings extends JLabel implements Runnable{
 	public Drappings(PetLabel viewPet){
 		this();
 		this.viewPet = viewPet;
-		this.setBounds(viewPet.getX()+10, viewPet.getY()+200, 37, 35);
-		this.setVisible(true);
+		this.pet = viewPet.pet;
+		this.m_x = pet.getX();
+		this.m_y = pet.getY();
+		System.out.println("√÷√  ∂À ¡¬«• : " + m_x +" " + m_y);
+		this.setBounds(m_x-10, m_y+130, 37, 35);
+		//this.setVisible(true);
+	}
+	public Drappings(PetLabel viewPet, int myNum) {
+		this(viewPet);
+		this.myNum = myNum;
+		this.setBounds(m_x-10 + 40*myNum, m_y+130, 37, 35);
 	}
 	@Override
 	public void run() {
+		double x_cal, y_cal;
+		while(true) {
+			x_cal = this.viewPet.getX();
+			y_cal = this.viewPet.getY();
+			System.out.println("x, y ∂À¡¬«•" + x_cal +" "+ y_cal);
+			this.setLocation((int)x_cal-10 + 40*myNum, (int)y_cal+130);
+		//m_x-10 + 40*myNum, m_y+130, 37, 35
+			if(this.viewPet.getMoveflag() == 0)
+				break;
 		// TODO Auto-generated method stub
-		
+		}
 	}
-	
+	public void moveThread(int ox, int oy, double xspeed, double yspeed) {
+		Thread t = new Thread(this);
+		this.o_x = ox;
+		this.o_y = oy;
+		this.speed_x = xspeed;
+		this.speed_y = yspeed;
+		t.start();
+	}
 	public void setDVisible() {
 		this.setVisible(true);
 	}

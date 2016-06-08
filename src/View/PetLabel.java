@@ -332,7 +332,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	public void makeDrapping() {
 		for(int i = 0; i < 5; i++) {
 			if(this.drap[i] == null) {
-				this.drap[i] = new Drappings(this);
+				this.drap[i] = new Drappings(this, i);
 				System.out.println(this.place.getName());
 				this.place.add(this.drap[i]);
 				this.drap[i].setVisible(true);
@@ -342,11 +342,24 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	}
 	public void ridDrapping() {
 		for(int i = 0; i < 5; i++) {
+			if(this.drap[i] != null) {
+				this.drap[i].setVisible(false);
+				this.drap[i] = null;
+			}
+		}
+	}
+	public void removeDrappingFromMap() {
+		int drapNum = this.pet.getDrappings();
+		for(int i = 0; i < drapNum; i++) {
 			this.drap[i].setVisible(false);
 			this.drap[i] = null;
 		}
 	}
 	
+	public int getMoveflag() {
+		return this.moveFlag;
+	}
+	//¶Ë ¼Ò½º ³¡
 	public void makeThread()
 	{
 		this.t = new Thread(this);
@@ -364,7 +377,9 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	@Override
 	public void run()
 	{
+		
 		this.pet.setXY(this.getX(), this.getY());
+		
 		double x = (double)this.pet.getX();
 		double y = (double)this.pet.getY();
 		System.out.println(x + "  " + y);
@@ -372,6 +387,9 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		double y_cal = y;
 		double speed_x = Math.abs(o_x - x) / 30;
 		double speed_y = Math.abs(o_y - y) / 30;
+		for(int i = 0; i < pet.getDrappings(); i++) {
+			this.drap[i].moveThread(o_x, o_y, speed_x, speed_y);
+		}
 		// TODO Auto-generated method stub
 		System.out.println("speed : x y" + speed_x + " " + speed_y);
 		while(this.moveFlag == 1)

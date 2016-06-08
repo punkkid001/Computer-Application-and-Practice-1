@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import Model.Animal;
+import Model.BabyCat;
+import Model.BabyMonkey;
 import Model.Cloth;
 import Model.Food;
 import Model.Pet;
@@ -26,7 +28,7 @@ public class ShopPage extends Place
 	public Food[] foodList;
 	public Potion potion;
 	public Cloth[] clothList;
-	public Pet[] animalList;
+	public Animal[] animalList;
 	public Waste[] waste;
 	
 	protected BufferedImage panelImg = null;
@@ -61,7 +63,7 @@ public class ShopPage extends Place
 	{
 		foodList = new Food[3];
 		clothList = new Cloth[3];
-		animalList = new Pet[2];
+		animalList = new Animal[2];
 		//~~
 		super.setPlaceName("Shop");
         waste=new Waste[5];
@@ -76,9 +78,8 @@ public class ShopPage extends Place
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        animalList=new Pet[2];
-        animalList[0]=new Pet("Baby Cat", 1000);
-        animalList[1]=new Pet("Baby Monkey", 1000);
+        animalList[0]=new BabyCat("Baby Cat", 1000);
+        animalList[1]=new BabyMonkey("Baby Monkey", 1000);
         //~~
         
         this.setBounds(100, 100, 900, 540);

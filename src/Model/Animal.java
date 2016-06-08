@@ -42,6 +42,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     
     private User myUser;
     private int index;
+    private int price;
 
     public Animal()
     {
@@ -94,6 +95,14 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	this.setActiveCount(p.getActiveCount());
     	this.setXY(p.getX(), p.getY());
     }
+    
+    public Animal(String name, int price)
+    {
+    	this();
+    	this.name=name;
+    	this.price=price;
+    }
+    
     public User getMyUser() {
     	return this.myUser;
     }
@@ -176,6 +185,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public int getActiveCount(){return this.activeCount;}
     public String[] getSpeechList(){return this.speechList;}
     public Place getMyLocation(){return this.myLocation;}
+    public int getPrice(){return this.price;}
     //public String getLocationName(){return this.locationName;}
 
     //set method
@@ -203,7 +213,27 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             return speechList[1];
         }
     }
-
+    
+    public void makeDrappings()
+    {
+        if(this.activeCount==2)  //debug   original -> 10;
+        {
+            this.activeCount = 0;
+            this.drappings += 1;
+            if(this.drappings > 5)
+            	this.drappings = 5;
+            else {
+            	System.out.println("똥을 싸다" + this.myView.getClass());
+            	this.myView.makeDrapping();
+            }
+            if(this.drappings==5)	//new
+            	this.happiness-=40;
+            System.out.println(this.name+" Message : make drapping....");
+        //   this.getMyLocation().setVisible(true);
+            this.getMyLocation().repaint();
+        }
+        
+    }
     @Override
     public String feed()
     {
@@ -328,23 +358,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         }
     }
 
-    public void makeDrappings()
-    {
-        if(this.activeCount==3)  //debug   original -> 10;
-        {
-            this.activeCount = 0;
-            this.drappings += 1;
-            if(this.drappings > 5)
-            	this.drappings = 5;
-            else {
-            	System.out.println(this.myView.getName());
-            	this.myView.makeDrapping();
-            }
-            if(this.drappings==5)	//new
-            	this.happiness-=40;
-            System.out.println(this.name+" Message : make drapping....");
-        }
-    }
+    
 
     public void dress(Cloth cloth)
     {
@@ -387,7 +401,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     {
         int max=0;
 
-        this.checkExp();
+        
         this.activeCount++;
         this.makeDrappings();
         if(this.fatigability>=100)
@@ -399,6 +413,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             System.out.println("Message : "+speechList[15]);
         else if(this.happiness>=80)
             System.out.println("Message : "+speechList[14]);
+        
+        this.checkExp();
+        
     }
 
     //change

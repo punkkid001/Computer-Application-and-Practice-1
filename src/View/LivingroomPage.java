@@ -39,10 +39,12 @@ public class LivingroomPage extends Place implements MouseListener
 	protected JButton btnGoYard;
 	protected JButton fridgeBtn;
 	protected JButton bedBtn;
+	protected JButton[] food;
+	
+	protected JLabel labelEmpty;
 
 	protected JPanel foodItemInfo;
 	protected JLabel UsersFoodItem;
-	protected JTextArea foodItemList;
 
 	public JLabel simpleUserInfo;
 
@@ -143,12 +145,30 @@ public class LivingroomPage extends Place implements MouseListener
 
 		// ¿¬°á
 		UsersFoodItem = new JLabel("User's food item");
-		UsersFoodItem.setBounds(0, 0, 92, 15);
+		UsersFoodItem.setBounds(0, 0, 113, 15);
 		foodItemInfo.add(UsersFoodItem);
-
-		foodItemList = new JTextArea();
-		foodItemList.setBounds(10, 25, 207, 114);
-		foodItemInfo.add(foodItemList);
+		
+		food=new JButton[3];
+		food[0] = new JButton("0");
+		food[0].setBounds(71, 25, 97, 23);
+		foodItemInfo.add(food[0]);
+		food[0].setVisible(false);
+		
+		food[1]= new JButton("1");
+		food[1].setBounds(71, 73, 97, 23);
+		foodItemInfo.add(food[1]);
+		food[1].setVisible(false);
+		
+		food[2] = new JButton("2");
+		food[2].setBounds(71, 116, 97, 23);
+		foodItemInfo.add(food[2]);
+		food[2].setVisible(false);
+		
+		labelEmpty = new JLabel("Empty!");
+		labelEmpty.setFont(new Font("±¼¸²", Font.BOLD, 24));
+		labelEmpty.setForeground(Color.RED);
+		labelEmpty.setBounds(82, 52, 92, 43);
+		foodItemInfo.add(labelEmpty);
 
 		foodItemInfo.setVisible(false);
 	}
