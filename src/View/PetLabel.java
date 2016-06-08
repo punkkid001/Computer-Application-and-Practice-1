@@ -29,6 +29,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	private int moveFlag;
 	protected int o_x, o_y;
 	
+	private Drappings drap[];
 	public JMenuItem behaviorItem7;
 	
 	Thread t;
@@ -37,6 +38,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	
 	public PetLabel(Animal pet, Place place, User myUser)
 	{	
+		this.drap = new Drappings[5];
 		this.pet = pet;
 		this.pet.setLabel(this);
 		this.place = place;
@@ -326,6 +328,25 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.pet = p;
 	}
 	
+	//¶Ë ¼Ò½º
+	public void makeDrapping() {
+		for(int i = 0; i < 5; i++) {
+			if(this.drap[i] == null) {
+				this.drap[i] = new Drappings(this);
+				System.out.println(this.place.getName());
+				this.place.add(this.drap[i]);
+				this.drap[i].setVisible(true);
+				break;
+			}
+		}
+	}
+	public void ridDrapping() {
+		for(int i = 0; i < 5; i++) {
+			this.drap[i].setVisible(false);
+			this.drap[i] = null;
+		}
+	}
+	
 	public void makeThread()
 	{
 		this.t = new Thread(this);
@@ -416,7 +437,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		
 		this.pet.setXY((int)x_cal,(int)y_cal);
 	}
-
+	
 	
 	@Override
 	public void mouseClicked(MouseEvent e)

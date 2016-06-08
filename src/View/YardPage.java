@@ -69,6 +69,7 @@ public class YardPage extends Place implements ActionListener
 			this.arrowToShopImg = ImageIO.read(new File("Img\\arrow\\shop.png"));
 			this.playImg = ImageIO.read(new File("Img\\furniture\\play.png"));
 			this.fightImg = ImageIO.read(new File("Img\\furniture\\fight.png"));
+			
 		}
 		catch (IOException e)
 		{
@@ -130,6 +131,7 @@ public class YardPage extends Place implements ActionListener
 		fightBtn.setContentAreaFilled(false);
 		fightBtn.setBorderPainted(false);
 		fightBtn.setFocusPainted(false);
+		
 		fightBtn.addActionListener(null);
 		add(fightBtn);
 		
