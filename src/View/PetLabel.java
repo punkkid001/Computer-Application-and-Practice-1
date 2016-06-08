@@ -322,8 +322,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		pet = myUser.getPet(pet.getIndex());
 		System.out.println(pet + "퇴화해라");
 		pet.getMyLocation().createPetIcon(pet);
-		//pet.getLabel().setVisible(true);
-		//pet.getMyLocation().setVisible(true);
 		pet.getMyLocation().repaint();
 	}
 	//진화 소스

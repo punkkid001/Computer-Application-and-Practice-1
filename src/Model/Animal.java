@@ -52,9 +52,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         		"Sleep...", "I'm so sleeping!!!!!!", "null", "null", "null", "null", "null", "null", "HAPPY", "HUNGRY", "SLEEPING"};
 
         //setting start stat
-        this.fatigability=50;
-        this.satiety=50;
-        this.happiness=50;
+        this.fatigability=30;  //피로도
+        this.satiety=30;	//배고픔
+        this.happiness=30;	//행복도
         this.drappings=0;
 
         this.power=20;
@@ -245,7 +245,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         } else
         {
             this.fatigability+=10;
-            this.satiety+=30;
+            this.satiety-=20; //배고픔
             this.exp+=5;
             this.happiness+=10;
             this.statCheck();
@@ -462,9 +462,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public String[] getPetStatList()	//delete 'int index' parameter
     {
     	String[] list=new String[8];
-    	list[0]="Happiness : "+Integer.toString(this.happiness);
-    	list[1]="Fatigability : "+Integer.toString(this.fatigability);
-    	list[2]="Stiety : "+Integer.toString(this.satiety);
+    	list[0]="행복도 : "+Integer.toString(this.happiness);
+    	list[1]="피로도 : "+Integer.toString(this.fatigability);
+    	list[2]="배고픔 : "+Integer.toString(this.satiety);
     	list[3]="Level : "+Integer.toString(this.level);
     	list[4]="Exp : "+Integer.toString(this.exp);
     	list[5]="Stemina : "+Integer.toString(this.stemina);
