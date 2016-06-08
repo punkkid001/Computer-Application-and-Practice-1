@@ -86,10 +86,9 @@ public class ShopPage extends Place
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        //animalList[0]=new BabyCat("Baby Cat", 1000);
-        //animalList[1]=new BabyMonkey("Baby Monkey", 1000);
-        //~~
-        
+        animalList[0]=new BabyCat("Baby Cat", 1000);
+        animalList[1]=new BabyMonkey("Baby Monkey", 1000);
+                
         this.setBounds(100, 100, 900, 540);
 		setLayout(null);
 		
@@ -131,40 +130,49 @@ public class ShopPage extends Place
 		//btnFood=new JButton[3];
 		btnFood[0] = new JButton("Preminum");
 		btnFood[0].setBounds(74, 25, 97, 23);
+		btnFood[0].setToolTipText(getTooltipText(foodList[0]));
 		buyPanel.add(btnFood[0]);
 		
 		btnFood[1]= new JButton("Cake");
 		btnFood[1].setBounds(74, 58, 97, 23);
+		btnFood[1].setToolTipText(getTooltipText(foodList[1]));
 		buyPanel.add(btnFood[1]);
 		
 		btnFood[2] = new JButton("Parfait");
 		btnFood[2].setBounds(74, 91, 97, 23);
+		btnFood[2].setToolTipText(getTooltipText(foodList[2]));
 		buyPanel.add(btnFood[2]);
 		
 		//btnCloth=new JButton[3];
 		btnCloth[0] = new JButton("Hat");
 		btnCloth[0].setBounds(74, 130, 97, 23);
+		btnCloth[0].setToolTipText(getTooltipText(clothList[0]));
 		buyPanel.add(btnCloth[0]);
 		
 		btnCloth[1] = new JButton("Shoes");
 		btnCloth[1].setBounds(74, 163, 97, 23);
+		btnCloth[1].setToolTipText(getTooltipText(clothList[1]));
 		buyPanel.add(btnCloth[1]);
 		
 		btnCloth[2] = new JButton("Ribbon");
 		btnCloth[2].setBounds(74, 196, 97, 23);
+		btnCloth[2].setToolTipText(getTooltipText(clothList[2]));
 		buyPanel.add(btnCloth[2]);
 		
 		//btnPet=new JButton[2];
 		btnPet[0] = new JButton("Baby Cat");
 		btnPet[0].setBounds(74, 233, 97, 23);
+		btnPet[0].setToolTipText(getTooltipText(animalList[0]));
 		buyPanel.add(btnPet[0]);
 		
 		btnPet[1] = new JButton("Baby Monkey");
 		btnPet[1].setBounds(67, 266, 111, 23);
+		btnPet[1].setToolTipText(getTooltipText(animalList[1]));
 		buyPanel.add(btnPet[1]);
 		
 		btnPotion = new JButton("???");
 		btnPotion.setBounds(74, 308, 97, 23);
+		btnPotion.setToolTipText(getTooltipText(potion));
 		buyPanel.add(btnPotion);
 		
 		buyPanel.setVisible(true);
@@ -234,6 +242,68 @@ public class ShopPage extends Place
 		labelInputPetName.setBounds(339, 381, 121, 15);
 		add(labelInputPetName);
 		labelInputPetName.setVisible(false);
+	}
+	
+	public String getTooltipText(Food i)
+	{
+		String list[]=new String[5];
+		String mergeList="";
+	
+		list[0]="Name : "+i.getName();
+		list[1]="Fatigablity : "+Integer.toString(i.getFatigability());
+		list[2]="Happiness : "+Integer.toString(i.getHappiness());
+		list[3]="Satiety : "+Integer.toString(i.getSatiety());
+		list[4]="Price : "+Integer.toString(i.getPrice());
+		
+		for(int j=0;j<list.length;j++)
+			mergeList+=(list[j]+"/ ");
+		
+		return mergeList;
+	}
+	
+	public String getTooltipText(Cloth i)
+	{
+		String list[]=new String[5];
+		String mergeList="";
+		
+		list[0]="Name : "+i.getName();
+		list[1]="Power : "+Integer.toString(i.getPower());
+		list[2]="Defense : "+Integer.toString(i.getDefense());
+		list[3]="Stemina : "+Integer.toString(i.getStemina());
+		list[4]="Price : "+Integer.toString(i.getPrice());
+		
+		for(int j=0;j<list.length;j++)
+			mergeList+=(list[j]+"/ ");
+		
+		return mergeList;
+	}
+	
+	public String getTooltipText(Animal i)
+	{
+		String list[]=new String[2];
+		String mergeList="";
+		
+		list[0]="Name : "+i.getName();
+		list[1]="Price : "+Integer.toString(i.getPrice());
+		
+		for(int j=0;j<list.length;j++)
+			mergeList+=(list[j]+"/ ");
+		
+		return mergeList;
+	}
+	
+	public String getTooltipText(Potion i)
+	{
+		String list[]=new String[2];
+		String mergeList="";
+		
+		list[0]="Name : "+i.getName();
+		list[1]="Price : "+Integer.toString(i.getPrice());
+		
+		for(int j=0;j<list.length;j++)
+			mergeList+=(list[j]+"/ ");
+		
+		return mergeList;
 	}
 	
 	protected void paintComponent(Graphics g)

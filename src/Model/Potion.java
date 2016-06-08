@@ -9,7 +9,7 @@ public class Potion extends Food
     {
         super.setName(name);
         super.setHappiness(happiness);
-        super.setFatigablity(fatigability);
+        super.setFatigability(fatigability);
         super.setSatiety(satiety);
         super.setPrice(price);
     }
