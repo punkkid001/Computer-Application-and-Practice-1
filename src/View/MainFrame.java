@@ -409,7 +409,16 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				c.getPresentUser().buyItem(shopPage.potion);
+				/*
+				if(shopPage.textField.getText().isEmpty())
+				{
+					JOptionPane.showMessageDialog(null, "Please input pet name", "Warning", JOptionPane.WARNING_MESSAGE);
+					System.out.println("petName이 설정되지 않았습니다.");
+					return;
+				}
+				else
+				*/
+					c.getPresentUser().buyItem(shopPage.potion);
 			}
 		});
 		
