@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.Controller;
+import Model.BabyCat;
+import Model.BabyMonkey;
 
 import javax.swing.JButton;
 
@@ -34,6 +36,7 @@ public class MainFrame extends JFrame
 	private boolean bathroomClosetFlag=false;
 	private boolean bathroomStatFlag=false;
 	private boolean livingroomFridgeFlag=false;
+	private int shopPetFlag=0;	//1 : cat / 2 : monkey
 	/**
 	 * Create the frame.
 	 */
@@ -338,6 +341,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[0]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -347,6 +351,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[1]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -356,6 +361,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[2]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -365,6 +371,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[0]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -374,6 +381,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[1]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -383,6 +391,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[2]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -391,7 +400,22 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				c.getPresentUser().buyItem(shopPage.animalList[0]);
+				if(shopPetFlag==0)
+				{
+					shopPetFlag=1;
+					shopPage.btnOk.setVisible(true);
+					shopPage.labelInputPetName.setVisible(true);
+					shopPage.textField.setVisible(true);
+				}
+				else
+				{
+					shopPetFlag=0;
+					shopPage.btnOk.setVisible(false);
+					shopPage.labelInputPetName.setVisible(false);
+					shopPage.textField.setVisible(false);
+				}
+				//c.getPresentUser().buyItem(shopPage.animalList[0]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -400,7 +424,22 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				c.getPresentUser().buyItem(shopPage.animalList[1]);
+				if(shopPetFlag==0)
+				{
+					shopPetFlag=2;
+					shopPage.btnOk.setVisible(true);
+					shopPage.labelInputPetName.setVisible(true);
+					shopPage.textField.setVisible(true);
+				}
+				else
+				{
+					shopPetFlag=0;
+					shopPage.btnOk.setVisible(false);
+					shopPage.labelInputPetName.setVisible(false);
+					shopPage.textField.setVisible(false);
+				}
+				//c.getPresentUser().buyItem(shopPage.animalList[0]);
+				c.viewShopStatus();
 			}
 		});
 		
@@ -410,6 +449,31 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.potion);
+				c.viewShopStatus();
+			}
+		});
+		
+		shopPage.btnOk.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				if(shopPetFlag==1)
+				{
+					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 1000);
+					c.getPresentUser().buyItem(shopPage.animalList[0]);
+					shopPage.textField.setText("");
+				}
+				else if(shopPetFlag==2)
+				{
+					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 1000);
+					c.getPresentUser().buyItem(shopPage.animalList[1]);
+					shopPage.textField.setText("");
+				}
+				shopPetFlag=0;
+				shopPage.btnOk.setVisible(false);
+				shopPage.labelInputPetName.setVisible(false);
+				shopPage.textField.setVisible(false);
 			}
 		});
 		

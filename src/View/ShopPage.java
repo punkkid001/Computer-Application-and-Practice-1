@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import java.awt.Font;
 
 public class ShopPage extends Place
 {
@@ -51,9 +53,16 @@ public class ShopPage extends Place
 	protected JButton btnShoes;
 	protected JButton btnRibbon;
 	*/
+	protected JButton[] btnUserFood=new JButton[3];
+	protected JButton[] btnUserCloth=new JButton[3];
+	protected JButton[] btnUserPet=new JButton[2];
+	protected JButton btnUserPotion;	
+	
+	protected JButton btnOk;
+	protected JLabel labelInputPetName;
+	protected JTextField textField;
 	
 	public JLabel simpleUserInfo;
-	private JTextArea sellItemList;
 	/**
 	 * Create the panel.
 	 */
@@ -77,8 +86,8 @@ public class ShopPage extends Place
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);
         clothList[2]=new Cloth("Ribbon", 10, 10, 30, 50);
 
-        animalList[0]=new BabyCat("Baby Cat", 1000);
-        animalList[1]=new BabyMonkey("Baby Monkey", 1000);
+        //animalList[0]=new BabyCat("Baby Cat", 1000);
+        //animalList[1]=new BabyMonkey("Baby Monkey", 1000);
         //~~
         
         this.setBounds(100, 100, 900, 540);
@@ -169,9 +178,62 @@ public class ShopPage extends Place
 		sellLabel.setBounds(111, 0, 57, 15);
 		sellPanel.add(sellLabel);
 		
-		sellItemList = new JTextArea();
-		sellItemList.setBounds(12, 22, 222, 309);
-		sellPanel.add(sellItemList);
+		btnUserFood[1] = new JButton("food2");
+		btnUserFood[1].setBounds(82, 70, 97, 23);
+		sellPanel.add(btnUserFood[1]);
+		btnUserFood[1].setVisible(false);
+		
+		btnUserFood[2] = new JButton("food3");
+		btnUserFood[2].setBounds(82, 103, 97, 23);
+		sellPanel.add(btnUserFood[2]);
+		btnUserFood[2].setVisible(false);
+		
+		btnUserCloth[0] = new JButton("cloth1");
+		btnUserCloth[0].setBounds(82, 136, 97, 23);
+		sellPanel.add(btnUserCloth[0]);
+		btnUserCloth[0].setVisible(false);
+		
+		btnUserCloth[1] = new JButton("cloth2");
+		btnUserCloth[1].setBounds(82, 169, 97, 23);
+		sellPanel.add(btnUserCloth[1]);
+		btnUserCloth[1].setVisible(false);
+		
+		btnUserCloth[2] = new JButton("cloth3");
+		btnUserCloth[2].setBounds(82, 202, 97, 23);
+		sellPanel.add(btnUserCloth[2]);
+		btnUserCloth[2].setVisible(false);
+		
+		btnUserPet[0] = new JButton("pet1");
+		btnUserPet[0].setBounds(82, 235, 97, 23);
+		sellPanel.add(btnUserPet[0]);
+		btnUserPet[0].setVisible(false);
+		
+		btnUserPet[1] = new JButton("pet2");
+		btnUserPet[1].setBounds(82, 268, 97, 23);
+		sellPanel.add(btnUserPet[1]);
+		btnUserPet[1].setVisible(false);
+		
+		btnUserPotion = new JButton("potion");
+		btnUserPotion.setBounds(82, 301, 97, 23);
+		sellPanel.add(btnUserPotion);
+		btnUserPotion.setVisible(false);
+		
+		textField = new JTextField();
+		textField.setBounds(353, 399, 116, 21);
+		add(textField);
+		textField.setColumns(10);
+		textField.setVisible(false);
+		
+		btnOk = new JButton("OK");
+		btnOk.setBounds(478, 398, 66, 23);
+		add(btnOk);
+		btnOk.setVisible(false);
+		
+		labelInputPetName = new JLabel("Input Pet Name");
+		labelInputPetName.setFont(new Font("±¼¸²", Font.BOLD, 14));
+		labelInputPetName.setBounds(339, 381, 121, 15);
+		add(labelInputPetName);
+		labelInputPetName.setVisible(false);
 	}
 	
 	protected void paintComponent(Graphics g)
