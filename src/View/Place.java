@@ -20,11 +20,20 @@ public abstract class Place extends JPanel
 	Waste[] waste;
 	protected Controller c;
 	private PetLabel[] petIcon;
+	//private Drappings[] drapIcon;
 	
 	public Place() {
 		petIcon = new PetLabel[5];
-		for (int i = 0; i < petIcon.length; i++)
+		//drapIcon = new Drappings[5];
+		for (int i = 0; i < petIcon.length; i++) {
 			petIcon[i] = null;
+		}
+		/*
+		for (int i = 0; i < drapIcon.length; i++) {
+			drapIcon[i] = null;
+		}*/
+	
+	
 	}
 	public Place(Controller c)
 	{
@@ -53,11 +62,12 @@ public abstract class Place extends JPanel
 		for (int i = 0; i < petIcon.length; i++) {
 			if (petIcon[i] == null) {
 				petIcon[i] = new PetLabel(pet, this, c.getPresentUser());
-				
+				System.out.println(pet.getClass());
+				pet.setLabel(petIcon[i]);
 				petIcon[i].setIcon(pet.getMyImageIcon());
 				petIcon[i].setBounds(pet.getX(), pet.getY(), 150, 150);
 				//petIcon[i].addMouseListener(this);
-				
+				System.out.println(petIcon[i].getClass());
 				petIcon[i].behaviorItem7.addActionListener(new ActionListener()
 				{
 					@Override
@@ -93,4 +103,8 @@ public abstract class Place extends JPanel
 			}
 		}
 	}
+	/*
+	public void makeDrapIcon() {
+		
+	}*/
 }

@@ -42,8 +42,6 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     
     private User myUser;
     private int index;
-    
-    private int price;
 
     public Animal()
     {
@@ -67,18 +65,10 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.activeCount=0;
         this.myCloth=null;
     }
-    public Animal(User myUser, int index)
-    {
+    public Animal(User myUser, int index) {
     	this();
     	this.myUser = myUser;
     	this.index = index;
-    }
-    
-    public Animal(String name, int price)
-    {
-    	this();
-    	this.name=name;
-    	this.price=price;
     }
     
     public Animal(Animal p)
@@ -186,7 +176,6 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public int getActiveCount(){return this.activeCount;}
     public String[] getSpeechList(){return this.speechList;}
     public Place getMyLocation(){return this.myLocation;}
-    public int getPrice(){return this.price;}
     //public String getLocationName(){return this.locationName;}
 
     //set method
@@ -205,6 +194,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         if(this.drappings!=0)
         {
             this.drappings = 0;
+            this.myView.ridDrapping();
             System.out.println("Message : "+speechList[2]);
             return speechList[2];
         }
@@ -340,11 +330,16 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 
     public void makeDrappings()
     {
-        if(this.activeCount==10)
+        if(this.activeCount==3)  //debug   original -> 10;
         {
             this.activeCount = 0;
             this.drappings += 1;
-            
+            if(this.drappings > 5)
+            	this.drappings = 5;
+            else {
+            	System.out.println(this.myView.getName());
+            	this.myView.makeDrapping();
+            }
             if(this.drappings==5)	//new
             	this.happiness-=40;
             System.out.println(this.name+" Message : make drapping....");
