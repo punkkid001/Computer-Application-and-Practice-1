@@ -172,7 +172,6 @@ public class BathroomPage extends Place
 		petInfo.setBounds(673, 100, 195, 230);
 		add(petInfo);
 		petInfo.setLayout(null);
-		
 		petInfo.setVisible(false);
 		
 		//¿¬°á2

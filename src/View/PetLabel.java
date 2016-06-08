@@ -1,18 +1,26 @@
 package View;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextArea;
 
 import Model.AdultCat;
 import Model.Animal;
@@ -29,6 +37,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	private int flag;
 	private int moveFlag;
 	protected int o_x, o_y;
+	public BufferedImage speechBubbleImg = null;
 	
 	private Drappings drap[];
 	public JMenuItem behaviorItem7;
@@ -252,11 +261,40 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	}
 	//메시지 박스
 	public void makeMessageBox(int num) {
-		JLabel myMessageLabel = new JLabel(pet.getMessage(num));
-		this.pet.getMyLocation().add(myMessageLabel);
-		myMessageLabel.setBounds(this.getX(), this.getY() - 40, 100, 50);
-		myMessageLabel.setVisible(true);
+		//JLabel myMessageLabel = new JLabel(pet.getMessage(num));
+		//this.pet.getMyLocation().add(myMessageLabel);
+		//myMessageLabel.setBounds(this.getX(), this.getY() - 40, 100, 50);
+		//myMessageLabel.setVisible(true);
+		try
+		{
+			speechBubbleImg = ImageIO.read(new File("Img\\speechBubble.png"));;
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
 		
+		JPanel speechBubble;
+		JTextArea text;
+		
+		speechBubble = new JPanel(){
+			protected void paintComponent(Graphics g){
+				super.paintComponent(g);
+				g.drawImage(speechBubbleImg, 0, 0, null);
+				}
+			};
+		this.pet.getMyLocation().add(speechBubble);
+		speechBubble.setBounds(this.getX()+100, this.getY()-100, 160, 139);
+		speechBubble.setOpaque(false);
+		speechBubble.setLayout(null);
+		speechBubble.setVisible(true);
+		
+		text = new JTextArea(pet.getMessage(num));
+		text.setBounds(35, 28, 92, 78);
+		text.setOpaque(false);
+		text.setEditable(false);
+		text.setVisible(true);
+		speechBubble.add(text);
 		
 		Thread th = new Thread(new Runnable() {
 		
@@ -269,7 +307,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 					public void run() {
 						// TODO Auto-generated method stub
 						//removeDialog(myMessageLabel);
-						myMessageLabel.setVisible(false);
+						speechBubble.setVisible(false);
 					}
 				};
 				Timer timer = new Timer();
@@ -282,10 +320,41 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		th.start();
 	}
 	public void makeMessageBox(String msg) {
-		JLabel myMessageLabel = new JLabel(msg);
-		this.pet.getMyLocation().add(myMessageLabel);
-		myMessageLabel.setBounds(this.getX(), this.getY() - 90, 2000, 100);
-		myMessageLabel.setVisible(true);
+		//JLabel myMessageLabel = new JLabel(msg);
+		//this.pet.getMyLocation().add(myMessageLabel);
+		//myMessageLabel.setBounds(this.getX(), this.getY() - 90, 2000, 100);
+		//myMessageLabel.setVisible(true);
+		try
+		{
+			speechBubbleImg = ImageIO.read(new File("Img\\speechBubble.png"));;
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+		}
+		
+		JPanel speechBubble;
+		JTextArea text;
+		
+		speechBubble = new JPanel(){
+			protected void paintComponent(Graphics g){
+				super.paintComponent(g);
+				setOpaque(false);
+				g.drawImage(speechBubbleImg, 0, 0, null);
+				}
+			};
+		this.pet.getMyLocation().add(speechBubble);
+		speechBubble.setBounds(this.getX()+100, this.getY()-100, 160, 139);
+		speechBubble.setOpaque(false);
+		speechBubble.setLayout(null);
+		speechBubble.setVisible(true);
+		
+		text = new JTextArea(msg);
+		text.setBounds(35, 28, 92, 78);
+		text.setOpaque(false);
+		text.setEditable(false);
+		text.setVisible(true);
+		speechBubble.add(text);
 		
 		
 		Thread th = new Thread(new Runnable() {
@@ -299,7 +368,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 					public void run() {
 						// TODO Auto-generated method stub
 						//removeDialog(myMessageLabel);
-						myMessageLabel.setVisible(false);
+						speechBubble.setVisible(false);
 					}
 				};
 				Timer timer = new Timer();
