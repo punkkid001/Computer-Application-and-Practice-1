@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -284,16 +285,17 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				}
 			};
 		this.pet.getMyLocation().add(speechBubble);
-		speechBubble.setBounds(this.getX()+100, this.getY()-100, 160, 139);
+		speechBubble.setBounds(this.getX()+100, this.getY()-70, 150, 80);
 		speechBubble.setOpaque(false);
 		speechBubble.setLayout(null);
 		speechBubble.setVisible(true);
 		
 		text = new JTextArea(pet.getMessage(num));
-		text.setBounds(35, 28, 92, 78);
+		text.setBounds(10, 30, 130, 30);
 		text.setOpaque(false);
 		text.setEditable(false);
 		text.setVisible(true);
+		text.setFont(new Font("°íµñ", Font.HANGING_BASELINE, 15));
 		speechBubble.add(text);
 		
 		Thread th = new Thread(new Runnable() {
@@ -344,16 +346,17 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				}
 			};
 		this.pet.getMyLocation().add(speechBubble);
-		speechBubble.setBounds(this.getX()+100, this.getY()-100, 160, 139);
+		speechBubble.setBounds(this.getX()+100, this.getY()-70, 150, 80);
 		speechBubble.setOpaque(false);
 		speechBubble.setLayout(null);
 		speechBubble.setVisible(true);
 		
 		text = new JTextArea(msg);
-		text.setBounds(35, 28, 92, 78);
+		text.setBounds(10, 30, 130, 30);
 		text.setOpaque(false);
 		text.setEditable(false);
 		text.setVisible(true);
+		text.setFont(new Font("°íµñ", Font.HANGING_BASELINE, 15));
 		speechBubble.add(text);
 		
 		
