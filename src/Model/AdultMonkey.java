@@ -44,15 +44,13 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
     //change
     public void levelUp()
     {
-        if(this.getExp()>=30)
-        {
-            this.setLevel(this.getLevel()+1);
-            this.setExp(0);
+       	this.setLevel(this.getLevel()+1);
+       	this.setExp(0);
 
-            this.setStemina(this.getStemina()+40);
-            this.setPower(this.getPower()+40);
-            this.setDefense(this.getDefense()+30);
-        }
+       	this.setStemina(this.getStemina()+40);
+     	this.setPower(this.getPower()+40);
+      	this.setDefense(this.getDefense()+30);
+        
     }
 
     public void sit()
@@ -64,7 +62,7 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
     
     public void checkExp()
     {
-    	if(this.getExp()>=20&&this.getLevel()<5) {
+    	if(this.getExp()>=30&&this.getLevel()<5) {
     		this.levelUp();
             
     		if(super.getLevel() == 3) {

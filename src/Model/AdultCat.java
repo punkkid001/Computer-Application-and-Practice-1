@@ -40,15 +40,11 @@ public class AdultCat extends BabyCat implements Dance_IF
     //change
     public void levelUp()
     {
-        if(this.getExp()>=30)
-        {
-            this.setLevel(this.getLevel()+1);
-            this.setExp(0);
-
-            this.setStemina(this.getStemina()+60);
-            this.setPower(this.getPower()+20);
-            this.setDefense(this.getDefense()+30);
-        }
+        this.setLevel(this.getLevel()+1);
+        this.setExp(0);
+        this.setStemina(this.getStemina()+60);
+        this.setPower(this.getPower()+20);
+        this.setDefense(this.getDefense()+30);
     }
 
     public void dance()
@@ -65,7 +61,7 @@ public class AdultCat extends BabyCat implements Dance_IF
     }
     public void checkExp()
     {
-    	if(this.getExp()>=20&&this.getLevel()<5) {
+    	if(this.getExp()>=30&&this.getLevel()<5) {
     		this.levelUp();
             
     		if(super.getLevel() == 3) {

@@ -38,6 +38,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     private int m_y=250;
     private String[] speechList;
     private ImageIcon myImage;
+    private ImageIcon faceImage[];  //제너럴 써야할듯?
     private PetLabel myView;
     
     private User myUser;
@@ -46,6 +47,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 
     public Animal()
     {
+    	this.faceImage = new ImageIcon[5];
+    	// 1: 평상시, 2: 행복, 3: 피곤, 4: 배고픔, 5: 잠.
         this.speechList= new String[]{
         		"Level up!", "I don't have drappings.", "Thank you! Now, I'm so clean", 
         		"Please rid my drappings!!!!", "Yeah~ so funny time!", "It's delicious.", 
@@ -146,6 +149,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
 	public ImageIcon getMyImageIcon() {
 		return this.myImage;
 	}
+	
 	public void setIndex(int index) {
 		this.index = index;
 	}
@@ -255,6 +259,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         }
 		
     }
+
     public void statCheck() {
     	if(this.fatigability < 0)
     		this.fatigability = 0;
@@ -398,7 +403,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         else
             return false;
     }
-
+    // 1: 평상시, 2: 행복, 3: 피곤, 4: 배고픔, 5: 잠.
     public void checkEvent()
     {
         int max=0;
@@ -406,8 +411,10 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         
         this.activeCount++;
         this.makeDrappings();
-        if(this.fatigability>=100)
-            this.sleep(true);
+        if(this.fatigability>=100) {
+        	//this.getLabel().setIcon(icon);
+        	this.sleep(true);
+        }
 
         if(this.fatigability>=80)
             System.out.println("Message : "+speechList[16]);

@@ -89,13 +89,15 @@ public class User
     {
     	if(this.gold>=i.getPrice())
     	{
-    		/*
-    		if(i.getName()=="BabyCat")
-    			myPetList[++petIndex]=new BabyCat();
+    		petIndex++;
+    		if(i instanceof BabyCat)
+    			myPetList[petIndex]=new BabyCat("name1", petIndex);
     		else
-    			myPetList[++petIndex]=new BabyMonkey();
-    			*/
-    		myPetList[++petIndex]=i;
+    			myPetList[petIndex]=new BabyMonkey("name2", petIndex);
+    			
+    		c.m.livingroomPage.createPetIcon(myPetList[petIndex]);
+    		myPetList[petIndex].setPlace(c.m.livingroomPage);
+    		c.m.setVisible(true);
     		System.out.println(i.getName()+" buy...");
     		this.gold-=i.getPrice();
     		System.out.println("구매 완료");
