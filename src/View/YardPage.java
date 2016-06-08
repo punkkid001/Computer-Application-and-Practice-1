@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import Controller.Controller;
 import Model.Animal;
 import Model.BabyCat;
-import Model.Waste;
 
 //play and fight 구현부분 by태준
 import java.awt.LayoutManager;
@@ -52,7 +51,7 @@ public class YardPage extends Place implements ActionListener
 	public YardPage(Controller c)
 	{
 		super(c);
-		waste=new Waste[5];
+		
         super.setPlaceName("Yard");
         
         petIcon = new PetLabel[5];

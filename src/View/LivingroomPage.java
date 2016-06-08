@@ -9,7 +9,6 @@ import javax.swing.JToolBar;
 
 import Controller.Controller;
 import Model.Animal;
-import Model.Waste;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -54,7 +53,7 @@ public class LivingroomPage extends Place implements MouseListener
 	public LivingroomPage(Controller c)
 	{
 		super(c);
-		waste=new Waste[5];
+		
         super.setPlaceName("Livingroom");
 
 		this.setBounds(100, 100, 900, 540);

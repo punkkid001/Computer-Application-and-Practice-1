@@ -13,7 +13,6 @@ import Model.Cloth;
 import Model.Food;
 import Model.Pet;
 import Model.Potion;
-import Model.Waste;
 
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;

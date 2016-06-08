@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import Controller.Controller;
 import Model.Animal;
 import Model.User;
-import Model.Waste;
 
 public abstract class Place extends JPanel
 {
@@ -24,9 +23,11 @@ public abstract class Place extends JPanel
 	
 	public Place() {
 		petIcon = new PetLabel[5];
+		waste = new Waste[5];
 		//drapIcon = new Drappings[5];
 		for (int i = 0; i < petIcon.length; i++) {
 			petIcon[i] = null;
+			waste[i] = null;
 		}
 		/*
 		for (int i = 0; i < drapIcon.length; i++) {
@@ -110,8 +111,24 @@ public abstract class Place extends JPanel
 			}
 		}
 	}
-	/*
-	public void makeDrapIcon() {
-		
-	}*/
+	//쓰레기 관련 메소드
+	public void makeWaste() {
+		for(int i = 0; i < waste.length; i++) {
+			if(waste[i] == null) {
+				waste[i] = new Waste(this);
+				this.add(waste[i]);				
+				break;
+			}
+		}
+		this.repaint();
+	}
+	public void removeWaste(Waste w) {
+		for(int i = 0; i < waste.length; i++) {
+			if(w == this.waste[i]) {
+				waste[i] = null;
+				break;
+			}			
+		}
+		this.repaint();
+	}
 }

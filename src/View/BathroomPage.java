@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 
 import Controller.Controller;
 import Model.Animal;
-import Model.Waste;
 
 import javax.swing.JTextArea;
 import java.awt.Font;
@@ -56,7 +55,7 @@ public class BathroomPage extends Place
 	public BathroomPage(Controller c)
 	{
 		super(c);
-		waste=new Waste[5];
+		
         super.setPlaceName("Bathroom");
 
 		this.setBounds(100, 100, 900, 540);
