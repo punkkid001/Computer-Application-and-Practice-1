@@ -53,10 +53,6 @@ public class Waste extends JLabel implements MouseListener{
 		this.setVisible(true);
 	}
 	
-	
-	
-	
-	
 	public void remove() {
 		this.p.removeWaste(this);
 		this.setVisible(false);
