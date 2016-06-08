@@ -91,9 +91,9 @@ public class User
     	{
     		petIndex++;
     		if(i instanceof BabyCat)
-    			myPetList[petIndex]=new BabyCat("name1", petIndex);
+    			myPetList[petIndex]=new BabyCat(i.getName(), petIndex);
     		else
-    			myPetList[petIndex]=new BabyMonkey("name2", petIndex);
+    			myPetList[petIndex]=new BabyMonkey(i.getName(), petIndex);
     			
     		c.m.livingroomPage.createPetIcon(myPetList[petIndex]);
     		myPetList[petIndex].setPlace(c.m.livingroomPage);
