@@ -73,6 +73,7 @@ public class BabyCat extends Animal
     
     public void grow(User presentUser, int index)
     {
+    	System.out.println("어른으로 진화  " + presentUser);
         presentUser.setAnimal(index, new AdultCat(this));
         
         

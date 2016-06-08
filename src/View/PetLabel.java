@@ -16,6 +16,7 @@ import javax.swing.JPopupMenu;
 
 import Model.AdultCat;
 import Model.Animal;
+import Model.Degrade_IF;
 import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener
@@ -310,7 +311,21 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		});
 		th.start();
 	}
-	
+	//퇴화 소스
+	public void degrade() {
+		pet.getMyLocation().deleteIcon(pet);
+		
+		pet.degrade(myUser, pet.getIndex());
+		System.out.println(pet.getIndex() + "나의 원래 인덱스 퇴화");
+		
+		System.out.println(myUser.getPet(pet.getIndex()));
+		pet = myUser.getPet(pet.getIndex());
+		System.out.println(pet + "퇴화해라");
+		pet.getMyLocation().createPetIcon(pet);
+		//pet.getLabel().setVisible(true);
+		//pet.getMyLocation().setVisible(true);
+		pet.getMyLocation().repaint();
+	}
 	//진화 소스
 	public void grow() {
 		pet.getMyLocation().deleteIcon(pet);

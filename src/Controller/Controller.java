@@ -104,10 +104,6 @@ public class Controller
 		return this.presentUser;
 	}
 	
-	public void petGrow_v() {
-		
-	}
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new Controller();

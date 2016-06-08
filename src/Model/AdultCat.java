@@ -17,6 +17,18 @@ public class AdultCat extends BabyCat implements Dance_IF
     }
     public AdultCat(Animal p) {
     	super(p);
+    	System.out.println("AdultCat의 생성자");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    public AdultCat(Animal p, User myUser) {
+    	super(p);
+    	super.setMyUser(myUser);
+    	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
 		} catch (IOException e) {
@@ -67,6 +79,7 @@ public class AdultCat extends BabyCat implements Dance_IF
         
     public void grow(User presentUser, int index)
     {
-        presentUser.setAnimal(index, new Tiger(this));       
+    	System.out.println("호랑이로 진화  " + presentUser);
+        presentUser.setAnimal(index, new Tiger(this, presentUser));       
     }
 }

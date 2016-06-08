@@ -102,7 +102,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	this.name=name;
     	this.price=price;
     }
-    
+    public void setMyUser(User p) {
+    	this.myUser = p;
+    }
     public User getMyUser() {
     	return this.myUser;
     }
@@ -473,4 +475,6 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     }
     
     public abstract void grow(User presentUser, int index);
+    public void degrade(User presentUser, int index){
+    }
 }
