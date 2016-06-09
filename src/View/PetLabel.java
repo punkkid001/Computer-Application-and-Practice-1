@@ -210,16 +210,15 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 			}
 		});
 		JMenuItem behaviorItem6 = new JMenuItem("ø π˛±‚");
-		/* undeveloped
 		behaviorItem6.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-					
+				pet.undress();	
 			}
 		});
-		*/
+		
 		behaviorItem7 = new JMenuItem("Ω∫≈»»Æ¿Œ");
 		/*
 		behaviorItem7.addActionListener(new ActionListener()

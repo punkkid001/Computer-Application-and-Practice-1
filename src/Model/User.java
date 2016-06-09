@@ -74,6 +74,16 @@ public class User implements java.io.Serializable
     public String getName(){return this.name;}
     public Potion getPotion(){return this.myPotion;}
     
+    public void useItem(Food i)
+    {
+    	for(int j=0;j<myFoodList.length;j++)
+    		if(myFoodList[j].equals(i))
+    		{
+    			myFoodList[j]=null;
+    			break;
+    		}
+    }
+    
     public boolean buyItem(Food i)
     {
     	if(this.gold>=i.getPrice())

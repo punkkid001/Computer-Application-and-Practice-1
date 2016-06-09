@@ -702,7 +702,7 @@ public class MainFrame extends JFrame
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					tempPet.useItem(currentCloth);
+					tempPet.dress(currentCloth);
 					currentCloth=null;
 					//c.getPresentUser().getPet(i).useItem(currentCloth);
 				}
@@ -737,6 +737,14 @@ public class MainFrame extends JFrame
 			for(int i=0;i<clothList.length;i++)
 			{
 				shopPage.btnUserCloth[i].setText(clothList[i]);
+				shopPage.btnUserCloth[i].addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						
+					}
+				});
 				shopPage.btnUserCloth[i].setVisible(true);
 			}
 		}

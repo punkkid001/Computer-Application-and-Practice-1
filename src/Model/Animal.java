@@ -380,11 +380,17 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
 
     public void dress(Cloth cloth)
     {
-        this.myCloth=cloth;
+    	this.myCloth=cloth;
+    	this.power+=cloth.getPower();
+    	this.stemina+=cloth.getStemina();
+    	this.defense+=cloth.getDefense();
     }
 
     public void undress()
     {
+    	this.power-=myCloth.getPower();
+    	this.stemina-=myCloth.getStemina();
+    	this.defense-=myCloth.getDefense();
         this.myCloth=null;
     }
 
@@ -448,13 +454,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
     	this.fatigability+=i.getFatigability();
     	this.happiness+=i.getHappiness();
     	this.satiety+=i.getSatiety();
-    }
-    
-    public void useItem(Cloth i)
-    {
-    	this.power+=i.getPower();
-    	this.stemina+=i.getStemina();
-    	this.defense+=i.getDefense();
+    	
+    	//this.myUser.useItem(i);
     }
     
     public void useItem(Potion i)
