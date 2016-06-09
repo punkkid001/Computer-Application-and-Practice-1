@@ -13,7 +13,7 @@ import View.ShopPage;
 /**
  * Created by Jiyoon on 2016. 5. 1..
  */
-public abstract class Animal implements AnimalOperation_IF, Fight_IF
+public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Serializable 
 {
 	private String name;
     private Place myLocation;
@@ -37,8 +37,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     private int m_x=250;
     private int m_y=250;
     private String[] speechList;
-    private ImageIcon myImage;
-    private ImageIcon faceImage[];  //제너럴 써야할듯?
+    transient private ImageIcon myImage;
+    transient private ImageIcon faceImage[];  //제너럴 써야할듯?
     private PetLabel myView;
     
     private User myUser;

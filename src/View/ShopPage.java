@@ -55,7 +55,7 @@ public class ShopPage extends Place
 	*/
 	protected JButton[] btnUserFood=new JButton[3];
 	protected JButton[] btnUserCloth=new JButton[3];
-	protected JButton[] btnUserPet=new JButton[2];
+	//protected JButton[] btnUserPet=new JButton[2];
 	protected JButton btnUserPotion;	
 	
 	protected JButton btnOk;
@@ -186,6 +186,11 @@ public class ShopPage extends Place
 		sellLabel.setBounds(111, 0, 57, 15);
 		sellPanel.add(sellLabel);
 		
+		btnUserFood[0] = new JButton("food1");
+		btnUserFood[0].setBounds(82, 40, 97, 23);
+		sellPanel.add(btnUserFood[0]);
+		btnUserFood[0].setVisible(false);
+		
 		btnUserFood[1] = new JButton("food2");
 		btnUserFood[1].setBounds(82, 70, 97, 23);
 		sellPanel.add(btnUserFood[1]);
@@ -211,6 +216,7 @@ public class ShopPage extends Place
 		sellPanel.add(btnUserCloth[2]);
 		btnUserCloth[2].setVisible(false);
 		
+		/*
 		btnUserPet[0] = new JButton("pet1");
 		btnUserPet[0].setBounds(82, 235, 97, 23);
 		sellPanel.add(btnUserPet[0]);
@@ -220,6 +226,7 @@ public class ShopPage extends Place
 		btnUserPet[1].setBounds(82, 268, 97, 23);
 		sellPanel.add(btnUserPet[1]);
 		btnUserPet[1].setVisible(false);
+		*/
 		
 		btnUserPotion = new JButton("potion");
 		btnUserPotion.setBounds(82, 301, 97, 23);

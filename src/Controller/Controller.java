@@ -3,7 +3,7 @@ import Model.Animal;
 import Model.User;
 import View.*;
 
-public class Controller
+public class Controller implements java.io.Serializable 
 {
 	public MainFrame m;
 	protected User presentUser;
@@ -103,6 +103,11 @@ public class Controller
 	public User getPresentUser()
 	{
 		return this.presentUser;
+	}
+	
+	public void setPresentUser(User user)
+	{
+		this.presentUser=user;
 	}
 	
 	public static void main(String[] args) {
