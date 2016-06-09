@@ -27,10 +27,10 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 		}
     	this.mess();
     	this.hide();
-    	/*
-    	if(this.getLevel() < 4)
-    		this.degradeThread();
-    	*/
+    	
+    	
+    	this.degradeThread();
+    	
     }
 	public Dragon(Animal p, User myUser) {
     	super(p);

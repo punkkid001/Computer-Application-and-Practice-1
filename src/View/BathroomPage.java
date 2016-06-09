@@ -219,6 +219,7 @@ public class BathroomPage extends Place
 		
 		petClick.setVisible(false);
 		*/
+		
 	}
 	
 	protected void paintComponent(Graphics g)
