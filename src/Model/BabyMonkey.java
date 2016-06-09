@@ -16,8 +16,15 @@ public class BabyMonkey extends Animal
     public BabyMonkey(){}
     public BabyMonkey(Animal p)
     {
+    	
     	super(p);
     	System.out.println("±âº» »ý¼ºÀÚ È£Ãâ");
+    	setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 11);
+        setSpeechList("¿ìƒ­ ¾È³ç~", 12);
+        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 13);
+        setSpeechList("¿ì²¥²¦ ±×·¡~~", 14);
+        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 15);
+        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 16);
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"))));
 		} catch (IOException e) {
@@ -28,7 +35,13 @@ public class BabyMonkey extends Animal
     public BabyMonkey(String name, int index)
     {
         super.setName(name);
-        
+        System.out.println("±âº» »ý¼ºÀÚ È£Ãâ");
+    	setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 11);
+        setSpeechList("¿ìƒ­ ¾È³ç~", 12);
+        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 13);
+        setSpeechList("¿ì²¥²¦ ±×·¡~~", 14);
+        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 15);
+        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 16);
         System.out.println("±âº» »ý¼ºÀÚ È£Ãâ");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_monkey\\ordinary.png"))));
@@ -36,12 +49,7 @@ public class BabyMonkey extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 11);
-        setSpeechList("¿ìƒ­ ¾È³ç~", 12);
-        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 13);
-        setSpeechList("¿ì²¥²¦ ±×·¡~~", 14);
-        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 15);
-        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 16);
+        
     }
     
     public BabyMonkey(String name, int price, boolean flag)

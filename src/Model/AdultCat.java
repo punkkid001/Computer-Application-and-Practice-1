@@ -19,6 +19,13 @@ public class AdultCat extends BabyCat implements Dance_IF
     }
     public AdultCat(Animal p) {
     	super(p);
+    	
+    	setSpeechList("냐옹 냐옹", 11);
+        setSpeechList("갸르릉", 12);
+        setSpeechList("나한테 점수따고 싶구나!", 13);
+        setSpeechList("나한테 잘못한거 있지?", 14);
+        setSpeechList("애송이 집사 주제에", 15);
+        setSpeechList("감히...냥", 16);
     	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
@@ -39,12 +46,7 @@ public class AdultCat extends BabyCat implements Dance_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("냐옹 냐옹", 11);
-        setSpeechList("갸르릉", 12);
-        setSpeechList("나한테 점수따고 싶구나!", 13);
-        setSpeechList("나한테 잘못한거 있지?", 14);
-        setSpeechList("애송이 집사 주제에", 15);
-        setSpeechList("감히...냥", 16);
+        
     }/*
     public AdultCat(Animal p, User myUser) {
 

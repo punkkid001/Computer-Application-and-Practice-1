@@ -19,6 +19,12 @@ public class BabyCat extends Animal
     public BabyCat(Animal p)
     {
     	super(p);
+    	setSpeechList("하잇~!", 11);
+        setSpeechList("냥냥", 12);
+        setSpeechList("생선이나 줘~", 13);
+        setSpeechList("오늘 왜이렇게 잘해줘?", 14);
+        setSpeechList("내가 뭘 잘못했다고...", 15);
+        setSpeechList("히야옹ㅠ", 16);
     	System.out.println("기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
@@ -31,6 +37,12 @@ public class BabyCat extends Animal
     {
         super.setName(name);
         super.setIndex(index);
+        setSpeechList("하잇~!", 11);
+        setSpeechList("냥냥", 12);
+        setSpeechList("생선이나 줘~", 13);
+        setSpeechList("오늘 왜이렇게 잘해줘?", 14);
+        setSpeechList("내가 뭘 잘못했다고...", 15);
+        setSpeechList("히야옹ㅠ", 16);
         System.out.println("기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
@@ -38,12 +50,7 @@ public class BabyCat extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("하잇~!", 11);
-        setSpeechList("냥냥", 12);
-        setSpeechList("생선이나 줘~", 13);
-        setSpeechList("오늘 왜이렇게 잘해줘?", 14);
-        setSpeechList("내가 뭘 잘못했다고...", 15);
-        setSpeechList("히야옹ㅠ", 16);
+        
     }
     
     public BabyCat(String name, int price, boolean flag)

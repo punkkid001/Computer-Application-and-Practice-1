@@ -20,6 +20,12 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 	}
 	public Dragon(Animal p) {
     	super(p);
+    	setSpeechList("(무관심인것 같다)", 11);
+        setSpeechList("(무관심인것 같다)", 12);
+        setSpeechList("(무관심인것 같다)", 13);
+        setSpeechList("(무관심인것 같다)", 14);
+        setSpeechList("(무관심인것 같다)", 15);
+        setSpeechList("(무관심인것 같다)", 16);
     	this.returnAnimal = p;
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\dragon\\ordinary.png"))));
