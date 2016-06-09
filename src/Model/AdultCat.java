@@ -27,9 +27,7 @@ public class AdultCat extends BabyCat implements Dance_IF
 			e.printStackTrace();
 		}
     }
-<<<<<<< HEAD
-    public AdultCat(Animal p, User myUser, PetLabel view) {
-=======
+
     public AdultCat(String name, int index)
     {
         super.setName(name);
@@ -49,10 +47,10 @@ public class AdultCat extends BabyCat implements Dance_IF
         setSpeechList("감히...냥", 16);
     }
     public AdultCat(Animal p, User myUser) {
->>>>>>> 7c6787afbd7fb6b92520ad2c7b882a94105bd82c
+
     	super(p);
     	super.setMyUser(myUser);
-    	this.setLabel(view);
+    	
     	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
