@@ -51,6 +51,7 @@ public class BathroomPage extends Place
 	
 	protected JButton []cloth;
 	protected JLabel emptyLabel;
+	protected JButton btnGamesave;
 	
 	/**
 	 * Create the panel.
@@ -189,6 +190,10 @@ public class BathroomPage extends Place
 		statArea.setEditable(false);
 		statArea.setVisible(false);
 		petInfo.add(statArea);
+		
+		btnGamesave = new JButton("GameSave");
+		btnGamesave.setBounds(12, 32, 97, 23);
+		add(btnGamesave);
 		
 		/*
 		//¿¬°á3
