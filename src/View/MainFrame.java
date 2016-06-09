@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
 import Controller.Controller;
@@ -33,10 +35,15 @@ public class MainFrame extends JFrame
 	public BattlePage battlePage;	
 	private String userName;
 	
+	protected JPopupMenu menu=new JPopupMenu();
+	protected JMenuItem []items=new JMenuItem[5];
+	
 	private boolean bathroomClosetFlag=false;
 	private boolean bathroomStatFlag=false;
 	private boolean livingroomFridgeFlag=false;
 	private int shopPetFlag=0;	//1 : cat / 2 : monkey
+	
+	private int i=0;
 	/**
 	 * Create the frame.
 	 */
@@ -51,6 +58,8 @@ public class MainFrame extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 918, 587);
 		
+		//items[0]=new JMenuItem(c.getPresentUser().getPet(0).getName());
+		//menu.add(items[0]);
 		/*
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -282,9 +291,17 @@ public class MainFrame extends JFrame
 						String list[]=c.appendClosetItemList();
 						if(list!=null)
 						{
-							for(int i=0;i<list.length;i++)
+							for(i=0;i<list.length;i++)
 							{
 								bathroomPage.cloth[i].setText(list[i]);
+								bathroomPage.cloth[i].addActionListener(new ActionListener()
+								{
+									@Override
+									public void actionPerformed(ActionEvent e)
+									{
+										menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth(), bathroomPage.clothItemInfo.getHeight());
+									}
+								});
 								bathroomPage.cloth[i].setVisible(true);
 							}
 						}
@@ -524,12 +541,24 @@ public class MainFrame extends JFrame
 	
 	public void gotoLivingroom()
 	{
+		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
+		{
+			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
+			menu.add(this.items[i]);
+		}
 		c.viewLivingroomStatus();
 		this.setContentPane(livingroomPage);
 		this.setVisible(true);
 	}
 	public void gotoBathroom()
 	{
+		System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize());
+		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
+		{
+			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
+			System.out.println(c.getPresentUser().getPet(i).getName());
+			menu.add(this.items[i]);
+		}
 		c.viewBathroomStatus();
 		this.setContentPane(bathroomPage);
 		this.setVisible(true);
