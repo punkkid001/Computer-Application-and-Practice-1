@@ -469,9 +469,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
     		//this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
 
     		//밑으로 전부다 null ex
-    		this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
-    		this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
-    		this.getMyUser().setPotion(null);
+    		//this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
+    		//this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
+    		//this.getMyUser().setPotion(null);
 
     	}
     	else
