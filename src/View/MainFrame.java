@@ -672,11 +672,11 @@ public class MainFrame extends JFrame
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					if(c.getPresentUser().getPotion()!=null)
+					if(c.getPresentUser().getPotion()!=null)	//SOME PROBLEM.. BUT I DON'T KNOW HOW TO FIX IT..
 					{
 						tempPet.useItem(shopPage.potion);
 						c.getPresentUser().useItem();
-						livingroomPage.btnPotion.setVisible(false);
+						//livingroomPage.btnPotion.setVisible(false);
 					}
 					else
 					{
