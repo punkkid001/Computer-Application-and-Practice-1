@@ -30,7 +30,7 @@ import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener
 {
-	protected static Animal pet;
+	protected Animal pet;
 	private User myUser;
 	private Place place;
 	private JPopupMenu menu;
@@ -43,6 +43,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	
 	private Drappings drap[];
 	public JMenuItem behaviorItem7;
+	public JLabel simplePetInfo;
 	
 	Thread t;
 	
@@ -56,11 +57,19 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.place = place;
 		this.myUser = myUser;
 		this.menu = new JPopupMenu();
-		this.setText(pet.getName());
+		//this.setText(pet.getName());
 		//System.out.println(this.getX() +" "+ this.getY());
 		
 		this.flag = 0;
 		this.moveFlag = 0;
+		
+		//pet 머리에 이름 표시
+		String s = "";
+		s = "LV"+ pet.getLevel() + "   " + pet.getName();
+		simplePetInfo = new JLabel(s);
+		simplePetInfo.setBounds(this.getX(), this.getY(), 100, 20);
+		simplePetInfo.setOpaque(false);
+		add(simplePetInfo);
 		
 		JMenuItem item1 = new JMenuItem("move");
 		item1.addActionListener(new ActionListener()
@@ -248,11 +257,13 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		
 		menu.add(item5);
 		
-		//JMenuItem item1 = new JMenuItem("");
 		//item5.add(menuItem);
 		
 		this.addMouseListener(this);
 		this.setVisible(true);
+	}
+	public Animal getPet() {
+		return this.pet;
 	}
 	//메시지 박스
 	/*speechList 번호로 받아오는 건 사용 안하는 것 같아서 일단 주석처리
@@ -346,7 +357,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		speechBubble.setBounds(this.getX()+100, this.getY()-120, 180, 138);
 		speechBubble.setOpaque(false);
 		speechBubble.setLayout(null);
-		speechBubble.setVisible(true);
+		
 		
 		text = new JTextArea(msg);
 		text.setBounds(28, 32, 130, 84);
@@ -356,6 +367,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		text.setFont(new Font("고딕", Font.HANGING_BASELINE, 15));
 		text.setLineWrap(true);		//줄바꿈 활성화
 		speechBubble.add(text);
+		speechBubble.setVisible(true);
+		
 		
 		Thread th = new Thread(new Runnable() {
 		
@@ -371,7 +384,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 					}
 				};
 				Timer timer = new Timer();
-				timer.schedule(task, (2500));
+				timer.schedule(task, (1500));
 				//task.run();
 				System.out.println("메시지박스");
 			}
@@ -455,7 +468,9 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.o_y = y;
 		this.t.start();
 	}
-	
+	public Drappings getDrap(int index) {
+		return this.drap[index];
+	}
 	@Override
 	public void run()
 	{
@@ -574,4 +589,5 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			menu.show(e.getComponent(), e.getX(), e.getY());
 		}*/
 	}
+	
 }

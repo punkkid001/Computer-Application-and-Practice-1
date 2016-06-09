@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 
 import Controller.Controller;
 import Model.Animal;
+import Model.Gorilla;
 import Model.User;
 
 public abstract class Place extends JPanel
@@ -129,5 +131,37 @@ public abstract class Place extends JPanel
 			}			
 		}
 		this.repaint();
+	}
+	public void dohiding(Animal g) {
+		// TODO Auto-generated method stub
+		Thread t = new Thread(new Runnable () {
+
+			@Override
+			public void run() {
+				Random r = new Random();
+				
+				
+				// TODO Auto-generated method stub
+				for(int i = 0; i < 5; i++) {
+					int x = r.nextInt(780);
+					int y = r.nextInt(500);
+					g.getLabel().setLocation(x, y);
+					/*
+					for(int j = 0; j < g.getDrappings(); j++) {
+						g.getLabel().getDrap(i).setLocation(x, y);
+						//petIcon.getPet.drap[i].moveThread(o_x, o_y, speed_x, speed_y);
+					}*/
+					System.out.println("°í¸±¶ó ¼û¹Ù°îÁú");
+					repaint();
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}			
+		});
+		t.start();
 	}
 }
