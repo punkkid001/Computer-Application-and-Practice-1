@@ -60,10 +60,11 @@ public abstract class Place extends JPanel
         System.out.println("User gold : "+user.getGold());
         System.out.println("User's pet : "+user.getUserPetSize());
     }
-    public void createPetIcon(Animal pet) {
+    public PetLabel createPetIcon(Animal pet) {
 		for (int i = 0; i < petIcon.length; i++) {
 			if (petIcon[i] == null) {
 				petIcon[i] = new PetLabel(pet, this, c.getPresentUser());
+				pet.setLabel(petIcon[i]);
 				System.out.println(pet.getClass());
 				//똥부분
 				int drapNum = petIcon[i].pet.getDrappings();
@@ -71,7 +72,9 @@ public abstract class Place extends JPanel
 					petIcon[i].makeDrapping();
 				}
 				//똥부분 끝
-				pet.setLabel(petIcon[i]);
+				//pet.setLabel(petIcon[i]);
+				System.out.println("현재 pet" + pet.getClass() + "의 라벨 : " + pet.getLabel().hashCode());
+				System.out.println("petIcon의 해쉬코드 : " + petIcon[i].hashCode());
 				petIcon[i].setIcon(pet.getMyImageIcon());
 				petIcon[i].setBounds(pet.getX(), pet.getY(), 150, 150);
 				//petIcon[i].addMouseListener(this);
@@ -88,13 +91,14 @@ public abstract class Place extends JPanel
 				
 				this.add(petIcon[i]);
 				petIcon[i].setVisible(true);
-				
-				break;
+				return petIcon[i];
 			}
 
-			if (i == petIcon.length - 1)
+			if (i == petIcon.length - 1) {
 				System.out.println("팻을 더 추가할 수 없습니다.");
+			}
 		}
+		return null;
 	}
 	
 	public void deleteIcon(Animal pet)
@@ -133,6 +137,7 @@ public abstract class Place extends JPanel
 		this.repaint();
 	}
 	public void dohiding(Animal g) {
+		System.out.println("숨바꼭질 클래스 " + g.getClass());
 		// TODO Auto-generated method stub
 		Thread t = new Thread(new Runnable () {
 
@@ -145,6 +150,7 @@ public abstract class Place extends JPanel
 				for(int i = 0; i < 5; i++) {
 					int x = r.nextInt(780);
 					int y = r.nextInt(500);
+					System.out.println("hiding 라벨 " + g.getLabel().hashCode());
 					g.getLabel().setLocation(x, y);
 					/*
 					for(int j = 0; j < g.getDrappings(); j++) {

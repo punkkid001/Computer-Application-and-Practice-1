@@ -25,7 +25,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.plaf.basic.BasicButtonListener;
 import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
-import Model.Pet;
 
 public class YardPage extends Place implements ActionListener
 {

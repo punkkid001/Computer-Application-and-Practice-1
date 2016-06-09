@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import View.PetLabel;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
@@ -17,6 +19,13 @@ public class AdultCat extends BabyCat implements Dance_IF
     }
     public AdultCat(Animal p) {
     	super(p);
+    	
+    	setSpeechList("냐옹 냐옹", 11);
+        setSpeechList("갸르릉", 12);
+        setSpeechList("나한테 점수따고 싶구나!", 13);
+        setSpeechList("나한테 잘못한거 있지?", 14);
+        setSpeechList("애송이 집사 주제에", 15);
+        setSpeechList("감히...냥", 16);
     	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
@@ -25,6 +34,7 @@ public class AdultCat extends BabyCat implements Dance_IF
 			e.printStackTrace();
 		}
     }
+
     public AdultCat(String name, int index)
     {
         super.setName(name);
@@ -36,16 +46,13 @@ public class AdultCat extends BabyCat implements Dance_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("냐옹 냐옹", 11);
-        setSpeechList("갸르릉", 12);
-        setSpeechList("나한테 점수따고 싶구나!", 13);
-        setSpeechList("나한테 잘못한거 있지?", 14);
-        setSpeechList("애송이 집사 주제에", 15);
-        setSpeechList("감히...냥", 16);
-    }
+        
+    }/*
     public AdultCat(Animal p, User myUser) {
+
     	super(p);
     	super.setMyUser(myUser);
+    	
     	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
@@ -53,7 +60,8 @@ public class AdultCat extends BabyCat implements Dance_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+    	System.out.println("this.petLabel " + this.getLabel());
+    }*/
 
     //change
     public void levelUp()
@@ -75,7 +83,7 @@ public class AdultCat extends BabyCat implements Dance_IF
     public void transform(User presentUser, int index)
     {
     	System.out.println("드래곤 변신" + presentUser);
-        presentUser.setAnimal(index, new Dragon(this, presentUser));
+        presentUser.setAnimal(index, new Dragon(this));
         
     }
     public boolean checkExp()

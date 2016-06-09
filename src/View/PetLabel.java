@@ -407,7 +407,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		System.out.println(myUser.getPet(pet.getIndex()));
 		pet = myUser.getPet(pet.getIndex());
 		System.out.println(pet + "퇴화해라");
-		pet.getMyLocation().createPetIcon(pet);
+		pet.setLabel(pet.getMyLocation().createPetIcon(pet));
 		pet.getMyLocation().repaint();
 	}
 	//진화 소스
@@ -420,7 +420,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		System.out.println(myUser.getPet(pet.getIndex()));
 		pet = myUser.getPet(pet.getIndex());
 		System.out.println(pet + "진화해라");
-		pet.getMyLocation().createPetIcon(pet);
+		pet.setLabel(pet.getMyLocation().createPetIcon(pet));
 		
 	}
 	public void setPet(Animal p) {
@@ -436,7 +436,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		System.out.println(myUser.getPet(pet.getIndex()));
 		pet = myUser.getPet(pet.getIndex());
 		System.out.println(pet + "진화해라");
-		pet.getMyLocation().createPetIcon(pet);
+		pet.setLabel(pet.getMyLocation().createPetIcon(pet));
 		
 	}
 	//똥 소스

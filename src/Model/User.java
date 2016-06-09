@@ -77,11 +77,25 @@ public class User implements java.io.Serializable
     public void useItem(Food i)
     {
     	for(int j=0;j<myFoodList.length;j++)
-    		if(myFoodList[j].equals(i))
+    		if(myFoodList[j]==i)
     		{
     			myFoodList[j]=null;
+    			foodIndex--;
     			break;
     		}
+    	for(int j=0;j<foodIndex+1;j++)
+    	{
+    		if(myFoodList[j]==null)
+    		{
+    			myFoodList[j]=myFoodList[j+1];
+    			myFoodList[j+1]=null;
+    		}
+    	}
+    }
+    
+    public void useItem()
+    {
+    	this.myPotion=null;
     }
     
     public boolean buyItem(Food i)
@@ -141,13 +155,61 @@ public class User implements java.io.Serializable
     	return false;
     }
     
+    public void sellItem(Cloth i)
+    {
+    	this.gold+=i.getPrice();
+    	for(int j=0;j<myClothList.length;j++)
+    		if(myClothList[j]==i)
+    		{
+    			myClothList[j]=null;
+    			clothIndex--;
+    			break;
+    		}
+    	for(int j=0;j<clothIndex+1;j++)
+    	{
+    		if(myClothList[j]==null)
+    		{
+    			myClothList[j]=myClothList[j+1];
+    			myClothList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Food i)
+    {
+    	this.gold+=i.getPrice();
+    	for(int j=0;j<myFoodList.length;j++)
+    		if(myFoodList[j]==i)
+    		{
+    			myFoodList[j]=null;
+    			foodIndex--;
+    			break;
+    		}
+    	for(int j=0;j<foodIndex+1;j++)
+    	{
+    		if(myFoodList[j]==null)
+    		{
+    			myFoodList[j]=myFoodList[j+1];
+    			myFoodList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Potion i)
+    {
+    	this.gold+=i.getPrice();
+    	myPotion=null;
+    }
+    
     public String[] getClothItemNameList()
     {
     	if(clothIndex!=-1)
     	{
     		String list[]=new String[clothIndex+1];
     		for(int i=0;i<clothIndex+1;i++)
-    		list[i]=myClothList[i].getName();
+    			list[i]=myClothList[i].getName();
     		
     		return list;
     	}

@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class UserSettingPage extends JPanel
 {
@@ -40,6 +41,7 @@ public class UserSettingPage extends JPanel
 		
 		
 		textField = new JTextField();
+		textField.setFont(new Font("±¼¸²", Font.PLAIN, 20));
 		textField.setBounds(170, 254, 375, 77);
 		add(textField);
 		textField.setColumns(10);
