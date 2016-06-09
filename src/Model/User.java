@@ -17,7 +17,7 @@ public class User
     private int index=0;    //new
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
-    private int petIndex=-1;	//new
+    private int petIndex=0;	//new
     private Controller c;
     
     public User(String userName, int petChoice, String petName, Controller c)   
@@ -90,10 +90,11 @@ public class User
     	System.out.println(i.getPrice()+"원 입니다.");
     	if(this.gold>=i.getPrice())
     	{
-    		petIndex++;
+    		
+    		System.out.println("현재 인덱스" + petIndex++);
     		if(i instanceof BabyCat)
     			myPetList[petIndex]=new BabyCat(i.getName(), petIndex);
-    		else
+    		else if(i instanceof BabyMonkey)
     			myPetList[petIndex]=new BabyMonkey(i.getName(), petIndex);
     			
     		c.m.livingroomPage.createPetIcon(myPetList[petIndex]);
