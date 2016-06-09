@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import View.PetLabel;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */

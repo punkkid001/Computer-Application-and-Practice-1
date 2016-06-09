@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import View.PetLabel;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
@@ -23,7 +25,7 @@ public class BabyCat extends Animal
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}    	System.out.println("this.petLabel " + this.getLabel());
     }
     public BabyCat(String name, int index)
     {

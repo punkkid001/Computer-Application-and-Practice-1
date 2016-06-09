@@ -24,7 +24,7 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}System.out.println("11¿Ö ¾È¼û´Ï?" + this.getLabel());
     	this.hide();
     	if(this.getLevel() < 4)
     		this.degradeThread();
@@ -36,7 +36,7 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
     	
     	this.before = p;
     	
-    	
+    	System.out.println("¿Ö ¾È¼û´Ï?" + this.getLabel());
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\tiger\\ordinary.png"))));
 		} catch (IOException e) {

@@ -86,7 +86,7 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
     public void transform(User presentUser, int index)
     {
     	System.out.println("µå·¡°ï º¯½Å" + presentUser);
-        presentUser.setAnimal(index, new Dragon(this, presentUser));
+        presentUser.setAnimal(index, new Dragon(this));
         
     }
 }

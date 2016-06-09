@@ -312,14 +312,5 @@ public class ShopPage extends Place
 		g.drawImage(panelImg, 0, 0, null);
 	}
 	
-	@Override
-	public void deleteIcon(Animal pet) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void createPetIcon(Animal pet) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
