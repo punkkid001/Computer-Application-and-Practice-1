@@ -1,6 +1,7 @@
 package View;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,6 +33,19 @@ public class ShopPage extends Place
 	public Waste[] waste;
 	
 	protected BufferedImage panelImg = null;
+	protected BufferedImage livingroomImg = null;
+	protected BufferedImage bathroomImg = null;
+	protected BufferedImage yardImg = null;
+	protected BufferedImage tableImg = null;
+	protected BufferedImage premiumImg = null;
+	protected BufferedImage cakeImg = null;
+	protected BufferedImage parfaitImg = null;
+	protected BufferedImage hatImg = null;
+	protected BufferedImage shoesImg = null;
+	protected BufferedImage ribbonImg = null;
+	protected BufferedImage babyCatImg = null;
+	protected BufferedImage babyMonkeyImg = null;
+	protected BufferedImage potionImg= null;
 	
 	protected JButton btnGoYard;
 	protected JButton btnGoBathroom;
@@ -96,34 +110,51 @@ public class ShopPage extends Place
 		
 		try{
 			this.panelImg = ImageIO.read(new File("Img\\place\\shop.png"));
+			this.livingroomImg = ImageIO.read(new File("Img\\place\\mini\\livingroom.png"));
+			this.bathroomImg = ImageIO.read(new File("Img\\place\\mini\\bathroom.png"));
+			this.yardImg = ImageIO.read(new File("Img\\place\\mini\\yard.png"));
+			this.tableImg = ImageIO.read(new File("Img\\item\\table.png"));
+			this.premiumImg = ImageIO.read(new File("Img\\item\\premium.png"));
+			this.cakeImg = ImageIO.read(new File("Img\\item\\cake.png"));
+			this.parfaitImg = ImageIO.read(new File("Img\\item\\parfait.png"));
+			this.hatImg = ImageIO.read(new File("Img\\item\\hat.png"));
+			this.shoesImg = ImageIO.read(new File("Img\\item\\shoes.png"));
+			this.ribbonImg = ImageIO.read(new File("Img\\item\\ribbon.png"));
+			this.babyCatImg = ImageIO.read(new File("Img\\item\\cat.png"));
+			this.babyMonkeyImg = ImageIO.read(new File("Img\\item\\monkey.png"));
+			this.potionImg = ImageIO.read(new File("Img\\item\\potion.png"));
 		}
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 		}
-		
-		btnGoYard = new JButton("Go Yard");
-		btnGoYard.setBounds(0, 0, 300, 50);
-		add(btnGoYard);
-		
-		btnGoBathroom = new JButton("Go Bathroom");
-		btnGoBathroom.setBounds(300, 0, 300, 50);
-		add(btnGoBathroom);
-		
-		btnGoLivingroom = new JButton("Go Livingroom");
-		btnGoLivingroom.setBounds(600, 0, 300, 50);
+		btnGoLivingroom = new JButton(new ImageIcon(this.livingroomImg));
+		btnGoLivingroom.setBounds(300, 440, 300, 100);
 		add(btnGoLivingroom);
 		
+		btnGoBathroom = new JButton(new ImageIcon(this.bathroomImg));
+		btnGoBathroom.setBounds(0, 440, 300, 100);
+		add(btnGoBathroom);
+		
+		btnGoYard = new JButton(new ImageIcon(this.yardImg));
+		btnGoYard.setBounds(600, 440, 300, 100);
+		add(btnGoYard);
+		
 		simpleUserInfo = new JLabel();
-		simpleUserInfo.setBounds(600, 50, 300, 30);
+		simpleUserInfo.setBounds(550, 15, 300, 30);
 		simpleUserInfo.setBackground(Color.lightGray);
 		simpleUserInfo.setOpaque(true);
 		add(simpleUserInfo);
 		
-		JPanel buyPanel = new JPanel();
-		buyPanel.setBounds(50, 130, 250, 300);
+		JPanel buyPanel = new JPanel(){
+			protected void paintComponent(Graphics g){
+				super.paintComponent(g);
+				setOpaque(false);
+				g.drawImage(tableImg, 0, 0, null);
+			}
+		};
+		buyPanel.setBounds(50, 110, 250, 300);
 		buyPanel.setLayout(null);
-		buyPanel.setBackground(Color.white);
 		add(buyPanel);
 		
 		/*JLabel buyLabel = new JLabel("BUY");
@@ -132,69 +163,102 @@ public class ShopPage extends Place
 		btnBuy = new JButton("»ç±â");
 		btnBuy.setBounds(80, 5, 90, 40);
 		btnBuy.setFont(new Font("°íµñ", Font.BOLD, 20));
+		btnBuy.setForeground(Color.white);
 		btnBuy.setContentAreaFilled(false);
 		btnBuy.setBorderPainted(false);
 		btnBuy.setFocusPainted(false);
 		buyPanel.add(btnBuy);
 		
 		//btnFood=new JButton[3];
-		btnFood[0] = new JButton("Preminum");
+		btnFood[0] = new JButton(new ImageIcon(this.premiumImg));
 		btnFood[0].setBounds(10, 60, 70, 70);
 		btnFood[0].setToolTipText(getTooltipText(foodList[0]));
+		btnFood[0].setContentAreaFilled(false);
+		btnFood[0].setBorderPainted(false);
+		btnFood[0].setFocusPainted(false);
 		buyPanel.add(btnFood[0]);
 		
-		btnFood[1]= new JButton("Cake");
+		btnFood[1]= new JButton(new ImageIcon(this.cakeImg));
 		btnFood[1].setBounds(90, 60, 70, 70);
 		btnFood[1].setToolTipText(getTooltipText(foodList[1]));
+		btnFood[1].setContentAreaFilled(false);
+		btnFood[1].setBorderPainted(false);
+		btnFood[1].setFocusPainted(false);
 		buyPanel.add(btnFood[1]);
 		
-		btnFood[2] = new JButton("Parfait");
+		btnFood[2] = new JButton(new ImageIcon(this.parfaitImg));
 		btnFood[2].setBounds(170, 60, 70, 70);
 		btnFood[2].setToolTipText(getTooltipText(foodList[2]));
+		btnFood[2].setContentAreaFilled(false);
+		btnFood[2].setBorderPainted(false);
+		btnFood[2].setFocusPainted(false);
 		buyPanel.add(btnFood[2]);
 		
 		//btnCloth=new JButton[3];
-		btnCloth[0] = new JButton("Hat");
+		btnCloth[0] = new JButton(new ImageIcon(this.hatImg));
 		btnCloth[0].setBounds(10, 140, 70, 70);
 		btnCloth[0].setToolTipText(getTooltipText(clothList[0]));
+		btnCloth[0].setContentAreaFilled(false);
+		btnCloth[0].setBorderPainted(false);
+		btnCloth[0].setFocusPainted(false);
 		buyPanel.add(btnCloth[0]);
 		
-		btnCloth[1] = new JButton("Shoes");
+		btnCloth[1] = new JButton(new ImageIcon(this.shoesImg));
 		btnCloth[1].setBounds(90, 140, 70, 70);
 		btnCloth[1].setToolTipText(getTooltipText(clothList[1]));
+		btnCloth[1].setContentAreaFilled(false);
+		btnCloth[1].setBorderPainted(false);
+		btnCloth[1].setFocusPainted(false);
 		buyPanel.add(btnCloth[1]);
 		
-		btnCloth[2] = new JButton("Ribbon");
+		btnCloth[2] = new JButton(new ImageIcon(this.ribbonImg));
 		btnCloth[2].setBounds(170, 140, 70, 70);
 		btnCloth[2].setToolTipText(getTooltipText(clothList[2]));
+		btnCloth[2].setContentAreaFilled(false);
+		btnCloth[2].setBorderPainted(false);
+		btnCloth[2].setFocusPainted(false);
 		buyPanel.add(btnCloth[2]);
 		
 		//btnPet=new JButton[2];
-		btnPet[0] = new JButton("Baby Cat");
+		btnPet[0] = new JButton(new ImageIcon(this.babyCatImg));
 		btnPet[0].setBounds(10, 220, 70, 70);
 		btnPet[0].setToolTipText(getTooltipText(animalList[0]));
+		btnPet[0].setContentAreaFilled(false);
+		btnPet[0].setBorderPainted(false);
+		btnPet[0].setFocusPainted(false);
 		buyPanel.add(btnPet[0]);
 		
-		btnPet[1] = new JButton("Baby Monkey");
+		btnPet[1] = new JButton(new ImageIcon(this.babyMonkeyImg));
 		btnPet[1].setBounds(90, 220, 70, 70);
 		btnPet[1].setToolTipText(getTooltipText(animalList[1]));
+		btnPet[1].setContentAreaFilled(false);
+		btnPet[1].setBorderPainted(false);
+		btnPet[1].setFocusPainted(false);
 		buyPanel.add(btnPet[1]);
 		
-		btnPotion = new JButton("???");
+		btnPotion = new JButton(new ImageIcon(this.potionImg));
 		btnPotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		btnPotion.setBounds(170, 220, 70, 70);
 		btnPotion.setToolTipText(getTooltipText(potion));
+		btnPotion.setContentAreaFilled(false);
+		btnPotion.setBorderPainted(false);
+		btnPotion.setFocusPainted(false);
 		buyPanel.add(btnPotion);
 		
 		buyPanel.setVisible(true);
 		
-		JPanel sellPanel = new JPanel();
-		sellPanel.setBounds(600, 130, 250, 300);
+		JPanel sellPanel = new JPanel(){
+			protected void paintComponent(Graphics g){
+				super.paintComponent(g);
+				setOpaque(true);
+				g.drawImage(tableImg, 0, 0, null);
+			}
+		};
+		sellPanel.setBounds(600, 110, 250, 300);
 		sellPanel.setLayout(null);
-		sellPanel.setBackground(Color.white);
 		add(sellPanel);
 		
 		/*JLabel sellLabel = new JLabel("SELL");
@@ -204,6 +268,7 @@ public class ShopPage extends Place
 		btnSell = new JButton("ÆÈ±â");
 		btnSell.setBounds(80, 5, 90, 40);
 		btnSell.setFont(new Font("°íµñ", Font.BOLD, 20));
+		btnSell.setForeground(Color.white);
 		btnSell.setContentAreaFilled(false);
 		btnSell.setBorderPainted(false);
 		btnSell.setFocusPainted(false);
@@ -251,7 +316,7 @@ public class ShopPage extends Place
 		btnUserPet[1].setVisible(false);
 		*/
 		
-		btnUserPotion = new JButton("potion");
+		btnUserPotion = new JButton(new ImageIcon(this.potionImg));
 		btnUserPotion.setBounds(170, 220, 70, 70);
 		sellPanel.add(btnUserPotion);
 		btnUserPotion.setVisible(false);
