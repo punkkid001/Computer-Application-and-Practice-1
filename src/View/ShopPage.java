@@ -80,7 +80,7 @@ public class ShopPage extends Place
         foodList[1]=new Food("Cake", 10, 5, 10, 200);
         foodList[2]=new Food("Parfait", 10, 5, 0, 80);
         
-        potion=new Potion("???", 10, 5, 0, 1000);
+        potion=new Potion("???", 10, 5, 0, 100);
         
         clothList[0]=new Cloth("Hat", 5, 10, 50, 100);
         clothList[1]=new Cloth("Shoes", 15, 5, 50, 100);

@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -111,6 +113,15 @@ public class MainFrame extends JFrame
 			{
 				System.out.println("Start 버튼이 눌렸습니다.");
 				c.goUserSetting();
+			}
+		});
+		
+		startPage.loadBtn.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				
 			}
 		});
 		
@@ -233,21 +244,22 @@ public class MainFrame extends JFrame
 				if(livingroomFridgeFlag==false)
 				{
 					livingroomFridgeFlag=true;
-					if(list!=null)
+					if(c.getPresentUser().getPotion()!=null)
 					{
-						if(c.getPresentUser().getPotion()!=null)
+						livingroomPage.btnPotion.setText("???");
+						livingroomPage.btnPotion.addActionListener(new ActionListener()
 						{
-							livingroomPage.btnPotion.setText("???");
-							livingroomPage.btnPotion.addActionListener(new ActionListener()
+							@Override
+							public void actionPerformed(ActionEvent e)
 							{
-								@Override
-								public void actionPerformed(ActionEvent e)
-								{
-									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
-								}
-							});
-							livingroomPage.btnPotion.setVisible(true);
-						}
+								menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
+							}
+						});
+						livingroomPage.btnPotion.setVisible(true);
+						livingroomPage.labelEmpty.setVisible(false);
+					}
+					if(list!=null)
+					{						
 						for(j=0;j<list.length;j++)
 						{
 							livingroomPage.food[j].setText(list[j]);
@@ -345,6 +357,27 @@ public class MainFrame extends JFrame
 					bathroomPage.UsersClothItem.setVisible(false);
 					bathroomPage.clothItemInfo.setVisible(false);
 				}
+			}
+		});
+		
+		this.bathroomPage.btnGamesave.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				try
+				{
+					FileOutputStream saveFile=new FileOutputStream("SaveData.sav");
+					ObjectOutputStream save=new ObjectOutputStream(saveFile);
+					
+					save.writeObject(c.getPresentUser());
+					save.close();
+				}
+				catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				System.out.println("Save Done.");
 			}
 		});
 		
