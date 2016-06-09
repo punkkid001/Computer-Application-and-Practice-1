@@ -116,17 +116,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			
 		});
 		
-		/* undeveloped
-		talkItem1.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				pet.talk();
-			}
-		});
-		*/
-		
 		item2.add(talkItem1);
 		item2.add(talkItem2);
 		item2.add(talkItem3);
@@ -258,6 +247,10 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		}
 		
 		menu.add(item5);
+		
+		//JMenuItem item1 = new JMenuItem("");
+		//item5.add(menuItem);
+		
 		this.addMouseListener(this);
 		this.setVisible(true);
 	}

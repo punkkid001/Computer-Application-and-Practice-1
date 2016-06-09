@@ -53,6 +53,7 @@ public class Controller
 		m.gotogameStartingPoint();
 		this.viewLivingroomStatus();
 		m.livingroomPage.createPetIcon(presentUser.getPet(0));
+		System.out.println("∆÷ √÷√  ª˝º∫ ¿Œµ¶Ω∫ " + presentUser.getIndex());
 		presentUser.getPet(0).setPlace(m.livingroomPage);
 		m.setVisible(true);
 	}
