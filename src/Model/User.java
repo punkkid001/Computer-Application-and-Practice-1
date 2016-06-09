@@ -14,10 +14,10 @@ public class User
     private Cloth[] myClothList;
     private Food[] myFoodList;
     private Potion myPotion;
-    private int index=0;    //new
+    //private int index=0;    //new
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
-    private int petIndex=-1;	//new
+    private int petIndex=0;	//new
     private Controller c;
     
     public User(String userName, int petChoice, String petName, Controller c)   
@@ -35,13 +35,12 @@ public class User
         else if(petChoice == 2)
             myPetList[0]=new BabyMonkey(petName, 0);
     }
-
     
     public Controller getController() {
     	return c;
     }
 	public void setAnimal(Animal p){
-    	this.myPetList[++this.index]=p;
+    	this.myPetList[++this.petIndex]=p;
     	}    //change
     public void setAnimal(int index, Animal p){
     	this.myPetList[index]=p;
@@ -58,10 +57,10 @@ public class User
     public int getGold(){return this.gold;} //new
     public Animal getPet(int index){return this.myPetList[index];}  //new
     public String getUsername(){return this.name;}  //new
-    public int getUserPetSize(){return this.index+1;}   //new
+    public int getUserPetSize(){return this.petIndex+1;}   //new
     public int getFoodIndex(){return  this.foodIndex;}//new
     public int getClothIndex(){return this.clothIndex;} //new
-    public int getIndex(){return this.index;}   //new
+    public int getIndex(){return this.petIndex;}   //new
     
     public boolean buyItem(Food i)
     {

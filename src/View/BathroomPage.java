@@ -52,8 +52,6 @@ public class BathroomPage extends Place
 	protected JButton []cloth;
 	protected JLabel emptyLabel;
 	
-	protected JPopupMenu menu;
-	protected JMenuItem []items;
 	/**
 	 * Create the panel.
 	 */
@@ -169,8 +167,6 @@ public class BathroomPage extends Place
 		emptyLabel.setBounds(39, 71, 129, 53);
 		emptyLabel.setVisible(false);
 		clothItemInfo.add(emptyLabel);
-		
-		menu=new JPopupMenu();
 		
 		clothItemInfo.setVisible(false);
 		
