@@ -29,7 +29,7 @@ import Model.Animal;
 import Model.Degrade_IF;
 import Model.User;
 
-public class PetLabel extends JLabel implements Runnable, MouseListener
+public class PetLabel extends JLabel implements Runnable, MouseListener, java.io.Serializable
 {
 	protected Animal pet;
 	private User myUser;
