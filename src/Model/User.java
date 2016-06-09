@@ -77,11 +77,20 @@ public class User implements java.io.Serializable
     public void useItem(Food i)
     {
     	for(int j=0;j<myFoodList.length;j++)
-    		if(myFoodList[j].equals(i))
+    		if(myFoodList[j]==i)
     		{
     			myFoodList[j]=null;
+    			foodIndex--;
     			break;
     		}
+    	for(int j=0;j<foodIndex+1;j++)
+    	{
+    		if(myFoodList[j]==null)
+    		{
+    			myFoodList[j]=myFoodList[j+1];
+    			myFoodList[j+1]=null;
+    		}
+    	}
     }
     
     public boolean buyItem(Food i)
@@ -143,6 +152,7 @@ public class User implements java.io.Serializable
     
     public void sellItem(Cloth i)
     {
+    	this.gold+=i.getPrice();
     	for(int j=0;j<myClothList.length;j++)
     		if(myClothList[j]==i)
     		{
@@ -163,6 +173,7 @@ public class User implements java.io.Serializable
     
     public void sellItem(Food i)
     {
+    	this.gold+=i.getPrice();
     	for(int j=0;j<myFoodList.length;j++)
     		if(myFoodList[j]==i)
     		{
@@ -183,6 +194,7 @@ public class User implements java.io.Serializable
     
     public void sellItem(Potion i)
     {
+    	this.gold+=i.getPrice();
     	myPotion=null;
     }
     
@@ -192,7 +204,7 @@ public class User implements java.io.Serializable
     	{
     		String list[]=new String[clothIndex+1];
     		for(int i=0;i<clothIndex+1;i++)
-    		list[i]=myClothList[i].getName();
+    			list[i]=myClothList[i].getName();
     		
     		return list;
     	}
