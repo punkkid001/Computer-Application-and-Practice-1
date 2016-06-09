@@ -32,6 +32,23 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
     		this.degradeThread();
     	*/
     }
+	public Dragon(Animal p, User myUser) {
+    	super(p);
+    	super.setMyUser(myUser);
+    	this.returnAnimal = p;
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\dragon\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	this.mess();
+    	this.hide();
+    	/*
+    	if(this.getLevel() < 4)
+    		this.degradeThread();
+    	*/
+    }
     public void sit(){System.out.println("Dragon sit");}
     @Override
 	public void hide() {

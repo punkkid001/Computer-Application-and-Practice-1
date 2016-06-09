@@ -54,9 +54,10 @@ public class AdultCat extends BabyCat implements Dance_IF
 
     public String getName(){return actName;}
 
-    public void transform()
+    public void transform(User presentUser, int index)
     {
-        Tiger tiger=new Tiger();
+    	System.out.println("µå·¡°ï º¯½Å" + presentUser);
+        presentUser.setAnimal(index, new Dragon(this, presentUser));
         
     }
     public boolean checkExp()

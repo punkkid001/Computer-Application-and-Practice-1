@@ -83,8 +83,10 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
         presentUser.setAnimal(index, new Gorilla(this));
     }
     
-    public void transform()
+    public void transform(User presentUser, int index)
     {
-        Gorilla gorilla=new Gorilla();
+    	System.out.println("µå·¡°ï º¯½Å" + presentUser);
+        presentUser.setAnimal(index, new Dragon(this, presentUser));
+        
     }
 }
