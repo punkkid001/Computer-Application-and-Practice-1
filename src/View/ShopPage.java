@@ -131,7 +131,7 @@ public class ShopPage extends Place
 		buyLabel.setBounds(110, 0, 57, 15);
 		buyPanel.add(buyLabel);*/
 		btnBuy = new JButton("»ç±â");
-		btnBuy.setBounds(80, 0, 90, 40);
+		btnBuy.setBounds(80, 5, 90, 40);
 		btnBuy.setFont(new Font("°íµñ", Font.BOLD, 20));
 		btnBuy.setContentAreaFilled(false);
 		btnBuy.setBorderPainted(false);
@@ -140,44 +140,44 @@ public class ShopPage extends Place
 		
 		//btnFood=new JButton[3];
 		btnFood[0] = new JButton("Preminum");
-		btnFood[0].setBounds(20, 60, 50, 50);
+		btnFood[0].setBounds(10, 60, 70, 70);
 		btnFood[0].setToolTipText(getTooltipText(foodList[0]));
 		buyPanel.add(btnFood[0]);
 		
 		btnFood[1]= new JButton("Cake");
-		btnFood[1].setBounds(100, 60, 50, 50);
+		btnFood[1].setBounds(90, 60, 70, 70);
 		btnFood[1].setToolTipText(getTooltipText(foodList[1]));
 		buyPanel.add(btnFood[1]);
 		
 		btnFood[2] = new JButton("Parfait");
-		btnFood[2].setBounds(180, 60, 50, 50);
+		btnFood[2].setBounds(170, 60, 70, 70);
 		btnFood[2].setToolTipText(getTooltipText(foodList[2]));
 		buyPanel.add(btnFood[2]);
 		
 		//btnCloth=new JButton[3];
 		btnCloth[0] = new JButton("Hat");
-		btnCloth[0].setBounds(20, 140, 50, 50);
+		btnCloth[0].setBounds(10, 140, 70, 70);
 		btnCloth[0].setToolTipText(getTooltipText(clothList[0]));
 		buyPanel.add(btnCloth[0]);
 		
 		btnCloth[1] = new JButton("Shoes");
-		btnCloth[1].setBounds(100, 140, 50, 50);
+		btnCloth[1].setBounds(90, 140, 70, 70);
 		btnCloth[1].setToolTipText(getTooltipText(clothList[1]));
 		buyPanel.add(btnCloth[1]);
 		
 		btnCloth[2] = new JButton("Ribbon");
-		btnCloth[2].setBounds(180, 140, 50, 50);
+		btnCloth[2].setBounds(170, 140, 70, 70);
 		btnCloth[2].setToolTipText(getTooltipText(clothList[2]));
 		buyPanel.add(btnCloth[2]);
 		
 		//btnPet=new JButton[2];
 		btnPet[0] = new JButton("Baby Cat");
-		btnPet[0].setBounds(20, 220, 50, 50);
+		btnPet[0].setBounds(10, 220, 70, 70);
 		btnPet[0].setToolTipText(getTooltipText(animalList[0]));
 		buyPanel.add(btnPet[0]);
 		
 		btnPet[1] = new JButton("Baby Monkey");
-		btnPet[1].setBounds(100, 220, 50, 50);
+		btnPet[1].setBounds(90, 220, 70, 70);
 		btnPet[1].setToolTipText(getTooltipText(animalList[1]));
 		buyPanel.add(btnPet[1]);
 		
@@ -186,7 +186,7 @@ public class ShopPage extends Place
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnPotion.setBounds(180, 220, 50, 50);
+		btnPotion.setBounds(170, 220, 70, 70);
 		btnPotion.setToolTipText(getTooltipText(potion));
 		buyPanel.add(btnPotion);
 		
@@ -195,6 +195,7 @@ public class ShopPage extends Place
 		JPanel sellPanel = new JPanel();
 		sellPanel.setBounds(600, 130, 250, 300);
 		sellPanel.setLayout(null);
+		sellPanel.setBackground(Color.white);
 		add(sellPanel);
 		
 		/*JLabel sellLabel = new JLabel("SELL");
@@ -202,7 +203,7 @@ public class ShopPage extends Place
 		sellPanel.add(sellLabel);*/
 		
 		btnSell = new JButton("ÆÈ±â");
-		btnSell.setBounds(80, 0, 90, 40);
+		btnSell.setBounds(80, 5, 90, 40);
 		btnSell.setFont(new Font("°íµñ", Font.BOLD, 20));
 		btnSell.setContentAreaFilled(false);
 		btnSell.setBorderPainted(false);
@@ -210,49 +211,49 @@ public class ShopPage extends Place
 		sellPanel.add(btnSell);
 		
 		btnUserFood[0] = new JButton("food1");
-		btnUserFood[0].setBounds(82, 40, 97, 23);
+		btnUserFood[0].setBounds(10, 60, 70, 70);
 		sellPanel.add(btnUserFood[0]);
 		btnUserFood[0].setVisible(false);
 		
 		btnUserFood[1] = new JButton("food2");
-		btnUserFood[1].setBounds(82, 70, 97, 23);
+		btnUserFood[1].setBounds(90, 60, 70, 70);
 		sellPanel.add(btnUserFood[1]);
 		btnUserFood[1].setVisible(false);
 		
 		btnUserFood[2] = new JButton("food3");
-		btnUserFood[2].setBounds(82, 103, 97, 23);
+		btnUserFood[2].setBounds(170, 60, 70, 70);
 		sellPanel.add(btnUserFood[2]);
 		btnUserFood[2].setVisible(false);
 		
 		btnUserCloth[0] = new JButton("cloth1");
-		btnUserCloth[0].setBounds(82, 136, 97, 23);
+		btnUserCloth[0].setBounds(10, 140, 70, 70);
 		sellPanel.add(btnUserCloth[0]);
 		btnUserCloth[0].setVisible(false);
 		
 		btnUserCloth[1] = new JButton("cloth2");
-		btnUserCloth[1].setBounds(82, 169, 97, 23);
+		btnUserCloth[1].setBounds(90, 140, 70, 70);
 		sellPanel.add(btnUserCloth[1]);
 		btnUserCloth[1].setVisible(false);
 		
 		btnUserCloth[2] = new JButton("cloth3");
-		btnUserCloth[2].setBounds(82, 202, 97, 23);
+		btnUserCloth[2].setBounds(90, 140, 70, 70);
 		sellPanel.add(btnUserCloth[2]);
 		btnUserCloth[2].setVisible(false);
 		
 		/*
 		btnUserPet[0] = new JButton("pet1");
-		btnUserPet[0].setBounds(82, 235, 97, 23);
+		btnUserPet[0].setBounds(10, 220, 70, 70);
 		sellPanel.add(btnUserPet[0]);
 		btnUserPet[0].setVisible(false);
 		
 		btnUserPet[1] = new JButton("pet2");
-		btnUserPet[1].setBounds(82, 268, 97, 23);
+		btnUserPet[1].setBounds(90, 220, 70, 70);
 		sellPanel.add(btnUserPet[1]);
 		btnUserPet[1].setVisible(false);
 		*/
 		
 		btnUserPotion = new JButton("potion");
-		btnUserPotion.setBounds(82, 301, 97, 23);
+		btnUserPotion.setBounds(170, 220, 70, 70);
 		sellPanel.add(btnUserPotion);
 		btnUserPotion.setVisible(false);
 		
