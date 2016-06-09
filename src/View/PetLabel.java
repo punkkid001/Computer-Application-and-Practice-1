@@ -205,7 +205,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				pet.ridDrappings();
+				
+				makeMessageBox(pet.ridDrappings());
 				//grow();
 			}
 		});
@@ -282,20 +283,21 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			protected void paintComponent(Graphics g){
 				super.paintComponent(g);
 				g.drawImage(speechBubbleImg, 0, 0, null);
-				}
-			};
+			}
+		};
 		this.pet.getMyLocation().add(speechBubble);
-		speechBubble.setBounds(this.getX()+100, this.getY()-70, 150, 80);
+		speechBubble.setBounds(this.getX()+100, this.getY()-120, 180, 138);
 		speechBubble.setOpaque(false);
 		speechBubble.setLayout(null);
 		speechBubble.setVisible(true);
 		
 		text = new JTextArea(pet.getMessage(num));
-		text.setBounds(10, 30, 130, 30);
+		text.setBounds(28, 32, 130, 84);
 		text.setOpaque(false);
 		text.setEditable(false);
 		text.setVisible(true);
 		text.setFont(new Font("∞ÌµÒ", Font.HANGING_BASELINE, 15));
+		text.setLineWrap(true);		//¡ŸπŸ≤ﬁ »∞º∫»≠
 		speechBubble.add(text);
 		
 		Thread th = new Thread(new Runnable() {
@@ -343,22 +345,22 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				super.paintComponent(g);
 				setOpaque(false);
 				g.drawImage(speechBubbleImg, 0, 0, null);
-				}
-			};
+			}
+		};
 		this.pet.getMyLocation().add(speechBubble);
-		speechBubble.setBounds(this.getX()+100, this.getY()-70, 150, 80);
+		speechBubble.setBounds(this.getX()+100, this.getY()-120, 180, 138);
 		speechBubble.setOpaque(false);
 		speechBubble.setLayout(null);
 		speechBubble.setVisible(true);
 		
 		text = new JTextArea(msg);
-		text.setBounds(10, 30, 130, 30);
+		text.setBounds(28, 32, 130, 84);
 		text.setOpaque(false);
 		text.setEditable(false);
 		text.setVisible(true);
 		text.setFont(new Font("∞ÌµÒ", Font.HANGING_BASELINE, 15));
+		text.setLineWrap(true);		//¡ŸπŸ≤ﬁ »∞º∫»≠
 		speechBubble.add(text);
-		
 		
 		Thread th = new Thread(new Runnable() {
 		

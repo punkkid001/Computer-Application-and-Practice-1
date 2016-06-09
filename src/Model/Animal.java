@@ -250,7 +250,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.statCheck();
             System.out.println(this.name+" Message : "+speechList[5]);
             this.checkEvent();
-            return speechList[5] + "피로 10, 만족30, 행복10, 경험5가 올랐다.";
+            return speechList[5] + "\n피로 +10, 만족+30, 행복+10, 경험+5";
         }
 		
     }
