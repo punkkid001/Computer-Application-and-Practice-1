@@ -61,7 +61,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		
 		this.flag = 0;
 		this.moveFlag = 0;
-		this.msgFlag = 0;
 		
 		JMenuItem item1 = new JMenuItem("move");
 		item1.addActionListener(new ActionListener()
@@ -339,7 +338,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		{
 			// TODO Auto-generated catch block
 		}
-		msgFlag++;
 		System.out.println("msgFlag:"+ msgFlag);
 		JPanel speechBubble;
 		JTextArea text;
@@ -382,8 +380,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 				Timer timer = new Timer();
 				timer.schedule(task, (2500));
 				//task.run();
-				System.out.println("작업");
-				msgFlag--;
+				System.out.println("메시지박스");
 			}
 			
 		});

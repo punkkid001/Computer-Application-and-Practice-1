@@ -60,7 +60,7 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
 
     public String getName(){return actName;}
     
-    public void checkExp()
+    public boolean checkExp()
     {
     	if(this.getExp()>=30&&this.getLevel()<5) {
     		this.levelUp();
@@ -70,7 +70,11 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
     		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
     		//super.getLabel().setVisible(true);
     		}
+    		
+    		return true;
     	}
+    	else
+    		return false;
     
     }
     

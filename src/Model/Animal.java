@@ -60,7 +60,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         		"입맛 없어", 							//7		letProtest-feed
         		"zZZ...", 							//8		sleep
         		"나 그냥 잘거야", 						//9		force sleep
-        		"어떄, 잘어울려?", 						//10	dress
+        		"어때, 잘어울려?", 						//10	dress
         		"null", 							//11	special_1
         		"null", 							//12	special_2
         		"null", 							//13	special_3
@@ -395,18 +395,20 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.exp=0;
         this.level+=1;
     }
-
-    public void checkExp()
+      
+    public boolean checkExp()
     {
         if(this.exp>=20&&this.level<5) {
             this.levelUp();
-            this.myView.makeMessageBox(speechList[0]);
+            return true;
         }
+        else
+        	return false;
     }
 
     public boolean letProtest()
     {
-        if(this.drappings>=4)
+        if(this.drappings > 4)
         {
             System.out.println(this.name+" Message : "+speechList[3]);
             return true;
@@ -426,24 +428,21 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         	//this.getLabel().setIcon(icon);
         	this.sleep(true);
         }
-        String msg = new String();
-        msg = "";
-        if(this.fatigability>=80){
-            System.out.println("Message : "+speechList[19]);
-            msg = msg + speechList[19];
+        if(this.checkExp()==true){
+        	this.myView.makeMessageBox(speechList[0]);
+        }
+        else if(this.fatigability>=80){
+        	System.out.println("Message : "+speechList[19]);
+        	this.myView.makeMessageBox(speechList[19]);
         }
         else if(this.satiety>=80){
             System.out.println("Message : "+speechList[18]);
-            msg = msg + speechList[18];
+            this.myView.makeMessageBox(speechList[18]);
         }
         else if(this.happiness>=80){
             System.out.println("Message : "+speechList[17]);
-            msg = msg + speechList[17];
-        }
-        
-        if(msg != "")
-        	this.myView.makeMessageBox(msg);
-        this.checkExp();        
+            this.myView.makeMessageBox(speechList[17]);
+        }       
     }
 
     //change

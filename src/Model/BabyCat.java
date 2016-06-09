@@ -64,17 +64,21 @@ public class BabyCat extends Animal
             this.grow(presentUser, index);
     }
 
-    public void checkExp()
+    public boolean checkExp()
     {
     	if(this.getExp()>=20&&this.getLevel()<5) {
     		this.levelUp();
-            
+    		
     		if(super.getLevel() == 2) {
     			super.getLabel().grow();
     		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
     		//super.getLabel().setVisible(true);
     		}
+    		
+    		return true;
     	}
+    	else
+    		return false;
     
     }
     

@@ -61,7 +61,7 @@ public class BabyMonkey extends Animal
         if(super.getLevel()==2)
             this.grow(presentUser, index);
     }
-    public void checkExp()
+    public boolean checkExp()
     {
     	if(this.getExp()>=20&&this.getLevel()<5) {
     		this.levelUp();
@@ -71,7 +71,11 @@ public class BabyMonkey extends Animal
     		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
     		//super.getLabel().setVisible(true);
     		}
+    		
+    		return true;
     	}
+    	else
+    		return false;
     }
     
     public void grow(User presentUser, int index)
