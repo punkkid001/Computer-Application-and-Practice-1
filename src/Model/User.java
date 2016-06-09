@@ -93,6 +93,11 @@ public class User implements java.io.Serializable
     	}
     }
     
+    public void useItem()
+    {
+    	this.myPotion=null;
+    }
+    
     public boolean buyItem(Food i)
     {
     	if(this.gold>=i.getPrice())

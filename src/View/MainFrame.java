@@ -665,6 +665,8 @@ public class MainFrame extends JFrame
 			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+ petName);
 			System.out.println("");
 			Animal tempPet = c.getPresentUser().getPet(i);
+			JButton tempBtn=livingroomPage.food[i];
+			JButton tempBtn2=shopPage.btnUserFood[i];
 			items[i].addActionListener(new ActionListener()
 			{
 				@Override
@@ -672,10 +674,17 @@ public class MainFrame extends JFrame
 				{
 					if(c.getPresentUser().getPotion()!=null)
 					{
-						tempPet.useItem(c.getPresentUser().getPotion());
+						tempPet.useItem(shopPage.potion);
+						c.getPresentUser().useItem();
+						livingroomPage.btnPotion.setVisible(false);
 					}
 					else
+					{
+						c.getPresentUser().useItem(currentFood);
 						tempPet.useItem(currentFood);
+						tempBtn.setVisible(false);
+						tempBtn2.setVisible(false);
+					}
 					currentFood=null;
 					//livingroomPage.btnPotion.setVisible(false);
 					//c.getPresentUser().getPet(i).useItem(currentFood);
@@ -739,12 +748,14 @@ public class MainFrame extends JFrame
 				shopPage.btnUserCloth[i].setText(clothList[i]);
 				Cloth tempCloth=c.getPresentUser().getCloth(i);
 				JButton tempBtn=shopPage.btnUserCloth[i];
+				JButton tempBtn2=bathroomPage.cloth[i];
 				shopPage.btnUserCloth[i].addActionListener(new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent e)
 					{
 						tempBtn.setVisible(false);
+						tempBtn2.setVisible(false);
 						c.getPresentUser().sellItem(tempCloth);
 						c.viewShopStatus();
 					}
@@ -759,12 +770,14 @@ public class MainFrame extends JFrame
 				shopPage.btnUserFood[i].setText(foodList[i]);
 				Food tempFood=c.getPresentUser().getFood(i);
 				JButton tempBtn=shopPage.btnUserFood[i];
+				JButton tempBtn2=livingroomPage.food[i];
 				shopPage.btnUserFood[i].addActionListener(new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent e)
 					{
 						tempBtn.setVisible(false);
+						tempBtn2.setVisible(false);
 						c.getPresentUser().sellItem(tempFood);
 						c.viewShopStatus();
 					}
