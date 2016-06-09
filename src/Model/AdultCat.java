@@ -27,7 +27,29 @@ public class AdultCat extends BabyCat implements Dance_IF
 			e.printStackTrace();
 		}
     }
+<<<<<<< HEAD
     public AdultCat(Animal p, User myUser, PetLabel view) {
+=======
+    public AdultCat(String name, int index)
+    {
+        super.setName(name);
+        
+        System.out.println("기본 생성자 호출");
+    	try {
+			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_monkey\\ordinary.png"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        setSpeechList("냐옹 냐옹", 11);
+        setSpeechList("갸르릉", 12);
+        setSpeechList("나한테 점수따고 싶구나!", 13);
+        setSpeechList("나한테 잘못한거 있지?", 14);
+        setSpeechList("애송이 집사 주제에", 15);
+        setSpeechList("감히...냥", 16);
+    }
+    public AdultCat(Animal p, User myUser) {
+>>>>>>> 7c6787afbd7fb6b92520ad2c7b882a94105bd82c
     	super(p);
     	super.setMyUser(myUser);
     	this.setLabel(view);

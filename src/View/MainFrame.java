@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
@@ -22,6 +23,7 @@ import Model.BabyMonkey;
 import Model.Cloth;
 import Model.Food;
 import Model.Potion;
+import Model.User;
 
 import javax.swing.JButton;
 
@@ -124,12 +126,30 @@ public class MainFrame extends JFrame
 			{
 				try
 				{
-					//FileIinputStream loadFile=new FileInputStream("SaveData.sav");
-					//ObjectInputStream load=new ObjectInputStream()
+					FileInputStream loadFile=new FileInputStream("SaveData.sav");
+					ObjectInputStream load=new ObjectInputStream(loadFile);
+					Object obj=load.readObject();
+					
+					//c.setPresentUser((User)load.readObject());
+					
+					c.getPresentUser().setName((String)load.readObject());
+					c.getPresentUser().setGold((int)load.readObject());
+					
+					c.getPresentUser().setPetList((Animal[])load.readObject());
+					c.getPresentUser().setPetIndex((int)load.readObject());
+					c.getPresentUser().setClothList((Cloth[])load.readObject());
+					c.getPresentUser().setClothIndex((int)load.readObject());
+					c.getPresentUser().setFoodList((Food[])load.readObject());
+					c.getPresentUser().setFoodIndex((int)load.readObject());
+					
+					c.getPresentUser().setController((Controller)load.readObject());
+					
+					load.close();
+					System.out.println("Load Done.");
 				}
 				catch(Exception ex)
 				{
-					
+					ex.printStackTrace();
 				}
 				
 			}
@@ -259,12 +279,14 @@ public class MainFrame extends JFrame
 						for(j=0;j<list.length;j++)
 						{
 							livingroomPage.food[j].setText(list[j]);
+							Food tempFood=c.getPresentUser().getFood(j);
 							livingroomPage.food[j].addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
 								{
-									currentFood=c.getPresentUser().getFood(j);
+									currentFood=tempFood;
+									//currentFood=c.getPresentUser().getFood(j);
 									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
 								}
 							});
@@ -343,12 +365,14 @@ public class MainFrame extends JFrame
 						for(j=0;j<list.length;j++)
 						{
 							bathroomPage.cloth[j].setText(list[j]);
+							Cloth tempCloth=c.getPresentUser().getCloth(j);
 							bathroomPage.cloth[j].addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
 								{
-									currentCloth=c.getPresentUser().getCloth(j);
+									currentCloth=tempCloth;
+									//currentCloth=c.getPresentUser().getCloth(j);
 									menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth()/2, 0);
 								}
 							});
@@ -380,7 +404,18 @@ public class MainFrame extends JFrame
 					FileOutputStream saveFile=new FileOutputStream("SaveData.sav");
 					ObjectOutputStream save=new ObjectOutputStream(saveFile);
 					
-					save.writeObject(c.getPresentUser());
+					save.writeObject(c.getPresentUser().getName());
+					save.writeObject(c.getPresentUser().getGold());
+					
+					save.writeObject(c.getPresentUser().getPetList());
+					save.writeObject(c.getPresentUser().getUserPetSize()-1);
+					save.writeObject(c.getPresentUser().getClothList());
+					save.writeObject(c.getPresentUser().getClothIndex());
+					save.writeObject(c.getPresentUser().getFoodList());
+					save.writeObject(c.getPresentUser().getFoodIndex());
+					
+					save.writeObject(c.getPresentUser().getController());
+										
 					save.close();
 					
 					System.out.println("Save Done.");
@@ -429,6 +464,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[0]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -439,6 +475,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[1]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -449,6 +486,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.clothList[2]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -459,6 +497,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[0]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -469,6 +508,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[1]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -479,6 +519,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.foodList[2]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -503,6 +544,7 @@ public class MainFrame extends JFrame
 					shopPage.textField.setVisible(false);
 				}
 				//c.getPresentUser().buyItem(shopPage.animalList[0]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -528,6 +570,7 @@ public class MainFrame extends JFrame
 				}
 				
 				//c.getPresentUser().buyItem(shopPage.animalList[0]);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -538,6 +581,7 @@ public class MainFrame extends JFrame
 			public void actionPerformed(ActionEvent e)
 			{
 				c.getPresentUser().buyItem(shopPage.potion);
+				showSellItems();
 				c.viewShopStatus();
 			}
 		});
@@ -626,7 +670,14 @@ public class MainFrame extends JFrame
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					tempPet.useItem(c.getPresentUser().getPotion());
+					if(c.getPresentUser().getPotion()!=null)
+					{
+						tempPet.useItem(c.getPresentUser().getPotion());
+					}
+					else
+						tempPet.useItem(currentFood);
+					currentFood=null;
+					//livingroomPage.btnPotion.setVisible(false);
 					//c.getPresentUser().getPet(i).useItem(currentFood);
 				}
 			});
@@ -645,12 +696,14 @@ public class MainFrame extends JFrame
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
 			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
+			Animal tempPet = c.getPresentUser().getPet(i);
 			items[i].addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					
+					tempPet.dress(currentCloth);
+					currentCloth=null;
 					//c.getPresentUser().getPet(i).useItem(currentCloth);
 				}
 			});
@@ -668,9 +721,65 @@ public class MainFrame extends JFrame
 	}
 	public void gotoShop()
 	{
+		showSellItems();
 		c.viewShopStatus();
 		this.setContentPane(shopPage);
 		this.setVisible(true);
+	}
+	
+	public void showSellItems()
+	{
+		String clothList[]=c.getPresentUser().getClothItemNameList();
+		String foodList[]=c.getPresentUser().getFoodItemList();
+		
+		if(clothList!=null)
+		{
+			for(int i=0;i<clothList.length;i++)
+			{
+				shopPage.btnUserCloth[i].setText(clothList[i]);
+				Cloth tempCloth=c.getPresentUser().getCloth(i);
+				shopPage.btnUserCloth[i].addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						c.getPresentUser().sellItem(tempCloth);
+					}
+				});
+				shopPage.btnUserCloth[i].setVisible(true);
+			}
+		}
+		if(foodList!=null)
+		{
+			for(int i=0;i<foodList.length;i++)
+			{
+				shopPage.btnUserFood[i].setText(foodList[i]);
+				Food tempFood=c.getPresentUser().getFood(i);
+				shopPage.btnUserFood[i].addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						c.getPresentUser().sellItem(tempFood);
+					}
+				});
+				shopPage.btnUserFood[i].setVisible(true);
+			}
+		}
+		
+		if(c.getPresentUser().getPotion()!=null)
+		{
+			shopPage.btnUserPotion.setText("???");
+			shopPage.btnUserPotion.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					c.getPresentUser().sellItem(c.getPresentUser().getPotion());
+				}
+			});
+			shopPage.btnUserPotion.setVisible(true);
+		}
 	}
 	
 	public void showAnimalStat(String []list)

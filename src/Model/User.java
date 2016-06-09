@@ -6,14 +6,14 @@ import View.ShopPage;
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
-public class User
+public class User implements java.io.Serializable 
 {
     private String name;
     private int gold;
     private Animal[] myPetList;
     private Cloth[] myClothList;
     private Food[] myFoodList;
-    private Potion myPotion;
+    private Potion myPotion=null;
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
     private int petIndex=0;	//new
@@ -46,10 +46,18 @@ public class User
     public void setAnimal(int index, Animal p){
     	this.myPetList[index]=p;
     }    //new
+    public void setName(String name){this.name=name;}
     public void setGold(int gold){this.gold=gold;}
+    public void setPetList(Animal[] list){this.myPetList=list;}
+    public void setFoodList(Food[] list){this.myFoodList=list;}
+    public void setClothList(Cloth[] list){this.myClothList=list;}
     public void setFoodList(int listNum, Food food){this.myFoodList[listNum]=food; this.foodIndex++;}
     public void setClothList(int listNum, Cloth cloth){this.myClothList[listNum]=cloth; this.clothIndex++;}
     public void setPotion(Potion potion){this.myPotion=potion;}
+    public void setPetIndex(int index){this.petIndex=index;}
+    public void setFoodIndex(int index){this.foodIndex=index;}
+    public void setClothIndex(int index){this.clothIndex=index;}
+    public void setController(Controller c){this.c=c;}
 
     public Animal[] getPetList(){return this.myPetList;}
     public Food[] getFoodList(){return this.myFoodList;}    //new
@@ -63,7 +71,18 @@ public class User
     public int getFoodIndex(){return  this.foodIndex;}//new
     public int getClothIndex(){return this.clothIndex;} //new
     public int getIndex(){return this.petIndex;}   //new
+    public String getName(){return this.name;}
     public Potion getPotion(){return this.myPotion;}
+    
+    public void useItem(Food i)
+    {
+    	for(int j=0;j<myFoodList.length;j++)
+    		if(myFoodList[j].equals(i))
+    		{
+    			myFoodList[j]=null;
+    			break;
+    		}
+    }
     
     public boolean buyItem(Food i)
     {
@@ -120,6 +139,51 @@ public class User
     		return true;
     	}
     	return false;
+    }
+    
+    public void sellItem(Cloth i)
+    {
+    	for(int j=0;j<myClothList.length;j++)
+    		if(myClothList[j]==i)
+    		{
+    			myClothList[j]=null;
+    			clothIndex--;
+    			break;
+    		}
+    	for(int j=0;j<clothIndex+1;j++)
+    	{
+    		if(myClothList[j]==null)
+    		{
+    			myClothList[j]=myClothList[j+1];
+    			myClothList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Food i)
+    {
+    	for(int j=0;j<myFoodList.length;j++)
+    		if(myFoodList[j]==i)
+    		{
+    			myFoodList[j]=null;
+    			foodIndex--;
+    			break;
+    		}
+    	for(int j=0;j<foodIndex+1;j++)
+    	{
+    		if(myFoodList[j]==null)
+    		{
+    			myFoodList[j]=myFoodList[j+1];
+    			myFoodList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Potion i)
+    {
+    	myPotion=null;
     }
     
     public String[] getClothItemNameList()

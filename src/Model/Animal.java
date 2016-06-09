@@ -13,7 +13,7 @@ import View.ShopPage;
 /**
  * Created by Jiyoon on 2016. 5. 1..
  */
-public abstract class Animal implements AnimalOperation_IF, Fight_IF
+public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Serializable 
 {
 	private String name;
     private Place myLocation;
@@ -37,8 +37,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     private int m_x=250;
     private int m_y=250;
     private String[] speechList;
-    private ImageIcon myImage;
-    private ImageIcon faceImage[];  //제너럴 써야할듯?
+    transient private ImageIcon myImage;
+    transient private ImageIcon faceImage[];  //제너럴 써야할듯?
     private PetLabel myView;
     
     private User myUser;
@@ -69,7 +69,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         		"null",								//16	special_6
         		"Happy",							//17	happy
         		"Hungry",							//18	hungry
-        		"Tired"								//19	tired
+        		"Tired",							//19	tired
+        		"간식은 사료랑 맛이 달라요"					//20   	food
         };
 
         //setting start stat
@@ -378,15 +379,19 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         }
     }
 
-    
-
     public void dress(Cloth cloth)
     {
-        this.myCloth=cloth;
+    	this.myCloth=cloth;
+    	this.power+=cloth.getPower();
+    	this.stemina+=cloth.getStemina();
+    	this.defense+=cloth.getDefense();
     }
 
     public void undress()
     {
+    	this.power-=myCloth.getPower();
+    	this.stemina-=myCloth.getStemina();
+    	this.defense-=myCloth.getDefense();
         this.myCloth=null;
     }
 
@@ -450,23 +455,27 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	this.fatigability+=i.getFatigability();
     	this.happiness+=i.getHappiness();
     	this.satiety+=i.getSatiety();
-    }
-    
-    public void useItem(Cloth i)
-    {
-    	this.power+=i.getPower();
-    	this.stemina+=i.getStemina();
-    	this.defense+=i.getDefense();
+    	
+    	//this.myUser.useItem(i);
     }
     
     public void useItem(Potion i)
     {
-    	if(this instanceof AdultCat || this instanceof AdultMonkey) {
+    	if(this instanceof AdultCat || this instanceof AdultMonkey)
+    	{
     		this.getLabel().transform_label();
+<<<<<<< HEAD
     		//this.getMyUser().getController().m.livingroomPage.remove(getMyUser().getController().m.livingroomPage.getbtnPotion());
     		//this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
+=======
+    		//밑으로 전부다 null ex
+    		this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
+    		this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
+    		this.getMyUser().setPotion(null);
+>>>>>>> 7c6787afbd7fb6b92520ad2c7b882a94105bd82c
     	}
-    	else {
+    	else
+    	{
     		
     	}
     }
