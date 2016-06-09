@@ -14,7 +14,6 @@ public class User
     private Cloth[] myClothList;
     private Food[] myFoodList;
     private Potion myPotion;
-    //private int index=0;    //new
     private int foodIndex=-1;   //new
     private int clothIndex=-1;  //new
     private int petIndex=0;	//new
@@ -29,11 +28,13 @@ public class User
         this.gold=500;
 
         this.name=userName;
+        //System.out.println("this pet : "+petName);
 
         if(petChoice == 1)
             myPetList[0]=new BabyCat(petName, 0);
         else if(petChoice == 2)
             myPetList[0]=new BabyMonkey(petName, 0);
+        //System.out.println("name : "+this.getPet(0).getName());
     }
     
     public Controller getController() {

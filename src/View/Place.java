@@ -34,7 +34,6 @@ public abstract class Place extends JPanel
 			drapIcon[i] = null;
 		}*/
 	
-	
 	}
 	public Place(Controller c)
 	{

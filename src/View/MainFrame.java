@@ -35,7 +35,7 @@ public class MainFrame extends JFrame
 	public BattlePage battlePage;	
 	private String userName;
 	
-	protected JPopupMenu menu=new JPopupMenu();
+	protected JPopupMenu menu;
 	protected JMenuItem []items=new JMenuItem[5];
 	
 	private boolean bathroomClosetFlag=false;
@@ -172,8 +172,8 @@ public class MainFrame extends JFrame
 				}
 				else
 				{ 
-					petsettingPage.setPetName(petName);
-					c.goStartingPoint(petsettingPage.getPetNum(), petsettingPage.getName());
+					//petsettingPage.setPetName(petName);
+					c.goStartingPoint(petsettingPage.getPetNum(), petName);
 					//calling game start method
 				}
 			}
@@ -231,6 +231,14 @@ public class MainFrame extends JFrame
 						for(int i=0;i<list.length;i++)
 						{
 							livingroomPage.food[i].setText(list[i]);
+							livingroomPage.food[i].addActionListener(new ActionListener()
+							{
+								@Override
+								public void actionPerformed(ActionEvent e)
+								{
+									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
+								}
+							});
 							livingroomPage.food[i].setVisible(true);
 						}
 						livingroomPage.labelEmpty.setVisible(false);
@@ -285,33 +293,30 @@ public class MainFrame extends JFrame
 			{
 				if(bathroomClosetFlag==false)
 				{
-					if(bathroomClosetFlag==false)
+					bathroomClosetFlag=true;
+					String list[]=c.appendClosetItemList();
+					if(list!=null)
 					{
-						bathroomClosetFlag=true;
-						String list[]=c.appendClosetItemList();
-						if(list!=null)
+						for(i=0;i<list.length;i++)
 						{
-							for(i=0;i<list.length;i++)
+							bathroomPage.cloth[i].setText(list[i]);
+							bathroomPage.cloth[i].addActionListener(new ActionListener()
 							{
-								bathroomPage.cloth[i].setText(list[i]);
-								bathroomPage.cloth[i].addActionListener(new ActionListener()
+								@Override
+								public void actionPerformed(ActionEvent e)
 								{
-									@Override
-									public void actionPerformed(ActionEvent e)
-									{
-										menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth(), bathroomPage.clothItemInfo.getHeight());
-									}
-								});
-								bathroomPage.cloth[i].setVisible(true);
-							}
+									menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth()/2, 0);
+								}
+							});
+							bathroomPage.cloth[i].setVisible(true);
 						}
-						else
-							bathroomPage.emptyLabel.setVisible(true);
-					}				
-						
+						bathroomPage.emptyLabel.setVisible(false);
+					}
+					else
+						bathroomPage.emptyLabel.setVisible(true);
 					bathroomPage.UsersClothItem.setVisible(true);
 					bathroomPage.clothItemInfo.setVisible(true);
-				}
+				}				
 				else
 				{
 					bathroomClosetFlag=false;
@@ -487,13 +492,13 @@ public class MainFrame extends JFrame
 			{
 				if(shopPetFlag==1)
 				{
-					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 500, false);
+					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 200, false);
 					c.getPresentUser().buyItem(shopPage.animalList[0]);
 					shopPage.textField.setText("");
 				}
 				else if(shopPetFlag==2)
 				{
-					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 500, false);
+					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 200, false);
 					c.getPresentUser().buyItem(shopPage.animalList[1]);
 					shopPage.textField.setText("");
 				}
@@ -541,9 +546,11 @@ public class MainFrame extends JFrame
 	
 	public void gotoLivingroom()
 	{
+		menu=new JPopupMenu();
 		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
+			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
 			menu.add(this.items[i]);
 		}
 		c.viewLivingroomStatus();
@@ -552,11 +559,11 @@ public class MainFrame extends JFrame
 	}
 	public void gotoBathroom()
 	{
-		System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize());
+		menu=new JPopupMenu();
 		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
-			System.out.println(c.getPresentUser().getPet(i).getName());
+			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
 			menu.add(this.items[i]);
 		}
 		c.viewBathroomStatus();
