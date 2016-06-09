@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import View.PetLabel;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
@@ -25,6 +27,9 @@ public class AdultCat extends BabyCat implements Dance_IF
 			e.printStackTrace();
 		}
     }
+<<<<<<< HEAD
+    public AdultCat(Animal p, User myUser, PetLabel view) {
+=======
     public AdultCat(String name, int index)
     {
         super.setName(name);
@@ -44,8 +49,10 @@ public class AdultCat extends BabyCat implements Dance_IF
         setSpeechList("감히...냥", 16);
     }
     public AdultCat(Animal p, User myUser) {
+>>>>>>> 7c6787afbd7fb6b92520ad2c7b882a94105bd82c
     	super(p);
     	super.setMyUser(myUser);
+    	this.setLabel(view);
     	System.out.println("AdultCat의 생성자");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Adult_cat\\ordinary.png"))));
@@ -53,6 +60,7 @@ public class AdultCat extends BabyCat implements Dance_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	System.out.println("this.petLabel " + this.getLabel());
     }
 
     //change
@@ -75,7 +83,7 @@ public class AdultCat extends BabyCat implements Dance_IF
     public void transform(User presentUser, int index)
     {
     	System.out.println("드래곤 변신" + presentUser);
-        presentUser.setAnimal(index, new Dragon(this, presentUser));
+        presentUser.setAnimal(index, new Dragon(this));
         
     }
     public boolean checkExp()

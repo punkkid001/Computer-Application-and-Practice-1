@@ -7,6 +7,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import View.PetLabel;
+
 /**
  * Created by Jiyoon on 2016. 5. 17..
  */
@@ -35,6 +37,7 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 	public Dragon(Animal p, User myUser) {
     	super(p);
     	super.setMyUser(myUser);
+    	
     	this.returnAnimal = p;
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\dragon\\ordinary.png"))));
@@ -43,11 +46,11 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 			e.printStackTrace();
 		}
     	this.mess();
+    	System.out.println("¿Ö ¾È¼û´Ï?" + this.getLabel());
     	this.hide();
-    	/*
-    	if(this.getLevel() < 4)
-    		this.degradeThread();
-    	*/
+    	
+    	this.degradeThread();
+    	
     }
     public void sit(){System.out.println("Dragon sit");}
     @Override
@@ -66,14 +69,14 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 	}
     public void shout(){System.out.println("Dragon shout!!");}
 
-    public String getName(){return actName;}
+    //public String getName(){return this.getName();}
 	@Override
 	public void grow(User presentUser, int index) {
 		// TODO Auto-generated method stub
 		
 	}
 	public void degrade(User presentUser, int index) {
-		System.out.println(presentUser.getClass());
+		System.out.println("ÅðÈ­ ¿Ö ¾ÈÇØ?" + presentUser.getClass());
 		
 		presentUser.setAnimal(index, this.returnAnimal);   
 	}
