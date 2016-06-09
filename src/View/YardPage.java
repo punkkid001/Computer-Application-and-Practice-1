@@ -146,14 +146,14 @@ public class YardPage extends Place implements ActionListener
 		super.paintComponent(g);
 		g.drawImage(panelImg, 0, 0, null);
 	}
-
+/*
 	public void actionPerformed(ActionEvent e)
 	{
 		// TODO Auto-generated method stub
 		if(e.getSource()==playBtn)  // 플레이 눌리면
 			{
 			System.out.println("플레이 눌림");
-			PetLabel.pet.play();
+			.play();
 			JLabel playmsg = new JLabel(PetLabel.pet.getMessage(4));
 			PetLabel.pet.getMyLocation().add(playmsg);
 			playmsg.setBounds(PetLabel.pet.getX()+97, PetLabel.pet.getY()+65, 100, 50);
@@ -182,5 +182,11 @@ public class YardPage extends Place implements ActionListener
 		{
 			System.out.println("대전 눌림");
 			}
-		}
+		}*/
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	}

@@ -33,13 +33,13 @@ public class Drappings extends JLabel implements Runnable{
 		this.m_x = pet.getX();
 		this.m_y = pet.getY();
 		System.out.println("√÷√  ∂À ¡¬«• : " + m_x +" " + m_y);
-		this.setBounds(m_x-10, m_y+130, 37, 35);
+		//this.setBounds(m_x-15, m_y+160, 37, 35);
 		//this.setVisible(true);
 	}
 	public Drappings(PetLabel viewPet, int myNum) {
 		this(viewPet);
 		this.myNum = myNum;
-		this.setBounds(m_x-10 + 40*myNum, m_y+130, 37, 35);
+		this.setBounds(m_x-25+ 40*myNum, m_y+160+10*myNum , 37, 35);
 	}
 	@Override
 	public void run() {
@@ -48,7 +48,7 @@ public class Drappings extends JLabel implements Runnable{
 			x_cal = this.viewPet.getX();
 			y_cal = this.viewPet.getY();
 			System.out.println("x, y ∂À¡¬«•" + x_cal +" "+ y_cal);
-			this.setLocation((int)x_cal-10 + 40*myNum, (int)y_cal+130);
+			this.setLocation((int)x_cal-25+ 40*myNum, (int)y_cal+160+10*myNum);
 		//m_x-10 + 40*myNum, m_y+130, 37, 35
 			if(this.viewPet.getMoveflag() == 0)
 				break;
