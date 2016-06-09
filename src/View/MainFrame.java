@@ -279,12 +279,14 @@ public class MainFrame extends JFrame
 						for(j=0;j<list.length;j++)
 						{
 							livingroomPage.food[j].setText(list[j]);
+							Food tempFood=c.getPresentUser().getFood(j);
 							livingroomPage.food[j].addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
 								{
-									currentFood=c.getPresentUser().getFood(j);
+									currentFood=tempFood;
+									//currentFood=c.getPresentUser().getFood(j);
 									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
 								}
 							});
@@ -363,12 +365,14 @@ public class MainFrame extends JFrame
 						for(j=0;j<list.length;j++)
 						{
 							bathroomPage.cloth[j].setText(list[j]);
+							Cloth tempCloth=c.getPresentUser().getCloth(j);
 							bathroomPage.cloth[j].addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
 								{
-									currentCloth=c.getPresentUser().getCloth(j);
+									currentCloth=tempCloth;
+									//currentCloth=c.getPresentUser().getCloth(j);
 									menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth()/2, 0);
 								}
 							});
@@ -666,7 +670,14 @@ public class MainFrame extends JFrame
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					tempPet.useItem(c.getPresentUser().getPotion());
+					if(c.getPresentUser().getPotion()!=null)
+					{
+						tempPet.useItem(c.getPresentUser().getPotion());
+					}
+					else
+						tempPet.useItem(currentFood);
+					currentFood=null;
+					//livingroomPage.btnPotion.setVisible(false);
 					//c.getPresentUser().getPet(i).useItem(currentFood);
 				}
 			});
@@ -685,12 +696,14 @@ public class MainFrame extends JFrame
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
 			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
+			Animal tempPet = c.getPresentUser().getPet(i);
 			items[i].addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					
+					tempPet.useItem(currentCloth);
+					currentCloth=null;
 					//c.getPresentUser().getPet(i).useItem(currentCloth);
 				}
 			});

@@ -378,8 +378,6 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
         }
     }
 
-    
-
     public void dress(Cloth cloth)
     {
         this.myCloth=cloth;
@@ -461,12 +459,16 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
     
     public void useItem(Potion i)
     {
-    	if(this instanceof AdultCat || this instanceof AdultMonkey) {
+    	if(this instanceof AdultCat || this instanceof AdultMonkey)
+    	{
     		this.getLabel().transform_label();
+    		//밑으로 전부다 null ex
     		this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
     		this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
+    		this.getMyUser().setPotion(null);
     	}
-    	else {
+    	else
+    	{
     		
     	}
     }
