@@ -34,7 +34,6 @@ public class BabyMonkey extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("³ª ±×³É Àß·¡ ¿ì³¢³¢!!!", 9);
         setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 11);
         setSpeechList("¿ìƒ­ ¾È³ç~", 12);
         setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 13);
