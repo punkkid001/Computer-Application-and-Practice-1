@@ -24,6 +24,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
 
 import Model.AdultCat;
+import Model.AdultMonkey;
 import Model.Animal;
 import Model.Degrade_IF;
 import Model.User;
@@ -247,7 +248,11 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		}
 		
 		menu.add(item5);
-		
+		if(this.pet instanceof AdultCat) {
+			//JMenuItem b1 = new JMenuItem(s)
+		} else if(this.pet instanceof AdultMonkey) {
+			
+		}
 		//item5.add(menuItem);
 		
 		this.addMouseListener(this);
