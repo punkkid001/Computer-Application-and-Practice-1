@@ -174,7 +174,7 @@ public class ShopPage extends Place
 		btnFood[0].setBounds(10, 60, 70, 70);
 		btnFood[0].setToolTipText(getTooltipText(foodList[0]));
 		btnFood[0].setContentAreaFilled(false);
-		btnFood[0].setBorderPainted(false);
+		//btnFood[0].setBorderPainted(false);
 		btnFood[0].setFocusPainted(false);
 		buyPanel.add(btnFood[0]);
 		
@@ -182,7 +182,7 @@ public class ShopPage extends Place
 		btnFood[1].setBounds(90, 60, 70, 70);
 		btnFood[1].setToolTipText(getTooltipText(foodList[1]));
 		btnFood[1].setContentAreaFilled(false);
-		btnFood[1].setBorderPainted(false);
+		//btnFood[1].setBorderPainted(false);
 		btnFood[1].setFocusPainted(false);
 		buyPanel.add(btnFood[1]);
 		
@@ -190,7 +190,7 @@ public class ShopPage extends Place
 		btnFood[2].setBounds(170, 60, 70, 70);
 		btnFood[2].setToolTipText(getTooltipText(foodList[2]));
 		btnFood[2].setContentAreaFilled(false);
-		btnFood[2].setBorderPainted(false);
+		//btnFood[2].setBorderPainted(false);
 		btnFood[2].setFocusPainted(false);
 		buyPanel.add(btnFood[2]);
 		
@@ -199,7 +199,7 @@ public class ShopPage extends Place
 		btnCloth[0].setBounds(10, 140, 70, 70);
 		btnCloth[0].setToolTipText(getTooltipText(clothList[0]));
 		btnCloth[0].setContentAreaFilled(false);
-		btnCloth[0].setBorderPainted(false);
+		//btnCloth[0].setBorderPainted(false);
 		btnCloth[0].setFocusPainted(false);
 		buyPanel.add(btnCloth[0]);
 		
@@ -207,7 +207,7 @@ public class ShopPage extends Place
 		btnCloth[1].setBounds(90, 140, 70, 70);
 		btnCloth[1].setToolTipText(getTooltipText(clothList[1]));
 		btnCloth[1].setContentAreaFilled(false);
-		btnCloth[1].setBorderPainted(false);
+		//btnCloth[1].setBorderPainted(false);
 		btnCloth[1].setFocusPainted(false);
 		buyPanel.add(btnCloth[1]);
 		
@@ -215,7 +215,7 @@ public class ShopPage extends Place
 		btnCloth[2].setBounds(170, 140, 70, 70);
 		btnCloth[2].setToolTipText(getTooltipText(clothList[2]));
 		btnCloth[2].setContentAreaFilled(false);
-		btnCloth[2].setBorderPainted(false);
+		//btnCloth[2].setBorderPainted(false);
 		btnCloth[2].setFocusPainted(false);
 		buyPanel.add(btnCloth[2]);
 		
@@ -224,7 +224,7 @@ public class ShopPage extends Place
 		btnPet[0].setBounds(10, 220, 70, 70);
 		btnPet[0].setToolTipText(getTooltipText(animalList[0]));
 		btnPet[0].setContentAreaFilled(false);
-		btnPet[0].setBorderPainted(false);
+		//btnPet[0].setBorderPainted(false);
 		btnPet[0].setFocusPainted(false);
 		buyPanel.add(btnPet[0]);
 		
@@ -232,7 +232,7 @@ public class ShopPage extends Place
 		btnPet[1].setBounds(90, 220, 70, 70);
 		btnPet[1].setToolTipText(getTooltipText(animalList[1]));
 		btnPet[1].setContentAreaFilled(false);
-		btnPet[1].setBorderPainted(false);
+		//btnPet[1].setBorderPainted(false);
 		btnPet[1].setFocusPainted(false);
 		buyPanel.add(btnPet[1]);
 		
@@ -244,7 +244,7 @@ public class ShopPage extends Place
 		btnPotion.setBounds(170, 220, 70, 70);
 		btnPotion.setToolTipText(getTooltipText(potion));
 		btnPotion.setContentAreaFilled(false);
-		btnPotion.setBorderPainted(false);
+		//btnPotion.setBorderPainted(false);
 		btnPotion.setFocusPainted(false);
 		buyPanel.add(btnPotion);
 		
@@ -274,43 +274,61 @@ public class ShopPage extends Place
 		btnSell.setFocusPainted(false);
 		sellPanel.add(btnSell);
 		
-		btnUserFood[0] = new JButton("food1");
+		btnUserFood[0] = new JButton(new ImageIcon(this.premiumImg));
 		btnUserFood[0].setBounds(10, 60, 70, 70);
+		btnUserFood[0].setContentAreaFilled(false);
+		//btnUserFood[0].setBorderPainted(false);
+		btnUserFood[0].setFocusPainted(false);
 		sellPanel.add(btnUserFood[0]);
 		btnUserFood[0].setVisible(false);
 		
-		btnUserFood[1] = new JButton("food2");
+		btnUserFood[1] = new JButton(new ImageIcon(this.cakeImg));
 		btnUserFood[1].setBounds(90, 60, 70, 70);
+		btnUserFood[1].setContentAreaFilled(false);
+		//btnUserFood[1].setBorderPainted(false);
+		btnUserFood[1].setFocusPainted(false);
 		sellPanel.add(btnUserFood[1]);
 		btnUserFood[1].setVisible(false);
 		
-		btnUserFood[2] = new JButton("food3");
+		btnUserFood[2] = new JButton(new ImageIcon(this.parfaitImg));
 		btnUserFood[2].setBounds(170, 60, 70, 70);
+		btnUserFood[2].setContentAreaFilled(false);
+		//btnUserFood[2].setBorderPainted(false);
+		btnUserFood[2].setFocusPainted(false);
 		sellPanel.add(btnUserFood[2]);
 		btnUserFood[2].setVisible(false);
 		
-		btnUserCloth[0] = new JButton("cloth1");
+		btnUserCloth[0] = new JButton(new ImageIcon(this.hatImg));
 		btnUserCloth[0].setBounds(10, 140, 70, 70);
+		btnUserCloth[0].setContentAreaFilled(false);
+		//btnUserCloth[0].setBorderPainted(false);
+		btnUserCloth[0].setFocusPainted(false);
 		sellPanel.add(btnUserCloth[0]);
 		btnUserCloth[0].setVisible(false);
 		
-		btnUserCloth[1] = new JButton("cloth2");
+		btnUserCloth[1] = new JButton(new ImageIcon(this.shoesImg));
 		btnUserCloth[1].setBounds(90, 140, 70, 70);
+		btnUserCloth[1].setContentAreaFilled(false);
+		//btnUserCloth[1].setBorderPainted(false);
+		btnUserCloth[1].setFocusPainted(false);
 		sellPanel.add(btnUserCloth[1]);
 		btnUserCloth[1].setVisible(false);
 		
-		btnUserCloth[2] = new JButton("cloth3");
+		btnUserCloth[2] = new JButton(new ImageIcon(this.ribbonImg));
 		btnUserCloth[2].setBounds(90, 140, 70, 70);
+		btnUserCloth[2].setContentAreaFilled(false);
+		//btnUserCloth[2].setBorderPainted(false);
+		btnUserCloth[2].setFocusPainted(false);
 		sellPanel.add(btnUserCloth[2]);
 		btnUserCloth[2].setVisible(false);
 		
 		/*
-		btnUserPet[0] = new JButton("pet1");
+		btnUserPet[0] = new JButton(new ImageIcon(this.babyCatImg));
 		btnUserPet[0].setBounds(10, 220, 70, 70);
 		sellPanel.add(btnUserPet[0]);
 		btnUserPet[0].setVisible(false);
 		
-		btnUserPet[1] = new JButton("pet2");
+		btnUserPet[1] = new JButton(new ImageIcon(this.babyMonkeyImg));
 		btnUserPet[1].setBounds(90, 220, 70, 70);
 		sellPanel.add(btnUserPet[1]);
 		btnUserPet[1].setVisible(false);
@@ -318,6 +336,9 @@ public class ShopPage extends Place
 		
 		btnUserPotion = new JButton(new ImageIcon(this.potionImg));
 		btnUserPotion.setBounds(170, 220, 70, 70);
+		btnUserPotion.setContentAreaFilled(false);
+		//btnUserPotion.setBorderPainted(false);
+		btnUserPotion.setFocusPainted(false);
 		sellPanel.add(btnUserPotion);
 		btnUserPotion.setVisible(false);
 		
