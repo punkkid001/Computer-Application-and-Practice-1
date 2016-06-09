@@ -69,7 +69,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         		"null",								//16	special_6
         		"Happy",							//17	happy
         		"Hungry",							//18	hungry
-        		"Tired"								//19	tired
+        		"Tired",							//19	tired
+        		"간식은 사료랑 맛이 달라요"					//20   	food
         };
 
         //setting start stat

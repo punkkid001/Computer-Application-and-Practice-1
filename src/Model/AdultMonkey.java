@@ -33,13 +33,12 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList(" ", 9);
-        setSpeechList(" ", 11);
-        setSpeechList(" ", 12);
-        setSpeechList(" ", 13);
-        setSpeechList(" ", 14);
-        setSpeechList(" ", 15);
-        setSpeechList(" ", 16);
+        setSpeechList("힘세고 좋은아침", 11);
+        setSpeechList("누가내게 묻는다면 나는 왈도", 12);
+        setSpeechList("말뿐이야? 바나나라도...", 13);
+        setSpeechList("우린 친한 친구~", 14);
+        setSpeechList("잘못했어...", 15);
+        setSpeechList("시정들어간다!", 16);
     }
     //change
     public void levelUp()

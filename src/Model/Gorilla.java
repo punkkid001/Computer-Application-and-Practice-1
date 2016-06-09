@@ -28,6 +28,13 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
     	this.hide();
     	if(this.getLevel() < 4)
     		this.degradeThread();
+    	
+    	setSpeechList("상상력이야 말로 발견의 정수입니다", 11);
+        setSpeechList("고릴라 나가신다", 12);
+        setSpeechList("안녕! 친구", 13);
+        setSpeechList("오우! 제대로 놀아보자", 14);
+        setSpeechList("한 방이면 충분해", 15);
+        setSpeechList("내가 아직 재간둥이로 보이나", 16);
 	}
 	
 	public Gorilla(Animal p, User myUser) {

@@ -28,6 +28,13 @@ public class Tiger extends AdultCat implements Mess_IF, Runnable, Degrade_IF
     	this.mess();
     	if(this.getLevel() < 4)
     		this.degradeThread();
+    	
+    	setSpeechList("난장판이다!!!", 11);
+        setSpeechList("깽판치기 딱 좋은 날이네", 12);
+        setSpeechList("석양이 진다...", 13);
+        setSpeechList("친한척 굴지 마", 14);
+        setSpeechList("나는 대재앙을 불러온다", 15);
+        setSpeechList("뒤를 보이지 마", 16);
     }
 	public Tiger(Animal p, User myUser) {
     	super(p);
