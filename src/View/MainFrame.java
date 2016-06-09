@@ -13,8 +13,12 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
 import Controller.Controller;
+import Model.Animal;
 import Model.BabyCat;
 import Model.BabyMonkey;
+import Model.Cloth;
+import Model.Food;
+import Model.Potion;
 
 import javax.swing.JButton;
 
@@ -43,7 +47,10 @@ public class MainFrame extends JFrame
 	private boolean livingroomFridgeFlag=false;
 	private int shopPetFlag=0;	//1 : cat / 2 : monkey
 	
-	private int i=0;
+	private Food currentFood;
+	private Cloth currentCloth;
+	private Animal currentAnimal;
+	private int i=0, j=0;
 	/**
 	 * Create the frame.
 	 */
@@ -228,10 +235,10 @@ public class MainFrame extends JFrame
 					livingroomFridgeFlag=true;
 					if(list!=null)
 					{
-						for(int i=0;i<list.length;i++)
+						if(c.getPresentUser().getPotion()!=null)
 						{
-							livingroomPage.food[i].setText(list[i]);
-							livingroomPage.food[i].addActionListener(new ActionListener()
+							livingroomPage.btnPotion.setText("???");
+							livingroomPage.btnPotion.addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
@@ -239,7 +246,21 @@ public class MainFrame extends JFrame
 									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
 								}
 							});
-							livingroomPage.food[i].setVisible(true);
+							livingroomPage.btnPotion.setVisible(true);
+						}
+						for(j=0;j<list.length;j++)
+						{
+							livingroomPage.food[j].setText(list[j]);
+							livingroomPage.food[j].addActionListener(new ActionListener()
+							{
+								@Override
+								public void actionPerformed(ActionEvent e)
+								{
+									currentFood=c.getPresentUser().getFood(j);
+									menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
+								}
+							});
+							livingroomPage.food[j].setVisible(true);
 						}
 						livingroomPage.labelEmpty.setVisible(false);
 					}
@@ -297,18 +318,19 @@ public class MainFrame extends JFrame
 					String list[]=c.appendClosetItemList();
 					if(list!=null)
 					{
-						for(i=0;i<list.length;i++)
+						for(j=0;j<list.length;j++)
 						{
-							bathroomPage.cloth[i].setText(list[i]);
-							bathroomPage.cloth[i].addActionListener(new ActionListener()
+							bathroomPage.cloth[j].setText(list[j]);
+							bathroomPage.cloth[j].addActionListener(new ActionListener()
 							{
 								@Override
 								public void actionPerformed(ActionEvent e)
 								{
+									currentCloth=c.getPresentUser().getCloth(j);
 									menu.show(bathroomPage.clothItemInfo, bathroomPage.clothItemInfo.getWidth()/2, 0);
 								}
 							});
-							bathroomPage.cloth[i].setVisible(true);
+							bathroomPage.cloth[j].setVisible(true);
 						}
 						bathroomPage.emptyLabel.setVisible(false);
 					}
@@ -460,6 +482,7 @@ public class MainFrame extends JFrame
 					shopPage.labelInputPetName.setVisible(false);
 					shopPage.textField.setVisible(false);
 				}
+				
 				//c.getPresentUser().buyItem(shopPage.animalList[0]);
 				c.viewShopStatus();
 			}
@@ -470,18 +493,8 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				/*
-				if(shopPage.textField.getText().isEmpty())
-				{
-					JOptionPane.showMessageDialog(null, "Please input pet name", "Warning", JOptionPane.WARNING_MESSAGE);
-					System.out.println("petName이 설정되지 않았습니다.");
-					return;
-				}
-				else
-				*/
-					c.getPresentUser().buyItem(shopPage.potion);
 				c.getPresentUser().buyItem(shopPage.potion);
-				//c.viewShopStatus();
+				c.viewShopStatus();
 			}
 		});
 		
@@ -490,17 +503,26 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				if(shopPetFlag==1)
+				if(shopPage.textField.getText().isEmpty())
 				{
-					shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 200, false);
-					c.getPresentUser().buyItem(shopPage.animalList[0]);
-					shopPage.textField.setText("");
+					JOptionPane.showMessageDialog(null, "Please input pet name", "Warning", JOptionPane.WARNING_MESSAGE);
+					System.out.println("petName이 설정되지 않았습니다.");
+					return;
 				}
-				else if(shopPetFlag==2)
+				else
 				{
-					shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 200, false);
-					c.getPresentUser().buyItem(shopPage.animalList[1]);
-					shopPage.textField.setText("");
+					if(shopPetFlag==1)
+					{
+						shopPage.animalList[0]=new BabyCat(shopPage.textField.getText(), 200, false);
+						c.getPresentUser().buyItem(shopPage.animalList[0]);
+						shopPage.textField.setText("");
+					}
+					else if(shopPetFlag==2)
+					{
+						shopPage.animalList[1]=new BabyMonkey(shopPage.textField.getText(), 200, false);
+						c.getPresentUser().buyItem(shopPage.animalList[1]);
+						shopPage.textField.setText("");
+					}
 				}
 				shopPetFlag=0;
 				shopPage.btnOk.setVisible(false);
@@ -547,23 +569,44 @@ public class MainFrame extends JFrame
 	public void gotoLivingroom()
 	{
 		menu=new JPopupMenu();
-		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
+		//currentFood=null;
+		for(i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
-			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
+			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());dispose();
+			items[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					System.out.println(e.getSource()+"clicked");
+					//c.getPresentUser().getPet(i).useItem(currentFood);
+				}
+			});
 			menu.add(this.items[i]);
 		}
 		c.viewLivingroomStatus();
 		this.setContentPane(livingroomPage);
 		this.setVisible(true);
 	}
+	
 	public void gotoBathroom()
 	{
 		menu=new JPopupMenu();
-		for(int i=0;i<c.getPresentUser().getUserPetSize();i++)
+		//currentCloth=null;
+		for(i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
 			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
 			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());
+			items[i].addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					
+					//c.getPresentUser().getPet(i).useItem(currentCloth);
+				}
+			});
 			menu.add(this.items[i]);
 		}
 		c.viewBathroomStatus();

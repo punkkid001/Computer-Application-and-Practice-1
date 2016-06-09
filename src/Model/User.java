@@ -49,6 +49,7 @@ public class User
     public void setGold(int gold){this.gold=gold;}
     public void setFoodList(int listNum, Food food){this.myFoodList[listNum]=food; this.foodIndex++;}
     public void setClothList(int listNum, Cloth cloth){this.myClothList[listNum]=cloth; this.clothIndex++;}
+    public void setPotion(Potion potion){this.myPotion=potion;}
 
     public Animal[] getPetList(){return this.myPetList;}
     public Food[] getFoodList(){return this.myFoodList;}    //new
@@ -62,6 +63,7 @@ public class User
     public int getFoodIndex(){return  this.foodIndex;}//new
     public int getClothIndex(){return this.clothIndex;} //new
     public int getIndex(){return this.petIndex;}   //new
+    public Potion getPotion(){return this.myPotion;}
     
     public boolean buyItem(Food i)
     {
