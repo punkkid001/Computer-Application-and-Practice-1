@@ -141,6 +141,51 @@ public class User implements java.io.Serializable
     	return false;
     }
     
+    public void sellItem(Cloth i)
+    {
+    	for(int j=0;j<myClothList.length;j++)
+    		if(myClothList[j]==i)
+    		{
+    			myClothList[j]=null;
+    			clothIndex--;
+    			break;
+    		}
+    	for(int j=0;j<clothIndex+1;j++)
+    	{
+    		if(myClothList[j]==null)
+    		{
+    			myClothList[j]=myClothList[j+1];
+    			myClothList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Food i)
+    {
+    	for(int j=0;j<myFoodList.length;j++)
+    		if(myFoodList[j]==i)
+    		{
+    			myFoodList[j]=null;
+    			foodIndex--;
+    			break;
+    		}
+    	for(int j=0;j<foodIndex+1;j++)
+    	{
+    		if(myFoodList[j]==null)
+    		{
+    			myFoodList[j]=myFoodList[j+1];
+    			myFoodList[j+1]=null;
+    		}
+    	}
+    	System.out.println("sell..");
+    }
+    
+    public void sellItem(Potion i)
+    {
+    	myPotion=null;
+    }
+    
     public String[] getClothItemNameList()
     {
     	if(clothIndex!=-1)

@@ -737,12 +737,13 @@ public class MainFrame extends JFrame
 			for(int i=0;i<clothList.length;i++)
 			{
 				shopPage.btnUserCloth[i].setText(clothList[i]);
+				Cloth tempCloth=c.getPresentUser().getCloth(i);
 				shopPage.btnUserCloth[i].addActionListener(new ActionListener()
 				{
 					@Override
 					public void actionPerformed(ActionEvent e)
 					{
-						
+						c.getPresentUser().sellItem(tempCloth);
 					}
 				});
 				shopPage.btnUserCloth[i].setVisible(true);
@@ -753,6 +754,15 @@ public class MainFrame extends JFrame
 			for(int i=0;i<foodList.length;i++)
 			{
 				shopPage.btnUserFood[i].setText(foodList[i]);
+				Food tempFood=c.getPresentUser().getFood(i);
+				shopPage.btnUserFood[i].addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						c.getPresentUser().sellItem(tempFood);
+					}
+				});
 				shopPage.btnUserFood[i].setVisible(true);
 			}
 		}
@@ -760,6 +770,14 @@ public class MainFrame extends JFrame
 		if(c.getPresentUser().getPotion()!=null)
 		{
 			shopPage.btnUserPotion.setText("???");
+			shopPage.btnUserPotion.addActionListener(new ActionListener()
+			{
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					c.getPresentUser().sellItem(c.getPresentUser().getPotion());
+				}
+			});
 			shopPage.btnUserPotion.setVisible(true);
 		}
 	}
