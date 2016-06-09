@@ -45,7 +45,7 @@ public class AdultCat extends BabyCat implements Dance_IF
         setSpeechList("나한테 잘못한거 있지?", 14);
         setSpeechList("애송이 집사 주제에", 15);
         setSpeechList("감히...냥", 16);
-    }
+    }/*
     public AdultCat(Animal p, User myUser) {
 
     	super(p);
@@ -59,7 +59,7 @@ public class AdultCat extends BabyCat implements Dance_IF
 			e.printStackTrace();
 		}
     	System.out.println("this.petLabel " + this.getLabel());
-    }
+    }*/
 
     //change
     public void levelUp()
