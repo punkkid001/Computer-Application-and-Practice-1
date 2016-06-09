@@ -464,15 +464,15 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
     	if(this instanceof AdultCat || this instanceof AdultMonkey)
     	{
     		this.getLabel().transform_label();
-<<<<<<< HEAD
+
     		//this.getMyUser().getController().m.livingroomPage.remove(getMyUser().getController().m.livingroomPage.getbtnPotion());
     		//this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
-=======
+
     		//밑으로 전부다 null ex
     		this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
     		this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
     		this.getMyUser().setPotion(null);
->>>>>>> 7c6787afbd7fb6b92520ad2c7b882a94105bd82c
+
     	}
     	else
     	{
