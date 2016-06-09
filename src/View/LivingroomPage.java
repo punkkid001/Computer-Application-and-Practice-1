@@ -39,6 +39,7 @@ public class LivingroomPage extends Place implements MouseListener
 	protected JButton fridgeBtn;
 	protected JButton bedBtn;
 	protected JButton[] food;
+	protected JButton btnPotion;
 	
 	protected JLabel labelEmpty;
 
@@ -138,7 +139,7 @@ public class LivingroomPage extends Place implements MouseListener
 		 */
 		// ¿¬°á
 		foodItemInfo = new JPanel();
-		foodItemInfo.setBounds(621, 140, 229, 149);
+		foodItemInfo.setBounds(621, 105, 229, 184);
 		add(foodItemInfo);
 		foodItemInfo.setLayout(null);
 
@@ -168,7 +169,12 @@ public class LivingroomPage extends Place implements MouseListener
 		labelEmpty.setForeground(Color.RED);
 		labelEmpty.setBounds(82, 52, 92, 43);
 		foodItemInfo.add(labelEmpty);
-
+		
+		btnPotion = new JButton("potion");
+		btnPotion.setBounds(77, 151, 97, 23);
+		foodItemInfo.add(btnPotion);
+		btnPotion.setVisible(false);
+		
 		foodItemInfo.setVisible(false);
 	}
 	

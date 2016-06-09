@@ -444,6 +444,25 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.myView.makeMessageBox(speechList[17]);
         }       
     }
+    
+    public void useItem(Food i)
+    {
+    	this.fatigability+=i.getFatigability();
+    	this.happiness+=i.getHappiness();
+    	this.satiety+=i.getSatiety();
+    }
+    
+    public void useItem(Cloth i)
+    {
+    	this.power+=i.getPower();
+    	this.stemina+=i.getStemina();
+    	this.defense+=i.getDefense();
+    }
+    
+    public void useItem(Potion i)
+    {
+    	
+    }
 
     //change
     public int snap(Animal target)

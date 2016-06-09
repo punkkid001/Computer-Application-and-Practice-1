@@ -44,6 +44,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	
 	private Drappings drap[];
 	public JMenuItem behaviorItem7;
+	public JLabel simplePetInfo;
 	
 	Thread t;
 	
@@ -57,11 +58,19 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.place = place;
 		this.myUser = myUser;
 		this.menu = new JPopupMenu();
-		this.setText(pet.getName());
+		//this.setText(pet.getName());
 		//System.out.println(this.getX() +" "+ this.getY());
 		
 		this.flag = 0;
 		this.moveFlag = 0;
+		
+		//pet 머리에 이름 표시
+		String s = "";
+		s = "LV"+ pet.getLevel() + "   " + pet.getName();
+		simplePetInfo = new JLabel(s);
+		simplePetInfo.setBounds(this.getX(), this.getY(), 100, 20);
+		simplePetInfo.setOpaque(false);
+		add(simplePetInfo);
 		
 		JMenuItem item1 = new JMenuItem("move");
 		item1.addActionListener(new ActionListener()
