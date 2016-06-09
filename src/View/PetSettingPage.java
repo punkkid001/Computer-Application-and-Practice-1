@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class PetSettingPage extends JPanel implements MouseListener, MouseMotionListener
 {
@@ -75,6 +76,8 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		this.add(this.monkey);
 		
 		JLabel catLabel = new JLabel("Baby Cat");
+		catLabel.setForeground(Color.BLUE);
+		catLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		catLabel.setBounds(300, 240, 100, 18);
 		add(catLabel);		
 		
@@ -91,7 +94,9 @@ public class PetSettingPage extends JPanel implements MouseListener, MouseMotion
 		add(catDefenseLabel);
 		
 		JLabel monkeyLabel = new JLabel("Baby Monkey");
-		monkeyLabel.setBounds(500, 240, 100, 18);
+		monkeyLabel.setForeground(Color.BLUE);
+		monkeyLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		monkeyLabel.setBounds(500, 240, 131, 18);
 		add(monkeyLabel);
 		
 		JLabel monkeySteminaLabel = new JLabel("Stemina : ¡Ú¡Ú¡Ú");

@@ -11,7 +11,6 @@ import Model.BabyCat;
 import Model.BabyMonkey;
 import Model.Cloth;
 import Model.Food;
-import Model.Pet;
 import Model.Potion;
 
 import java.awt.event.ActionListener;
