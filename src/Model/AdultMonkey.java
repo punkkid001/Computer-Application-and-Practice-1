@@ -58,7 +58,7 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
         System.out.println("I'm Sit..");
     }
 
-    public String getName(){return actName;}
+    public String getName(){return super.getName();}
     
     public boolean checkExp()
     {

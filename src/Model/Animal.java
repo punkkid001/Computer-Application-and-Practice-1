@@ -461,7 +461,14 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     
     public void useItem(Potion i)
     {
-    	
+    	if(this instanceof AdultCat || this instanceof AdultMonkey) {
+    		this.getLabel().transform_label();
+    		this.getMyUser().getController().m.livingroomPage.getbtnPotion().setVisible(false);
+    		this.getMyUser().getController().m.livingroomPage.getfoodItemInfo().repaint();
+    	}
+    	else {
+    		
+    	}
     }
 
     //change
@@ -520,5 +527,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     
     public abstract void grow(User presentUser, int index);
     public void degrade(User presentUser, int index){
+    }
+    public void transform(User presentUser, int index) {
+    	
     }
 }

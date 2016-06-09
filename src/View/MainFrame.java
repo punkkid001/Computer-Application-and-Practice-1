@@ -605,14 +605,17 @@ public class MainFrame extends JFrame
 		//currentFood=null;
 		for(i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
-			this.items[i]=new JMenuItem(c.getPresentUser().getPet(i).getName());
-			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+c.getPresentUser().getPet(i).getName());dispose();
+			String petName = c.getPresentUser().getPet(i).getName();
+			this.items[i]=new JMenuItem(petName);
+			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+ petName);
+			System.out.println("");
+			Animal tempPet = c.getPresentUser().getPet(i);
 			items[i].addActionListener(new ActionListener()
 			{
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
-					System.out.println(e.getSource()+"clicked");
+					tempPet.useItem(c.getPresentUser().getPotion());
 					//c.getPresentUser().getPet(i).useItem(currentFood);
 				}
 			});

@@ -427,7 +427,19 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	public void setPet(Animal p) {
 		this.pet = p;
 	}
-	
+	//물약 변신 소스
+	public void transform_label() {
+		pet.getMyLocation().deleteIcon(pet);
+		
+		pet.transform(myUser, pet.getIndex());
+		System.out.println(pet.getIndex() + "나의 원래 인덱스");
+		
+		System.out.println(myUser.getPet(pet.getIndex()));
+		pet = myUser.getPet(pet.getIndex());
+		System.out.println(pet + "진화해라");
+		pet.getMyLocation().createPetIcon(pet);
+		
+	}
 	//똥 소스
 	public void makeDrapping() {
 		for(int i = 0; i < 5; i++) {

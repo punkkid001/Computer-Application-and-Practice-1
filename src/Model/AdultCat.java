@@ -52,7 +52,7 @@ public class AdultCat extends BabyCat implements Dance_IF
         System.out.println("Dance..");
     }
 
-    public String getName(){return actName;}
+    public String getName(){return super.getName();}
 
     public void transform(User presentUser, int index)
     {
@@ -82,4 +82,5 @@ public class AdultCat extends BabyCat implements Dance_IF
     	System.out.println("호랑이로 진화  " + presentUser);
         presentUser.setAnimal(index, new Tiger(this, presentUser));       
     }
+    
 }

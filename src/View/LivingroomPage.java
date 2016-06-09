@@ -1,6 +1,8 @@
 package View;
 
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,7 +16,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -45,7 +51,9 @@ public class LivingroomPage extends Place implements MouseListener
 
 	protected JPanel foodItemInfo;
 	protected JLabel UsersFoodItem;
-
+	
+	protected JPopupMenu menu;
+	protected JMenuItem []items=new JMenuItem[5];
 	public JLabel simpleUserInfo;
 
 	/**
@@ -176,8 +184,15 @@ public class LivingroomPage extends Place implements MouseListener
 		btnPotion.setVisible(false);
 		
 		foodItemInfo.setVisible(false);
+		
+		
 	}
-	
+	public JButton getbtnPotion() {
+		return this.btnPotion;
+	}
+	public JPanel getfoodItemInfo() {
+		return this.foodItemInfo;
+	}
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
