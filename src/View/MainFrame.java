@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
@@ -121,6 +122,15 @@ public class MainFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				try
+				{
+					//FileIinputStream loadFile=new FileInputStream("SaveData.sav");
+					//ObjectInputStream load=new ObjectInputStream()
+				}
+				catch(Exception ex)
+				{
+					
+				}
 				
 			}
 		});
@@ -244,20 +254,6 @@ public class MainFrame extends JFrame
 				if(livingroomFridgeFlag==false)
 				{
 					livingroomFridgeFlag=true;
-					if(c.getPresentUser().getPotion()!=null)
-					{
-						livingroomPage.btnPotion.setText("???");
-						livingroomPage.btnPotion.addActionListener(new ActionListener()
-						{
-							@Override
-							public void actionPerformed(ActionEvent e)
-							{
-								menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
-							}
-						});
-						livingroomPage.btnPotion.setVisible(true);
-						livingroomPage.labelEmpty.setVisible(false);
-					}
 					if(list!=null)
 					{						
 						for(j=0;j<list.length;j++)
@@ -278,6 +274,20 @@ public class MainFrame extends JFrame
 					}
 					else
 						livingroomPage.labelEmpty.setVisible(true);
+					if(c.getPresentUser().getPotion()!=null)
+					{
+						livingroomPage.btnPotion.setText("???");
+						livingroomPage.btnPotion.addActionListener(new ActionListener()
+						{
+							@Override
+							public void actionPerformed(ActionEvent e)
+							{
+								menu.show(livingroomPage.foodItemInfo, livingroomPage.foodItemInfo.getWidth()/2, 0);
+							}
+						});
+						livingroomPage.btnPotion.setVisible(true);
+						livingroomPage.labelEmpty.setVisible(false);
+					}
 					livingroomPage.foodItemInfo.setVisible(true);
 				}
 				else
@@ -372,12 +382,13 @@ public class MainFrame extends JFrame
 					
 					save.writeObject(c.getPresentUser());
 					save.close();
+					
+					System.out.println("Save Done.");
 				}
 				catch(Exception ex)
 				{
 					ex.printStackTrace();
 				}
-				System.out.println("Save Done.");
 			}
 		});
 		
