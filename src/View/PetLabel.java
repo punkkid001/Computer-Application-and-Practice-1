@@ -37,6 +37,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 	private JPopupMenu placeMenu;
 	private int flag;
 	private int moveFlag;
+	private int msgFlag;
 	protected int o_x, o_y;
 	public BufferedImage speechBubbleImg = null;
 	
@@ -60,7 +61,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		
 		this.flag = 0;
 		this.moveFlag = 0;
-		
+		this.msgFlag = 0;
 		
 		JMenuItem item1 = new JMenuItem("move");
 		item1.addActionListener(new ActionListener()
@@ -262,6 +263,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		this.setVisible(true);
 	}
 	//메시지 박스
+	/*speechList 번호로 받아오는 건 사용 안하는 것 같아서 일단 주석처리
 	public void makeMessageBox(int num) {
 		//JLabel myMessageLabel = new JLabel(pet.getMessage(num));
 		//this.pet.getMyLocation().add(myMessageLabel);
@@ -323,6 +325,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		});
 		th.start();
 	}
+	*/
 	public void makeMessageBox(String msg) {
 		//JLabel myMessageLabel = new JLabel(msg);
 		//this.pet.getMyLocation().add(myMessageLabel);
@@ -336,7 +339,8 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 		{
 			// TODO Auto-generated catch block
 		}
-		
+		msgFlag++;
+		System.out.println("msgFlag:"+ msgFlag);
 		JPanel speechBubble;
 		JTextArea text;
 		
@@ -368,7 +372,6 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 			public void run() {
 				// TODO Auto-generated method stub
 				TimerTask task = new TimerTask() {
-
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
@@ -377,13 +380,15 @@ public class PetLabel extends JLabel implements Runnable, MouseListener
 					}
 				};
 				Timer timer = new Timer();
-				timer.schedule(task, 2500);
+				timer.schedule(task, (2500));
 				//task.run();
 				System.out.println("작업");
+				msgFlag--;
 			}
 			
 		});
 		th.start();
+		
 	}
 	//퇴화 소스
 	public void degrade() {

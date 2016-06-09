@@ -48,11 +48,29 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public Animal()
     {
     	this.faceImage = new ImageIcon[5];
-    	// 1: 평상시, 2: 행복, 3: 피곤, 4: 배고픔, 5: 잠.
-        this.speechList= new String[]{
-        		"Level up!", "I don't have drappings.", "Thank you! Now, I'm so clean", 
-        		"Please rid my drappings!!!!", "Yeah~ so funny time!", "It's delicious.", 
-        		"Sleep...", "I'm so sleeping!!!!!!", "null", "null", "null", "null", "null", "null", "HAPPY", "HUNGRY", "SLEEPING"};
+    	// 기본 메시지
+    	this.speechList = new String[]{
+    			"Level up!", 						//0		levelUp 
+    			"충분히 깨끗해",				 			//1		ridDrappings-false
+    			"고마워! 깨끗해졌어!!!",				 	//2		ridDrappings-true
+        		"똥 치워줘@@@", 						//3		letProtest-ridDappings
+        		"즐거운 놀이시간~!", 						//4		play
+        		"너랑 안놀거야",		 					//5		letProtest-play	
+        		"맛있어", 								//6		feed
+        		"입맛 없어", 							//7		letProtest-feed
+        		"zZZ...", 							//8		sleep
+        		"나 그냥 잘거야", 						//9		force sleep
+        		"어떄, 잘어울려?", 						//10	dress
+        		"null", 							//11	special_1
+        		"null", 							//12	special_2
+        		"null", 							//13	special_3
+        		"null", 							//14	special_4
+        		"null",		 						//15	special_5
+        		"null",								//16	special_6
+        		"Happy",							//17	happy
+        		"Hungry",							//18	hungry
+        		"Tired"								//19	tired
+        };
 
         //setting start stat
         this.fatigability=30;  //피로도
@@ -240,7 +258,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     {
         if(letProtest()) {
             System.out.println("Can't play with pet. Check your message.");
-            return "먹지 않아 저항중";
+            return speechList[7];
         } else
         {
             this.fatigability+=10;
@@ -248,9 +266,9 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
             this.exp+=5;
             this.happiness+=10;
             this.statCheck();
-            System.out.println(this.name+" Message : "+speechList[5]);
+            System.out.println(this.name+" Message : "+speechList[6]);
             this.checkEvent();
-            return speechList[5] + "\n피로 +10, 만족+30, 행복+10, 경험+5";
+            return speechList[6] + "\n피로 +10, 만족+30, 행복+10, 경험+5";
         }
 		
     }
@@ -277,8 +295,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     public String play()
     {
         if(letProtest()) {
-            System.out.println("너랑 놀지 않을거야. 저항중이야.");
-            return "너랑 놀지 않을거야. 저항중이야.";
+            System.out.println(speechList[3]);
+            return speechList[3];
     	}
         else
         {
@@ -300,28 +318,28 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     	if(num == 1) {
     		switch(p) {
     		case 0:
-    			indexNum = 9;
-    			break;
-    		case 1:
-    			indexNum = 10;
-    			break;
-    		}
-    	} else if(num == 2) {
-    		switch(p) {
-    		case 0:
     			indexNum = 11;
     			break;
     		case 1:
     			indexNum = 12;
     			break;
     		}
-    	} else if(num == 3) {
+    	} else if(num == 2) {
     		switch(p) {
     		case 0:
     			indexNum = 13;
     			break;
     		case 1:
     			indexNum = 14;
+    			break;
+    		}
+    	} else if(num == 3) {
+    		switch(p) {
+    		case 0:
+    			indexNum = 15;
+    			break;
+    		case 1:
+    			indexNum = 16;
     			break;
     		}
     	}
@@ -336,7 +354,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.statCheck();
         this.checkEvent();
         
-        return speechList[6];
+        return speechList[8];
     }
 
     public void sleep(boolean isTired)
@@ -349,7 +367,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
         this.statCheck();
         this.checkEvent();
 
-        System.out.println("Message : "+speechList[7]);
+        System.out.println("Message : "+speechList[9]);
         try
         {
             Thread.sleep(sleepSecond);
@@ -382,9 +400,8 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     {
         if(this.exp>=20&&this.level<5) {
             this.levelUp();
-           
+            this.myView.makeMessageBox(speechList[0]);
         }
-        
     }
 
     public boolean letProtest()
@@ -403,23 +420,30 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF
     {
         int max=0;
 
-        
         this.activeCount++;
         this.makeDrappings();
         if(this.fatigability>=100) {
         	//this.getLabel().setIcon(icon);
         	this.sleep(true);
         }
-
-        if(this.fatigability>=80)
-            System.out.println("Message : "+speechList[16]);
-        else if(this.satiety>=80)
-            System.out.println("Message : "+speechList[15]);
-        else if(this.happiness>=80)
-            System.out.println("Message : "+speechList[14]);
+        String msg = new String();
+        msg = "";
+        if(this.fatigability>=80){
+            System.out.println("Message : "+speechList[19]);
+            msg = msg + speechList[19];
+        }
+        else if(this.satiety>=80){
+            System.out.println("Message : "+speechList[18]);
+            msg = msg + speechList[18];
+        }
+        else if(this.happiness>=80){
+            System.out.println("Message : "+speechList[17]);
+            msg = msg + speechList[17];
+        }
         
-        this.checkExp();
-        
+        if(msg != "")
+        	this.myView.makeMessageBox(msg);
+        this.checkExp();        
     }
 
     //change

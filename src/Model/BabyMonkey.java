@@ -34,13 +34,13 @@ public class BabyMonkey extends Animal
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList("³ª ±×³É Àß·¡ ¿ì³¢³¢!!!", 8);
-        setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 9);
-        setSpeechList("¿ìƒ­ ¾È³ç~", 10);
-        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 11);
-        setSpeechList("¿ì²¥²¦ ±×·¡~~", 12);
-        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 13);
-        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 14);
+        setSpeechList("³ª ±×³É Àß·¡ ¿ì³¢³¢!!!", 9);
+        setSpeechList("¿ì³¢³¢ ¹Ý°¡¿ö!", 11);
+        setSpeechList("¿ìƒ­ ¾È³ç~", 12);
+        setSpeechList("¿ì°¼¿ì°¼°¼ °í¸¶¿ö!", 13);
+        setSpeechList("¿ì²¥²¦ ±×·¡~~", 14);
+        setSpeechList("¿ì¿õ...³Ê¹« ±×·¯Áø¸¶", 15);
+        setSpeechList("¼³±³ÇÏÁö¸¶ ²¥ƒ­", 16);
     }
     
     public BabyMonkey(String name, int price, boolean flag)

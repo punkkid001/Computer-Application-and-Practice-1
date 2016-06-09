@@ -33,13 +33,13 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        setSpeechList(" ", 8);
         setSpeechList(" ", 9);
-        setSpeechList(" ", 10);
         setSpeechList(" ", 11);
         setSpeechList(" ", 12);
         setSpeechList(" ", 13);
         setSpeechList(" ", 14);
+        setSpeechList(" ", 15);
+        setSpeechList(" ", 16);
     }
     //change
     public void levelUp()
