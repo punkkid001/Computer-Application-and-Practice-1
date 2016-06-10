@@ -18,6 +18,7 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 	}
 	public Gorilla(Animal p) {
 		super(p);
+		System.out.println("고릴라인자 p : " + p.getClass());
 		this.before = p;
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\gorilla\\ordinary.png"))));
@@ -25,7 +26,7 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}System.out.println("11왜 안숨니?" + this.getLabel());
-    	this.hide();
+    	
     	if(this.getLevel() < 4)
     		this.degradeThread();
     	
@@ -42,7 +43,6 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
     	super.setMyUser(myUser);
     	
     	this.before = p;
-    	
     	System.out.println("왜 안숨니?" + this.getLabel());
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\tiger\\ordinary.png"))));
@@ -51,8 +51,9 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 			e.printStackTrace();
 		}
     	this.hide();
-    	if(this.getLevel() < 4)
+    	if(this.getLevel() < 4) {
     		this.degradeThread();
+    	}
     }
 	private void degradeThread() {
 		Thread t = new Thread(this);
@@ -77,6 +78,6 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		super.getLabel().degrade();
+		getLabel().degrade();
 	}
 }

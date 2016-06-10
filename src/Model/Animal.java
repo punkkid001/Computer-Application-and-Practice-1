@@ -88,7 +88,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
         this.activeCount=0;
         this.myCloth=null;
     }
-    public Animal(User myUser, int index) {
+    public Animal(User myUser, int index) {  //최초 게임 시작시 생성자.
     	this();
     	this.myUser = myUser;
     	this.index = index;
@@ -106,7 +106,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
         this.setFatigability(p.getFatigability());
         this.setSatiety(p.getSatiety());
         this.setDrappings(p.getDrappings());
-        
+        this.setIndex(p.getIndex());  //--추가
         this.exp = 0;
         this.setLevel(p.getLevel());
         

@@ -15,6 +15,8 @@ import View.PetLabel;
 public class Dragon extends Animal implements DragonAct_IF, Runnable
 {
 	private Animal returnAnimal;
+	
+	
 	public Dragon() {
 		
 	}
@@ -29,15 +31,16 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
     	this.returnAnimal = p;
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\dragon\\ordinary.png"))));
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	this.mess();
-    	this.hide();
     	
     	
-    	this.degradeThread();
+    	if(this.getLevel() < 5)
+    		this.degradeThread();
     	
     }
 	public Dragon(Animal p, User myUser) {
@@ -73,7 +76,10 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
 			this.getMyLocation().makeWaste();
 		}
 	}
-    public void shout(){System.out.println("Dragon shout!!");}
+    public String shout(){
+    	this.getLabel().makeBless();
+    	return "무시무시한 화염이다!";
+    	}
 
     //public String getName(){return this.getName();}
 	@Override

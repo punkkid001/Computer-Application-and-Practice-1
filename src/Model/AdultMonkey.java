@@ -65,7 +65,7 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
     	if(this.getExp()>=30&&this.getLevel()<5) {
     		this.levelUp();
             
-    		if(super.getLevel() == 3) {
+    		if(super.getLevel() == 3 || super.getLevel() == 4) {
     			super.getLabel().grow();
     		//super.getLabel().setBounds(super.getLabel().getX(),super.getLabel().getY(), 144, 130);
     		//super.getLabel().setVisible(true);

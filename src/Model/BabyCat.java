@@ -25,7 +25,7 @@ public class BabyCat extends Animal
         setSpeechList("오늘 왜이렇게 잘해줘?", 14);
         setSpeechList("내가 뭘 잘못했다고...", 15);
         setSpeechList("히야옹ㅠ", 16);
-    	System.out.println("기본 생성자 호출");
+    	System.out.println("1기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
 		} catch (IOException e) {
@@ -43,7 +43,7 @@ public class BabyCat extends Animal
         setSpeechList("오늘 왜이렇게 잘해줘?", 14);
         setSpeechList("내가 뭘 잘못했다고...", 15);
         setSpeechList("히야옹ㅠ", 16);
-        System.out.println("기본 생성자 호출");
+        System.out.println("2기본 생성자 호출");
     	try {
 			this.setMyImageIcon(new ImageIcon(ImageIO.read(new File("Img\\Baby_cat\\ordinary.png"))));
 		} catch (IOException e) {

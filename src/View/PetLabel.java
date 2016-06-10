@@ -27,6 +27,8 @@ import Model.AdultCat;
 import Model.AdultMonkey;
 import Model.Animal;
 import Model.Degrade_IF;
+import Model.Dragon;
+import Model.DragonAct_IF;
 import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener, java.io.Serializable
@@ -261,7 +263,17 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		} else if(this.pet instanceof AdultMonkey) {
 			
 		}
-		//item5.add(menuItem);
+		if(this.pet instanceof Dragon) {
+			JMenuItem petB = new JMenuItem(DragonAct_IF.actName);
+			petB.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					makeMessageBox(((Dragon)pet).shout());	
+				}
+			});
+			item5.add(petB);
+		}
 		
 		this.addMouseListener(this);
 		this.setVisible(true);
@@ -414,13 +426,15 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 	public void grow() {
 		pet.getMyLocation().deleteIcon(pet);
 		
-		pet.grow(myUser, pet.getIndex());
+		pet.grow(myUser, pet.getIndex());  //animal index는 팻 고유번호.
 		System.out.println(pet.getIndex() + "나의 원래 인덱스");
 		
-		System.out.println(myUser.getPet(pet.getIndex()));
+		System.out.println("팻 인덱스" + myUser.getPet(pet.getIndex()));
 		pet = myUser.getPet(pet.getIndex());
 		System.out.println(pet + "진화해라");
-		pet.setLabel(pet.getMyLocation().createPetIcon(pet));
+		PetLabel tmp = pet.getMyLocation().createPetIcon(pet);
+		System.out.println("grow tmp확인 " + tmp.getClass());
+		//pet.setLabel(tmp);
 		
 	}
 	public void setPet(Animal p) {
@@ -604,6 +618,41 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		if(e.isPopupTrigger()) {
 			menu.show(e.getComponent(), e.getX(), e.getY());
 		}*/
+	}
+
+	public void makeBless() {
+		// TODO Auto-generated method stub
+		Thread t = new Thread( new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				ImageIcon bless = null;
+				try {
+					bless = new ImageIcon(ImageIO.read(new File("Img\\bless.png")));
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				JLabel fire = new JLabel();
+				fire.setIcon(bless);
+				fire.setBounds(getX() - 90, getY()+60, 104, 100);
+				fire.setVisible(true);
+				pet.getMyLocation().add(fire);
+				pet.getMyLocation().repaint();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				fire.setVisible(false);
+				pet.getMyLocation().repaint();
+			}
+    		
+    	});
+		t.start();
 	}
 	
 }
