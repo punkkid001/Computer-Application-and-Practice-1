@@ -306,15 +306,17 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 			r = DragonAct_IF.class.getDeclaredMethods();
 			petB = new JMenuItem[r.length];
 			for(i = 0; i < r.length; i++) {
+				int p = i;
 				petB[i] = new JMenuItem();
 				petB[i].setText(r[i].getName());
 				petB[i].addActionListener(new ActionListener() {
 				
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
+						
 						// TODO Auto-generated method stub
 						try {
-							makeMessageBox((String)r[i].invoke(pet));
+							makeMessageBox((String)r[p].invoke(pet, new Object[] {}));
 						} catch (IllegalAccessException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
