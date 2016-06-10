@@ -61,20 +61,23 @@ public class Dragon extends Animal implements DragonAct_IF, Runnable
     	this.degradeThread();
     	
     }
-    public void sit(){System.out.println("Dragon sit");}
+    public String sit(){return "Dragon sit";}
     @Override
-	public void hide() {
+	public String hide() {
 		// TODO Auto-generated method stub
 		this.getMyLocation().dohiding(this);
+		return "어마어마하게 빠르지?";
 	}
-    public void dance(){System.out.println("Dragon dance");}
-    public void mess() {
+    public String dance(){return "Dragon dance";}
+    public String mess() {
 		// TODO Auto-generated method stub
 		Random r = new Random();
 		int drapNum = r.nextInt(3) + 1;
 		for(int i = 0; i < drapNum; i++) {
 			this.getMyLocation().makeWaste();
+			
 		}
+		return "드래곤이 어지럽힌다!!";
 	}
     public String shout(){
     	this.getLabel().makeBless();

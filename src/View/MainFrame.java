@@ -660,7 +660,9 @@ public class MainFrame extends JFrame
 		//currentFood=null;
 		for(i=0;i<c.getPresentUser().getUserPetSize();i++)
 		{
+			
 			String petName = c.getPresentUser().getPet(i).getName();
+			System.out.println(i + "¹ø ÆÖ : " + c.getPresentUser().getPet(i).getClass());
 			this.items[i]=new JMenuItem(petName);
 			System.out.println("User Pet size : "+c.getPresentUser().getUserPetSize()+" / pet name : "+ petName);
 			System.out.println("");
@@ -669,6 +671,7 @@ public class MainFrame extends JFrame
 			JButton tempBtn2=shopPage.btnUserFood[i];
 			items[i].addActionListener(new ActionListener()
 			{
+				
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{

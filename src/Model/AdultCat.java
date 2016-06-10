@@ -73,9 +73,9 @@ public class AdultCat extends BabyCat implements Dance_IF
         this.setDefense(this.getDefense()+30);
     }
 
-    public void dance()
+    public String dance()
     {
-        System.out.println("Dance..");
+        return "¾À³ª°Ô ÃãÃçº¼±î?~";
     }
 
     public String getName(){return super.getName();}

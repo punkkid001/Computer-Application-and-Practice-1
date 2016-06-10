@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,9 +27,11 @@ import javax.swing.JTextArea;
 import Model.AdultCat;
 import Model.AdultMonkey;
 import Model.Animal;
+import Model.Dance_IF;
 import Model.Degrade_IF;
 import Model.Dragon;
 import Model.DragonAct_IF;
+import Model.Sit_IF;
 import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener, java.io.Serializable
@@ -217,7 +220,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				pet.undress();	
+				makeMessageBox(pet.undress());	
 			}
 		});
 		
@@ -258,21 +261,65 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		}
 		
 		menu.add(item5);
+		JMenuItem petB[]; 
+		Method r[];
 		if(this.pet instanceof AdultCat) {
-			//JMenuItem b1 = new JMenuItem(s)
+			r = Dance_IF.class.getDeclaredMethods();
+			petB = new JMenuItem[r.length];
+			for(int i = 0; i < r.length; i++) {
+				petB[i].setText(Dance_IF.actName);
+				petB[i].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						makeMessageBox(((Dance_IF)pet).dance());
+					}
+					
+				});
+			}
+				
 		} else if(this.pet instanceof AdultMonkey) {
-			
+			r = Sit_IF.class.getDeclaredMethods();
+			petB = new JMenuItem[r.length];
+			for(int i = 0; i < r.length; i++) {
+				petB[i].setText(Dance_IF.actName);
+				petB[i].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						makeMessageBox(((Sit_IF)pet).sit());
+					}
+					
+				});
+			}
 		}
 		if(this.pet instanceof Dragon) {
-			JMenuItem petB = new JMenuItem(DragonAct_IF.actName);
-			petB.addActionListener(new ActionListener() {
+			/*
+			r = DragonAct_IF.class.getDeclaredMethods();
+			petB = new JMenuItem[r.length];
+			for(int i = 0; i < r.length; i++) {
+				petB[i].setText(DragonAct_IF);
+				petB[i].addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						// TODO Auto-generated method stub
+						makeMessageBox(((Sit_IF)pet).sit());
+					}
+					
+				});
+			}*/
+			JMenuItem petB1 = new JMenuItem(DragonAct_IF.actName);
+			petB1.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e)
 				{
 					makeMessageBox(((Dragon)pet).shout());	
 				}
 			});
-			item5.add(petB);
+			item5.add(petB1);
 		}
 		
 		this.addMouseListener(this);

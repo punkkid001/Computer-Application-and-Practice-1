@@ -58,13 +58,14 @@ public class Tiger extends AdultCat implements Mess_IF, Runnable, Degrade_IF
 		t.start();
 	}
 	@Override
-	public void mess() {
+	public String mess() {
 		// TODO Auto-generated method stub
 		Random r = new Random();
 		int drapNum = r.nextInt(3) + 1;
 		for(int i = 0; i < drapNum; i++) {
 			this.getMyLocation().makeWaste();
 		}
+		return "전부 다 어지른다! 어흥!";
 	}
 	public void degrade(User presentUser, int index) {
 		System.out.println(presentUser.getClass());

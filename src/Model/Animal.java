@@ -358,7 +358,7 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
         return speechList[8];
     }
 
-    public void sleep(boolean isTired)
+    public String sleep(boolean isTired)
     {
         long sleepSecond=10000;  //10s
 
@@ -368,31 +368,34 @@ public abstract class Animal implements AnimalOperation_IF, Fight_IF, java.io.Se
         this.statCheck();
         this.checkEvent();
 
-        System.out.println("Message : "+speechList[9]);
+        
         try
         {
             Thread.sleep(sleepSecond);
         }
         catch(InterruptedException e)
-        {
+        {}
 
-        }
+        return speechList[9];
     }
 
-    public void dress(Cloth cloth)
+    public String dress(Cloth cloth)
     {
     	this.myCloth=cloth;
     	this.power+=cloth.getPower();
     	this.stemina+=cloth.getStemina();
     	this.defense+=cloth.getDefense();
+    	
+    	return "옷을 입었다!" + " 체력 " + cloth.getStemina()+ "+, 힘 " +cloth.getPower() +"+ 방어력 " +cloth.getDefense()+ "+";
     }
 
-    public void undress()
+    public String undress()
     {
     	this.power-=myCloth.getPower();
     	this.stemina-=myCloth.getStemina();
     	this.defense-=myCloth.getDefense();
         this.myCloth=null;
+        return "옷을 벗었다!";
     }
 
     public void levelUp()

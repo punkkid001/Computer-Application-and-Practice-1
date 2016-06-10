@@ -7,5 +7,5 @@ public interface Sit_IF extends GetName_IF
 {
     String actName="Sit";
 
-    public void sit();
+    public String sit();
 }

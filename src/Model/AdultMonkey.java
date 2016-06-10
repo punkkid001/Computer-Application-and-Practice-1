@@ -53,9 +53,9 @@ public class AdultMonkey extends BabyMonkey implements Sit_IF
         
     }
 
-    public void sit()
+    public String sit()
     {
-        System.out.println("I'm Sit..");
+        return "가만히 앉아 있는게 내 유일한 취미지~";
     }
 
     public String getName(){return super.getName();}

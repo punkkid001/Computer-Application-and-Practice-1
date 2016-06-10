@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import javax.swing.JTextArea;
 
-public class LivingroomPage extends Place implements MouseListener
+public class LivingroomPage extends Place
 {
 	
 	protected BufferedImage panelImg = null;
@@ -199,32 +199,4 @@ public class LivingroomPage extends Place implements MouseListener
 		g.drawImage(panelImg, 0, 0, null);
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }

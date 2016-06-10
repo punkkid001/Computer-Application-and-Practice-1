@@ -7,5 +7,5 @@ public interface Dance_IF extends GetName_IF
 {
     String actName="Dance";
 
-    public void dance();
+    public String dance();
 }

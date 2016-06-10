@@ -60,9 +60,10 @@ public class Gorilla extends AdultMonkey implements Hide_IF, Runnable
 		t.start();
 	}
 	@Override
-	public void hide() {
+	public String hide() {
 		// TODO Auto-generated method stub
 		this.getMyLocation().dohiding(this);
+		return "숨바꼭질 한다!";
 	}
 	public void degrade(User presentUser, int index) {
 		System.out.println(presentUser.getClass());

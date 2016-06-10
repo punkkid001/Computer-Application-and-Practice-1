@@ -7,5 +7,5 @@ public interface Mess_IF extends GetName_IF
 {
     String actName="Mess";
 
-    public void mess();
+    public String mess();
 }

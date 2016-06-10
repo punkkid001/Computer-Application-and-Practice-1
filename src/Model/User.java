@@ -157,6 +157,7 @@ public class User implements java.io.Serializable
     
     public void sellItem(Cloth i)
     {
+    	System.out.println("판매금 : " + i.getPrice());
     	this.gold+=i.getPrice();
     	for(int j=0;j<myClothList.length;j++)
     		if(myClothList[j]==i)
