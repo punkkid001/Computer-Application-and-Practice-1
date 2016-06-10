@@ -11,6 +11,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,6 +37,7 @@ import Model.User;
 
 public class PetLabel extends JLabel implements Runnable, MouseListener, java.io.Serializable
 {
+	private int i;
 	protected Animal pet;
 	private User myUser;
 	private Place place;
@@ -46,7 +48,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 	private int msgFlag;
 	protected int o_x, o_y;
 	public BufferedImage speechBubbleImg = null;
-	
+	private Method r[];
 	private Drappings drap[];
 	public JMenuItem behaviorItem7;
 	public JLabel simplePetInfo;
@@ -262,7 +264,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 		
 		menu.add(item5);
 		JMenuItem petB[]; 
-		Method r[];
+		
 		if(this.pet instanceof AdultCat) {
 			r = Dance_IF.class.getDeclaredMethods();
 			petB = new JMenuItem[r.length];
@@ -300,21 +302,34 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 			}
 		}
 		if(this.pet instanceof Dragon) {
-			/*
+			
 			r = DragonAct_IF.class.getDeclaredMethods();
 			petB = new JMenuItem[r.length];
-			for(int i = 0; i < r.length; i++) {
-				petB[i].setText(DragonAct_IF);
+			for(i = 0; i < r.length; i++) {
+				petB[i] = new JMenuItem();
+				petB[i].setText(r[i].getName());
 				petB[i].addActionListener(new ActionListener() {
-
+				
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
-						makeMessageBox(((Sit_IF)pet).sit());
+						try {
+							makeMessageBox((String)r[i].invoke(pet));
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IllegalArgumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+							
 					}
-					
 				});
-			}*/
+				item5.add(petB[i]);
+			}/*
 			JMenuItem petB1 = new JMenuItem(DragonAct_IF.actName);
 			petB1.addActionListener(new ActionListener() {
 				@Override
@@ -323,7 +338,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 					makeMessageBox(((Dragon)pet).shout());	
 				}
 			});
-			item5.add(petB1);
+			item5.add(petB1);*/
 		}
 		
 		this.addMouseListener(this);
