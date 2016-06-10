@@ -267,6 +267,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 			r = Dance_IF.class.getDeclaredMethods();
 			petB = new JMenuItem[r.length];
 			for(int i = 0; i < r.length; i++) {
+				petB[i] = new JMenuItem();
 				petB[i].setText(Dance_IF.actName);
 				petB[i].addActionListener(new ActionListener() {
 
@@ -277,13 +278,15 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 					}
 					
 				});
+				item5.add(petB[i]);
 			}
 				
 		} else if(this.pet instanceof AdultMonkey) {
 			r = Sit_IF.class.getDeclaredMethods();
 			petB = new JMenuItem[r.length];
 			for(int i = 0; i < r.length; i++) {
-				petB[i].setText(Dance_IF.actName);
+				petB[i] = new JMenuItem();
+				petB[i].setText(Sit_IF.actName);
 				petB[i].addActionListener(new ActionListener() {
 
 					@Override
@@ -293,6 +296,7 @@ public class PetLabel extends JLabel implements Runnable, MouseListener, java.io
 					}
 					
 				});
+				item5.add(petB[i]);
 			}
 		}
 		if(this.pet instanceof Dragon) {
