@@ -1,4 +1,4 @@
-# CA1
+# Computer Application and Practice 1
 
 
 2016-1
